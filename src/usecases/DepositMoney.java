@@ -38,15 +38,18 @@ public class DepositMoney{
             throw new BankAccountDoesNotExistException(accountNumber);
         }
 
+        //These two methods execute the whole thing
         addCreditTransaction(accountNumber, amount, new Date());
         return creditBalance(accountNumber, amount);
     }
 
+    //This method is in charge of adding the deposit transaction in the arrayList of the persistence data
     private void addCreditTransaction(long accountNumber, double price, Date currentDate){
         Transaction transaction = new Transaction(accountNumber, accountNumber, price, TransactionType.credit, currentDate);
         transactionRepository.createTransaction(transaction);
     }
 
+    //This method is in charge of adding the money for the deposit functionality
     private double creditBalance(long accountNumber, double price){
         BankAccount customerBankAccount = bankAccountRepository.getAccountByAccountNumber(accountNumber);
         customerBankAccount.setBalance(customerBankAccount.getBalance() + price);
