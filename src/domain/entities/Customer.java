@@ -15,4 +15,8 @@ public class Customer extends AbstractUser {
     public String getType(){ //these methods inherit automatically to all classes extended from this first
         return this.type;
     }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }
