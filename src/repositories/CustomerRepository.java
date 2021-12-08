@@ -58,7 +58,8 @@ public class CustomerRepository extends AbstractRepository {
         ArrayList<Customer> customers = CustomerRepository.persistenceData.getCustomers();
         for (Customer currentCustomer : customers){
             if (currentCustomer.equals(customer)){
-                currentCustomer.setFullName(customer.getFullName());
+                currentCustomer.setFirstName(customer.getFirstName());
+                currentCustomer.setLastName(customer.getLastName());
                 currentCustomer.setPassword(customer.getPassword());
                 currentCustomer.setEmail(customer.getEmail());
                 currentCustomer.setPhoneNumber(customer.getPhoneNumber());

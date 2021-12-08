@@ -59,7 +59,8 @@ public class EmployeeRepository extends AbstractRepository {
         ArrayList<Employee> employees = EmployeeRepository.persistenceData.getEmployees();
         for (Employee currentEmployee : employees){
             if (currentEmployee.equals(employee)){
-                currentEmployee.setFullName(employee.getFullName());
+                currentEmployee.setFirstName(employee.getFirstName());
+                currentEmployee.setLastName(employee.getLastName());
                 currentEmployee.setPassword(employee.getPassword());
                 currentEmployee.setEmail(employee.getEmail());
                 currentEmployee.setPhoneNumber(employee.getPhoneNumber());

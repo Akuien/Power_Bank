@@ -3,7 +3,8 @@ package domain.entities;
 import java.util.Date;
 
 public abstract class AbstractUser {
-    private String fullName;
+    private String firstName;
+    private String lastName;
     private long SSN;
     private String password;
     private String email;
@@ -11,8 +12,9 @@ public abstract class AbstractUser {
     private Date birthDate;
     private String accessToken; //This token is used for the user to be able to have all the functionalities after log in.
 
-    public AbstractUser(String fullName, long SSN, String password, String email, String phoneNumber, Date birthDate){
-        this.fullName = fullName;
+    public AbstractUser(String firstName, String lastName, long SSN, String password, String email, String phoneNumber, Date birthDate){
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.SSN = SSN;
         this.password = password;
         this.email = email;
@@ -22,7 +24,7 @@ public abstract class AbstractUser {
     }
 
     public String toString(){
-        return fullName + " " + SSN;
+        return firstName + lastName + " " + SSN;
     }
 
     public long getAge(){
@@ -34,13 +36,22 @@ public abstract class AbstractUser {
         return this.getSSN() == abstractUser.getSSN();
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
 
     public long getSSN() {
         return SSN;

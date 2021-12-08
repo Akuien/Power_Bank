@@ -6,8 +6,8 @@ import java.util.Date;
 
 public class Manager extends Employee{
 
-    public Manager(String fullName, long SSN, String password, String email, String phoneNumber, Date birthDate){
-        super(fullName, SSN, password, email, phoneNumber, birthDate);
+    public Manager(String firstName, String lastName, long SSN, String password, String email, String phoneNumber, Date birthDate){
+        super(firstName,lastName, SSN, password, email, phoneNumber, birthDate);
         this.position = UserType.manager;
     }
 }
