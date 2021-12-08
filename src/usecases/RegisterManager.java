@@ -1,6 +1,7 @@
 package usecases;
 
 import domain.entities.Employee;
+import domain.exceptions.*;
 import repositories.EmployeeRepository;
 
 import java.util.Date;
@@ -21,31 +22,46 @@ public class RegisterManager {
             this.employeeRepository = new EmployeeRepository();
             this.validatePhoneNumber = new ValidatePhoneNumber();
         }
-    public String registerManager(String firstName, String lastName, long SSN, String password, String email, String phoneNumber, Date birthDate) {
 
-        if (validateManager.execute(SSN)) {
-            return "This customer is already registered";
+    public String execute(String firstName, String lastName, long SSN, String password, String email, String phoneNumber, Date birthDate) throws Exception {
 
-        }  else if (firstName.isBlank()) {
-            return "Please enter your first name";
+        boolean customerExists = validateManager.execute(SSN);
+        if (!customerExists) {
+            throw new EmployeeDoesNotExistException(SSN);
+        }
 
-        } else if (lastName.isBlank()) {
-            return "Please enter your last name";
+        boolean firstNameIsCorrect = !firstName.isBlank();
+        if (!firstNameIsCorrect) {
+            throw new NameIsBlankException();
+        }
 
-        } else if (!validatePassword.execute(password)) {
-            return "Password is weak, must eat more protein";
+        boolean lastNameIsCorrect = !lastName.isBlank();
+        if (!lastNameIsCorrect) {
+            throw new NameIsBlankException();
+        }
 
-        } else if (!validateEmail.execute(email)) {
-            return "Invalid email";
+        //It does not show why the password is incorrect.
+        boolean passwordIsCorrect = validatePassword.execute(password);
+        if (!passwordIsCorrect) {
+            throw new IncorrectPasswordException();
+        }
 
-        } else if (!validatePhoneNumber.execute(phoneNumber)) {
-            return "Invalid number";
+        boolean emailIsCorrect = validateEmail.execute(email);
+        if (!emailIsCorrect) {
+            throw new IncorrectEmailException();
+        }
 
-        } else {
+        boolean phoneNumberIsCorrect = validatePhoneNumber.execute(phoneNumber);
+        if (!phoneNumberIsCorrect) {
+            throw new IncorrectPhoneNumberException();
+        }
+
             Employee employee = new Employee(firstName, lastName, SSN, password, email, phoneNumber, birthDate);
             employeeRepository.createProfile(employee);
             return "Customer registered successfully"; // add toString later
+
         }
 
+
     }
-}
+

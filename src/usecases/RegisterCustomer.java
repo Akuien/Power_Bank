@@ -1,5 +1,6 @@
 package usecases;
 import domain.entities.Customer;
+import domain.exceptions.*;
 import repositories.CustomerRepository;
 
 import java.util.Date;
@@ -19,24 +20,36 @@ public class RegisterCustomer {
         this.customerRepository = new CustomerRepository();
         this.validatePhoneNumber = new ValidatePhoneNumber();
     }
-    public String registerCustomer(String firstName, String lastName, long SSN, String password, String email, String phoneNumber, Date birthDate) {
-        if (validateCustomer.execute(SSN)) { //checks for letters in ssn and if existing is there
-            return "This customer is already registered";
+    public String execute (String firstName, String lastName, long SSN, String password, String email, String phoneNumber, Date birthDate) throws Exception {
+        boolean customerExists = validateCustomer.execute(SSN);
+        if (!customerExists) {
+            throw new EmployeeDoesNotExistException(SSN);
+        }
 
-        }  else if (firstName.isBlank()) {
-            return "Please enter your first name";
+        boolean firstNameIsCorrect = !firstName.isBlank();
+        if (!firstNameIsCorrect) {
+            throw new NameIsBlankException();
+        }
 
-        } else if (lastName.isBlank()) {
-            return "Please enter your last name";
+        boolean lastNameIsCorrect = !lastName.isBlank();
+        if (!lastNameIsCorrect) {
+            throw new NameIsBlankException();
+        }
 
-        } else if (!validatePassword.execute(password)) {  // We can expend this later, number, sign !%#
-            return "Password is weak, must eat more protein";
+        //It does not show why the password is incorrect.
+        boolean passwordIsCorrect = validatePassword.execute(password);
+        if (!passwordIsCorrect) {
+            throw new IncorrectPasswordException();
+        }
 
-        } else if (!validateEmail.execute(email)) {
-            return "Invalid email";
+        boolean emailIsCorrect = validateEmail.execute(email);
+        if (!emailIsCorrect) {
+            throw new IncorrectEmailException();
+        }
 
-        } else if (!validatePhoneNumber.execute(phoneNumber)) {
-            return "Invalid number";
+        boolean phoneNumberIsCorrect = validatePhoneNumber.execute(phoneNumber);
+        if (!phoneNumberIsCorrect) {
+            throw new IncorrectPhoneNumberException();
 
         } else {
             Customer customer = new Customer(firstName, lastName, SSN, password, email, phoneNumber, birthDate);
