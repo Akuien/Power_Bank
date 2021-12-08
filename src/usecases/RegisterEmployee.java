@@ -1,6 +1,7 @@
 package usecases;
 
 import domain.entities.Employee;
+import domain.exceptions.*;
 import repositories.EmployeeRepository;
 
 import java.util.Date;
@@ -13,6 +14,7 @@ public class RegisterEmployee {
     private ValidateEmail validateEmail;
     private EmployeeRepository employeeRepository;
     private ValidatePhoneNumber validatePhoneNumber;
+
     public RegisterEmployee(){
         this.validateEmployee = new ValidateEmployee();
         this.validateEmail = new ValidateEmail();
@@ -20,31 +22,44 @@ public class RegisterEmployee {
         this.employeeRepository = new EmployeeRepository();
         this.validatePhoneNumber = new ValidatePhoneNumber();
     }
-    public String registerEmployee(String firstName, String lastName, long SSN, String password, String email, String phoneNumber, Date birthDate) {
 
-        if (validateEmployee.execute(SSN)) {
-            return "This customer is already registered";
+    public String execute(String firstName, String lastName, long SSN, String password, String email, String phoneNumber, Date birthDate) throws Exception {
 
-        }  else if (firstName.isBlank()) {
-            return "Please enter your first name";
-
-        } else if (lastName.isBlank()) {
-            return "Please enter your last name";
-
-        } else if (!validatePassword.execute(password)) {
-            return "Password is weak, must eat more protein";
-
-        } else if (!validateEmail.execute(email)) {
-            return "Invalid email";
-
-        } else if (!validatePhoneNumber.execute(phoneNumber)) {
-            return "Invalid number";
-
-        } else {
-            Employee employee = new Employee(firstName, lastName, SSN, password, email, phoneNumber, birthDate);
-            employeeRepository.createProfile(employee);
-            return "Customer registered successfully"; // add toString later
+        boolean customerExists = validateEmployee.execute(SSN);
+        if (!customerExists) {
+            throw new EmployeeDoesNotExistException(SSN);
         }
+
+        boolean firstNameIsCorrect = !firstName.isBlank();
+        if (!firstNameIsCorrect) {
+            throw new NameIsBlankException();
+        }
+
+        boolean lastNameIsCorrect = !lastName.isBlank();
+        if (!lastNameIsCorrect) {
+            throw new NameIsBlankException();
+        }
+
+        //It does not show why the password is incorrect.
+        boolean passwordIsCorrect = validatePassword.execute(password);
+        if (!passwordIsCorrect){
+            throw new IncorrectPasswordException();
+        }
+
+        boolean emailIsCorrect = validateEmail.execute(email);
+        if (!emailIsCorrect) {
+            throw new IncorrectEmailException();
+        }
+
+        boolean phoneNumberIsCorrect = validatePhoneNumber.execute(phoneNumber);
+        if (!phoneNumberIsCorrect) {
+            throw new IncorrectPhoneNumberException();
+        }
+
+        Employee employee = new Employee(firstName, lastName, SSN, password, email, phoneNumber, birthDate);
+        employeeRepository.createProfile(employee);
+        return "Customer registered successfully"; // add toString later
+
     }
 
 }
