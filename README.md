@@ -1,6 +1,5 @@
 # Power Bank 2
 Controllers --> UseCases --> Repositories --> Domain
---> Domain
 
 Controllers: manage the flow of the program in such a way that they able to control the activity of the user.
 
