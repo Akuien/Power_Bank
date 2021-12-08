@@ -1,0 +1,9 @@
+Se pueden meter los arraylists en cada entidad, pero es mejor mantener
+cada cosa por su lado con el fin de evitar dependencias entre las mismas entidades
+y se nos facilite las búsquedas desde los casos de uso.
+
+Por ejemplo, la búsqueda de que una cuenta bancaria existe se complica
+porque tendríamos que buscar en cada arrayList del usuario la cuenta bancaria
+
+Con esto solamente hay que llamar a la capa de persistencia y pasar el parametro solicitado
+al caso de uso y encontrarlo directamente.
