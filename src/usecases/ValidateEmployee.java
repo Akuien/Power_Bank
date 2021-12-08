@@ -21,5 +21,4 @@ public class ValidateEmployee {
         }
         return false;
     }
-
 }
