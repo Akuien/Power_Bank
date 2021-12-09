@@ -12,6 +12,7 @@ public class PersistenceData {
     private ArrayList<Transaction> transactions;
     private ArrayList<Portfolio> portfolios;
     private ArrayList<Company> companies;
+    private ArrayList<Mortgage> mortgages;
 
 
     public PersistenceData(){
@@ -21,6 +22,7 @@ public class PersistenceData {
         transactions = new ArrayList<>();
         portfolios = new ArrayList<>();
         companies = new ArrayList<>(Arrays.asList(new Company("Apple", 194), new Company("Microsoft", 100), new Company("Amazon", 3000)));
+        mortgages = new ArrayList<>();
 
         //Infinite amount of shares
     }
@@ -71,5 +73,13 @@ public class PersistenceData {
 
     public void setCompanies(ArrayList<Company> companies) {
         this.companies = companies;
+    }
+
+    public ArrayList<Mortgage> getMortgages() {
+        return mortgages;
+    }
+
+    public void setMortgages(ArrayList<Mortgage> mortgages) {
+        this.mortgages = mortgages;
     }
 }
