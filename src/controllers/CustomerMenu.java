@@ -10,7 +10,7 @@ public class CustomerMenu {
                 "2. Deposit Money." + System.lineSeparator()+
                 "3. Withdraw Money." + System.lineSeparator()+
                 "4. Loan approximation." + System.lineSeparator()+
-                "5. Buy Shares." + System.lineSeparator()+
+                "5. ShareHolder Menu" + System.lineSeparator()+
                 "6. Sell Shares. " + System.lineSeparator()+
                 "7. Browse Stocks" + System.lineSeparator()+
                 "8. " + System.lineSeparator()+
@@ -32,7 +32,7 @@ public class CustomerMenu {
                 break;
             case 4 : ;
                 break;
-            case 5 : ;
+            case 5 : ShareholderMenu.ShareHolderMenu();
                 break;
             case 6 : ;
                 break;
