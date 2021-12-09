@@ -65,5 +65,7 @@ public class BankAccount {
     public void setCustomerSSN(long customerSSN) {
         this.customerSSN = customerSSN;
     }
+
+
 }
 
