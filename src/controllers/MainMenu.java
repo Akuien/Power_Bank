@@ -2,9 +2,9 @@ package controllers;
 
 public class MainMenu {
 
-    public void Menu(){
+    public static void Menu(){
 
-        int option = UserInput.inputInt("Reviews options menu:" + System.lineSeparator()+
+        int option = UserInput.inputInt("MainMenu options menu:" + System.lineSeparator()+
                 "0. Quit" + System.lineSeparator()+
                 "1. Customer Login Menu" + System.lineSeparator()+
                 "2. Employee Login Menu" + System.lineSeparator()+
@@ -16,7 +16,7 @@ public class MainMenu {
 
         }switch(option){
 
-            case 0:
+            case 0: // Terminate Program
                 break;
             case 1 : CustomerMenuLogIn.MenuLogInCustomer();
                 break;

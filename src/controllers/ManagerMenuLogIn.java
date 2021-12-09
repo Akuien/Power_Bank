@@ -4,7 +4,7 @@ public class ManagerMenuLogIn {
     public static void MenuLogInManager() {
 
         int option = UserInput.inputInt("Log In Menu for Manager:" + System.lineSeparator() +
-                "0. " + System.lineSeparator() +
+                "0. Return to Main Menu" + System.lineSeparator() +
                 "1. " + System.lineSeparator() +
                 "2. ");
 
@@ -15,8 +15,7 @@ public class ManagerMenuLogIn {
         }
         switch (option) {
 
-            case 0:
-                ;
+            case 0:MainMenu.Menu();
                 break;
             case 1:
                 ;

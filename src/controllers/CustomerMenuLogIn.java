@@ -17,7 +17,7 @@ public class CustomerMenuLogIn {
         }
         switch (option) {
 
-            case 0:
+            case 0: MainMenu.Menu();
                 ;
                 break;
             case 1: ;
