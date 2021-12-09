@@ -11,8 +11,8 @@ public class CustomerMenu {
                 "3. Withdraw Money." + System.lineSeparator()+
                 "4. Loan approximation." + System.lineSeparator()+
                 "5. ShareHolder Menu" + System.lineSeparator()+
-                "6. Sell Shares. " + System.lineSeparator()+
-                "7. Browse Stocks" + System.lineSeparator()+
+                "6. List of bank accounts " + System.lineSeparator()+
+                "7. Look at transaction history" + System.lineSeparator()+
                 "8. " + System.lineSeparator()+
                 "Type an option number: ");
 
