@@ -65,5 +65,25 @@ public class BankAccount {
     public void setCustomerSSN(long customerSSN) {
         this.customerSSN = customerSSN;
     }
+
+    private static class FixedDeposit{
+
+
+        private static final double interestRate = 0.05;
+        private static final int compoundInterest = 4;
+        private double maturityValue;
+
+        double calculateFixedDeposit(double initialDeposit, int period){
+
+            return maturityValue = Math.pow(initialDeposit*(1 + interestRate/compoundInterest), compoundInterest*period);
+        }
+
+        double getMaturityValue() {
+            return maturityValue;
+        }
+
+    }
+
+
 }
 
