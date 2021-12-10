@@ -6,19 +6,19 @@ public class Mortgage {
 
     private long customerSSN;
     private long loanID;
-    private int time;
+    private double time;
     private double interestRate;
     private double initialDeposit;
     private double totalValue;
     private double monthPayment;
     private String status;
 
-    public Mortgage(long customerSSN, long loanID, int time, double interestRate, double initialDeposit, double totalValue, double monthPayment, String status){
+    public Mortgage(long customerSSN, long loanID, double time, double initialDeposit, double totalValue, double monthPayment){
 
         this.customerSSN = customerSSN;
         this.loanID = loanID;
         this.time = time;
-        this.interestRate = interestRate;
+        this.interestRate = 0.03;
         this.initialDeposit = initialDeposit;
         this.totalValue = totalValue;
         this.monthPayment = monthPayment;
@@ -33,7 +33,7 @@ public class Mortgage {
         this.customerSSN = customerSSN;
     }
 
-    public int getTime() {
+    public double getTime() {
         return time;
     }
 
