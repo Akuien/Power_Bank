@@ -15,6 +15,7 @@ public class RegisterManager {
         private ValidateEmail validateEmail;
         private EmployeeRepository employeeRepository;
         private ValidatePhoneNumber validatePhoneNumber;
+
         public RegisterManager() {
             this.validateManager = new ValidateManager();
             this.validateEmail = new ValidateEmail();
@@ -61,7 +62,5 @@ public class RegisterManager {
             return "Customer registered successfully"; // add toString later
 
         }
-
-
     }
 
