@@ -7,8 +7,8 @@ public class CustomerMenuLogIn {
 
         int option = UserInput.inputInt("Log In Menu for Customer:" + System.lineSeparator() +
                 "0. Return to Main Menu" + System.lineSeparator() +
-                "1. " + System.lineSeparator() +
-                "2. ");
+                "1. Log in " + System.lineSeparator() +
+                "2. Create new account ");
 
         while (option < 0 || option > 8) {
 
