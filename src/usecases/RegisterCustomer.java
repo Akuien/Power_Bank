@@ -13,6 +13,7 @@ public class RegisterCustomer {
     private ValidateEmail validateEmail;
     private CustomerRepository customerRepository;
     private ValidatePhoneNumber validatePhoneNumber;
+
     public RegisterCustomer(){
         this.validateCustomer = new ValidateCustomer();
         this.validateEmail = new ValidateEmail();
@@ -57,5 +58,4 @@ public class RegisterCustomer {
             return "Customer registered successfully"; // add toString later
         }
     }
-
 }
