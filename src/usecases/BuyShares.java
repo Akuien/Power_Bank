@@ -1,15 +1,13 @@
 package usecases;
 
 import domain.constants.TransactionType;
+import domain.constants.UserType;
 import domain.entities.*;
 import domain.exceptions.BankAccountDoesNotExistException;
 import domain.exceptions.CompanyDoesNotExistException;
 import domain.exceptions.CustomerDoesNotExistException;
 import domain.exceptions.DoesNotHaveEnoughFundsException;
-import repositories.BankAccountRepository;
-import repositories.CompanyRepository;
-import repositories.PortfolioRepository;
-import repositories.TransactionRepository;
+import repositories.*;
 
 import java.util.Date;
 
@@ -22,18 +20,18 @@ public class BuyShares {
     private PortfolioRepository portfolioRepository;
     private TransactionRepository transactionRepository;
     private CompanyRepository companyRepository;
+    private CustomerRepository customerRepository;
 
-    public BuyShares(ValidateCustomer validateCustomer, ValidateCustomerBankAccount validateCustomerBankAccount,
-                            ValidateFunds validateFunds, BankAccountRepository bankAccountRepository, PortfolioRepository portfolioRepository,
-                            TransactionRepository transactionRepository, CompanyRepository companyRepository) {
+    public BuyShares() {
 
-        this.validateCustomer = validateCustomer;
-        this.validateCustomerBankAccount = validateCustomerBankAccount;
-        this.validateFunds = validateFunds;
-        this.bankAccountRepository = bankAccountRepository;
-        this.portfolioRepository = portfolioRepository;
-        this.transactionRepository = transactionRepository;
-        this.companyRepository = companyRepository;
+        this.validateCustomer = new ValidateCustomer();
+        this.validateCustomerBankAccount = new ValidateCustomerBankAccount();
+        this.validateFunds = new ValidateFunds();
+        this.bankAccountRepository = new BankAccountRepository();
+        this.portfolioRepository = new PortfolioRepository();
+        this.transactionRepository = new TransactionRepository();
+        this.companyRepository = new CompanyRepository();
+        this.customerRepository = new CustomerRepository();
     }
 
     public String execute(String companyName, int quantity, long customerSSN, long customerAccountNumber ) throws Exception {
@@ -63,6 +61,7 @@ public class BuyShares {
         addDebitTransaction(customerAccountNumber, purchasePrice, now);
         debitBalance(customerAccountNumber, purchasePrice);
         addStock(customerSSN, stock);
+        promoteToShareholder(customerSSN);
 
         return "Purchase made successfully.";
     }
@@ -91,6 +90,14 @@ public class BuyShares {
             portfolioRepository.updatePortfolio(portfolio);
         }
     }
+
+    private void promoteToShareholder(long customerSSN){
+        Customer customer = customerRepository.getBySSN(customerSSN);
+        customer.setType(UserType.shareholder);
+        customerRepository.updateProfile(customer);
+    }
+
+
     //Before being able to buy any stock the system should validate the Bank Account where all the funds are coming from
     //Before being able to buy any stock the system should validate the existence of the User.
     //Before being able to buy any stock the system should validate that the account has enough funds to do the purchase.

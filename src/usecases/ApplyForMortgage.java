@@ -38,6 +38,7 @@ public class ApplyForMortgage {
 
         long loanID = ThreadLocalRandom.current().nextLong(100000000,999999999);
         Mortgage mortgage = new Mortgage(SSN, loanID, time, initialDeposit, totalMortgageValue, monthPayment(totalMortgageValue, 0.03, initialDeposit, time));
+        mortgageRepository.createMortgage(mortgage);
 
         return "Mortgage request with " + loanID + " created successfully. Please wait till an operator checks the application.";
     }

@@ -25,6 +25,10 @@ public class Mortgage {
         this.status = MortgageStatus.pending;
     }
 
+    public boolean equals(Mortgage mortgage){
+        return (this.getLoanID() == mortgage.getLoanID()) && (this.getCustomerSSN() == mortgage.getCustomerSSN());
+    }
+
     public long getCustomerSSN() {
         return customerSSN;
     }
@@ -37,7 +41,7 @@ public class Mortgage {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(double time) {
         this.time = time;
     }
 
