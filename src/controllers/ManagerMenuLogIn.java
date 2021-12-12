@@ -1,14 +1,26 @@
 package controllers;
 
+
+import usecases.LogInEmployee;
+
+import static controllers.CustomerMenu.EOL;
+
 public class ManagerMenuLogIn {
+
+    private static LogInEmployee logInEmployee;
+
+    public ManagerMenuLogIn() {
+        logInEmployee = new LogInEmployee();
+    }
+
     public static void MenuLogInManager() {
 
-        int option = UserInput.inputInt("Log In Menu for Manager:" + System.lineSeparator() +
-                "0. Return to Main Menu" + System.lineSeparator() +
-                "1. " + System.lineSeparator() +
-                "2. ");
+        int option = UserInput.inputInt("Log In Menu for Manager:" + EOL +
+                "0. Return to Main Menu" + EOL +
+                "1. Log In " );
 
-        while (option < 0 || option > 8) {
+
+        while (option < 0 || option > 1) {
 
             option = UserInput.inputInt("Invalid option");
 
@@ -17,11 +29,19 @@ public class ManagerMenuLogIn {
 
             case 0:MainMenu.Menu();
                 break;
-            case 1:
-                ;
+
+
+            case 1: // Used employee login; Manager is an employee.
+                try {
+                    String email =UserInput.inputString(" Enter Email: ");
+                    String password = UserInput.inputString(" Enter Password: ");
+                    logInEmployee.execute(email, password);
+                } catch (Exception exception){
+                    System.out.println(exception.getMessage());
+                }
                 break;
-            case 2:
-                ;
+
+
             default:
                 System.out.println("Please enter valid option");
                 break;
