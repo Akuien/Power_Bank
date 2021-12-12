@@ -8,7 +8,6 @@ import repositories.CompanyRepository;
 import repositories.PortfolioRepository;
 import repositories.TransactionRepository;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -16,22 +15,18 @@ public class SellShares {
 
     private ValidateCustomer validateCustomer;
     private ValidateCustomerBankAccount validateCustomerBankAccount;
-    private ValidateFunds validateFunds;
     private BankAccountRepository bankAccountRepository;
     private PortfolioRepository portfolioRepository;
     private TransactionRepository transactionRepository;
     private CompanyRepository companyRepository;
 
-    public SellShares(ValidateCustomer validateCustomer, ValidateCustomerBankAccount validateCustomerBankAccount,
-                     BankAccountRepository bankAccountRepository, PortfolioRepository portfolioRepository,
-                     TransactionRepository transactionRepository, CompanyRepository companyRepository) {
-
-        this.validateCustomer = validateCustomer;
-        this.validateCustomerBankAccount = validateCustomerBankAccount;
-        this.bankAccountRepository = bankAccountRepository;
-        this.portfolioRepository = portfolioRepository;
-        this.transactionRepository = transactionRepository;
-        this.companyRepository = companyRepository;
+    public SellShares() {
+        this.validateCustomer = new ValidateCustomer();
+        this.validateCustomerBankAccount = new ValidateCustomerBankAccount();
+        this.bankAccountRepository = new BankAccountRepository();
+        this.portfolioRepository = new PortfolioRepository();
+        this.transactionRepository = new TransactionRepository();
+        this.companyRepository = new CompanyRepository();
     }
 
     public String execute(String companyName, int quantity, long customerSSN, long customerAccountNumber, Stock stock ) throws Exception {
@@ -84,8 +79,5 @@ public class SellShares {
         ArrayList<Stock> customerStocks = portfolio.getStocks();
         customerStocks.remove(stock);
     }
-    //Before being able to buy any stock the system should validate the Bank Account where all the funds are coming from
-    //Before being able to buy any stock the system should validate the existence of the User.
-    //Before being able to buy any stock the system should validate that the account has enough funds to do the purchase.
 
 }
