@@ -1,13 +1,15 @@
 package controllers;
 
+import static controllers.CustomerMenu.EOL;
+
 public class MainMenu {
 
     public static void Menu(){
 
         int option = UserInput.inputInt("MainMenu options menu:" + System.lineSeparator()+
-                "0. Quit" + System.lineSeparator()+
-                "1. Customer Login Menu" + System.lineSeparator()+
-                "2. Employee Login Menu" + System.lineSeparator()+
+                "0. Quit" + EOL +
+                "1. Customer Login Menu" + EOL +
+                "2. Employee Login Menu" + EOL +
                 "3. Manager Login Menu");
 
         while(option < 0 || option > 8){
