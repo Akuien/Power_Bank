@@ -1,5 +1,6 @@
 package controllers;
 
+import javax.xml.crypto.Data;
 import java.util.Scanner;
 
 public class UserInput {
@@ -38,6 +39,9 @@ public class UserInput {
             input.nextLine();
             return value;
         }
+
+
+
 
     }
 

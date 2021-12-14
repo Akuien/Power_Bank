@@ -3,6 +3,8 @@ package controllers;
 import usecases.LogInCustomer;
 
 public class CustomerMenuLogIn {
+
+    private static LogInCustomer logInCustomer;
     public static void MenuLogInCustomer() {
 
         int option = UserInput.inputInt("Log In Menu for Customer:" + System.lineSeparator() +
@@ -18,10 +20,16 @@ public class CustomerMenuLogIn {
         switch (option) {
 
             case 0: MainMenu.Menu();
-                ;
                 break;
-            case 1: ;
-                ;
+
+            case 1: try {
+                String email =UserInput.inputString(" Enter Email: ");
+                String password = UserInput.inputString(" Enter Password: ");
+                logInCustomer.execute(email, password);
+            } catch (Exception exception){
+                System.out.println(exception.getMessage());
+            }
+
                 break;
             case 2:
                 ;

@@ -1,6 +1,10 @@
 package controllers;
 
+import usecases.LogInEmployee;
+
 public class EmployeeMenuLogIn {
+    private static LogInEmployee logInEmployee;
+
     public static void MenuLogInEmployee() {
 
         int option = UserInput.inputInt("Log In Menu for Employee:" + System.lineSeparator() +
@@ -17,8 +21,13 @@ public class EmployeeMenuLogIn {
 
             case 0:MainMenu.Menu();
                 break;
-            case 1:
-                ;
+            case 1: try {
+                String email =UserInput.inputString(" Enter Email: ");
+                String password = UserInput.inputString(" Enter Password: ");
+                logInEmployee.execute(email, password);
+            } catch (Exception exception){
+                System.out.println(exception.getMessage());
+            }
                 break;
             case 2:
                 ;

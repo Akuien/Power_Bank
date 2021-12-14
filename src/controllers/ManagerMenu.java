@@ -3,6 +3,7 @@ package controllers;
 import usecases.ObtainEmployees;
 import usecases.RegisterEmployee;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static controllers.CustomerMenu.EOL;
@@ -11,7 +12,7 @@ public class ManagerMenu {
 
     private RegisterEmployee registerEmployee;
     private ObtainEmployees obtainEmployees;
-    private
+    /*private*/
 
 
     public ManagerMenu() {
@@ -52,8 +53,9 @@ public class ManagerMenu {
                 String password = UserInput.inputString("");
                 String email = UserInput.inputString("");
                 String phoneNumber = UserInput.inputString("");
-                Date birthDate = UserInput.
-                registerEmployee.execute(firstName, lastName, SSN, password, email, phoneNumber, birthDate);
+                String inputBirthDate = UserInput.inputString("");
+                Date birthDate = new SimpleDateFormat("dd/MM/yyyy").parse(inputBirthDate);
+                RegisterEmployee.execute(firstName, lastName, SSN, password, email, phoneNumber, birthDate);
                 break;
 
             case 3:
