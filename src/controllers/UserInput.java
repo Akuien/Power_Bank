@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public class UserInput {
@@ -38,6 +39,7 @@ public class UserInput {
             input.nextLine();
             return value;
         }
+
 
     }
 

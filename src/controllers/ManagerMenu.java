@@ -43,7 +43,7 @@ public class ManagerMenu {
             case 0: MainMenu.Menu();
                 break;
             case 1:
-                EmployeeMenu.EmployeeMenu();
+                EmployeeMenu.employeeMenu();
                 break;
             case 2:
                 String firstName = UserInput.inputString("");

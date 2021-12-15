@@ -10,6 +10,10 @@ public class CustomerMenu {
     private WithdrawMoney withdrawMoney;
     public static final String EOL = System.lineSeparator();
 
+    public LogOutCustomer getLogOutCustomer() {
+        return logOutCustomer;
+    }
+
     public CustomerMenu(){
         this.logInCustomer = new LogInCustomer();
         this.logOutCustomer = new LogOutCustomer();
@@ -18,7 +22,7 @@ public class CustomerMenu {
         this.withdrawMoney = new WithdrawMoney();
     }
 
-    public void CustomerMenu(){
+    public static void CustomerMenu(){
 
         int option = UserInput.inputInt("Customer menu:" + System.lineSeparator()+
                 "0. Log Out." + EOL +
