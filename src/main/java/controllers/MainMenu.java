@@ -3,8 +3,17 @@ package controllers;
 import static controllers.CustomerMenu.EOL;
 
 public class MainMenu {
+    private CustomerMenuLogIn customerMenuLogIn;
+    private EmployeeMenuLogIn employeeMenuLogIn;
+    private ManagerMenuLogIn managerMenuLogIn;
 
-    public static void Menu(){
+    public MainMenu() {
+        this.customerMenuLogIn = customerMenuLogIn;
+        this.employeeMenuLogIn = employeeMenuLogIn;
+        this.managerMenuLogIn = managerMenuLogIn;
+    }
+
+    public void Menu(){
 
         int option = UserInput.inputInt("MainMenu options menu:" + System.lineSeparator()+
                 "0. Quit" + EOL +
@@ -20,7 +29,7 @@ public class MainMenu {
 
             case 0: // Terminate Program
                 break;
-            case 1 : CustomerMenuLogIn.MenuLogInCustomer();
+            case 1 : customerMenuLogIn.MenuLogInCustomer();
                 break;
             case 2 : EmployeeMenuLogIn.MenuLogInEmployee();
                 break;

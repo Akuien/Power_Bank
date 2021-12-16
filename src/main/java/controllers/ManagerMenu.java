@@ -50,7 +50,7 @@ public class ManagerMenu {
                         mainMenu.Menu();
                         break;
                     case 1:
-                        employeeMenu.employeeMenu();
+                        employeeMenu.PrintEmployeeMenu();
                         break;
                     case 2:
                         try {
@@ -62,7 +62,7 @@ public class ManagerMenu {
                             String phoneNumber = UserInput.inputString("Enter the phone number: ");
                             String inputBirthDate = UserInput.inputString("Enter the birthdate: ");
                             Date birthDate = new SimpleDateFormat("dd/MM/yyyy").parse(inputBirthDate);
-                            RegisterEmployee.execute(firstName, lastName, SSN, password, email, phoneNumber, birthDate);
+                            registerEmployee.execute(firstName, lastName, SSN, password, email, phoneNumber, birthDate);
                             option = UserInput.inputInt("Enter the desired option: ");
                         }
                         catch (Exception exception){

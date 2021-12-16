@@ -52,7 +52,7 @@ public class SellShares {
         creditBalance(customerAccountNumber, purchasePrice);
         removeStock(customerSSN, stock);
 
-        return "Purchase made successfully.";
+        return "Sale made successfully.";
     }
 
     //We created these three private methods to make the execute method more understandable

@@ -5,7 +5,14 @@ import usecases.LogInCustomer;
 public class CustomerMenuLogIn {
 
     private static LogInCustomer logInCustomer;
-    public static void MenuLogInCustomer() {
+    private MainMenu mainmenu;
+
+    public CustomerMenuLogIn(MainMenu mainmenu) {
+        this.mainmenu = mainmenu;
+    }
+
+
+    public void MenuLogInCustomer() {
 
         int option = UserInput.inputInt("Log In Menu for Customer:" + System.lineSeparator() +
                 "0. Return to Main Menu" + System.lineSeparator() +
@@ -19,7 +26,7 @@ public class CustomerMenuLogIn {
         }
         switch (option) {
 
-            case 0: MainMenu.Menu();
+            case 0: mainmenu.Menu();
                 break;
 
             case 1: try {
