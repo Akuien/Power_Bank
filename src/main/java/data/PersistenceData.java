@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class PersistenceData {
+    private CustomJsonIo file;
+
     private ArrayList<Employee> employees;
     private ArrayList<Customer> customers;
     private ArrayList<BankAccount> bankAccounts;
@@ -16,6 +18,8 @@ public class PersistenceData {
 
 
     public PersistenceData(){
+        file = new CustomJsonIo();
+
         employees = new ArrayList<>();
         customers = new ArrayList<>();
         bankAccounts = new ArrayList<>();
@@ -28,14 +32,18 @@ public class PersistenceData {
     }
 
     public ArrayList<Employee> getEmployees() {
+        employees = (ArrayList<Employee>)(Object) file.readArrayFromJson("employees.json");
         return employees;
     }
 
     public void setEmployees(ArrayList<Employee> employees) {
+        ArrayList<Object> objects = (ArrayList<Object>)(Object) employees;
+        file.writeArrayToJson("employees.json", objects);
         this.employees = employees;
     }
 
     public ArrayList<Customer> getCustomers() {
+        customers = (ArrayList<Customer>)(Object) file.readArrayFromJson("customers.json");
         return customers;
     }
 
@@ -44,6 +52,7 @@ public class PersistenceData {
     }
 
     public ArrayList<BankAccount> getBankAccounts() {
+        bankAccounts = (ArrayList<BankAccount>)(Object) file.readArrayFromJson("bankAccounts.json");
         return bankAccounts;
     }
 
@@ -52,6 +61,7 @@ public class PersistenceData {
     }
 
     public ArrayList<Transaction> getTransactions() {
+        transactions = (ArrayList<Transaction>)(Object) file.readArrayFromJson("transactions.json");
         return transactions;
     }
 
@@ -60,6 +70,7 @@ public class PersistenceData {
     }
 
     public ArrayList<Portfolio> getPortfolios() {
+        portfolios = (ArrayList<Portfolio>)(Object) file.readArrayFromJson("portfolios.json");
         return portfolios;
     }
 
@@ -68,6 +79,7 @@ public class PersistenceData {
     }
 
     public ArrayList<Company> getCompanies() {
+        companies = (ArrayList<Company>)(Object) file.readArrayFromJson("companies.json");
         return companies;
     }
 
@@ -76,6 +88,7 @@ public class PersistenceData {
     }
 
     public ArrayList<Mortgage> getMortgages() {
+        mortgages = (ArrayList<Mortgage>)(Object) file.readArrayFromJson("mortgages.json");
         return mortgages;
     }
 

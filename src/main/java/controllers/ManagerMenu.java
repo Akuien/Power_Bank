@@ -18,8 +18,6 @@ public class ManagerMenu {
     public ManagerMenu() {
         this.registerEmployee = new RegisterEmployee();
         this.obtainEmployees = new ObtainEmployees();
-
-
     }
 
     public static void MenuLogInManager() {
