@@ -9,6 +9,7 @@ public class CustomerMenu {
     private DepositMoney depositMoney;
     private WithdrawMoney withdrawMoney;
     public static final String EOL = System.lineSeparator();
+    ShareholderMenu shareholderMenu = new ShareholderMenu();
 
     public CustomerMenu(){
         this.logInCustomer = new LogInCustomer();
@@ -94,7 +95,7 @@ public class CustomerMenu {
             case 4 : // No feature on this.
                 break;
 
-            case 5 : ShareholderMenu.ShareHolderMenu();
+            case 5 : shareholderMenu.ShareHolderMenu();
                 break;
 
             case 6 : // No List.
