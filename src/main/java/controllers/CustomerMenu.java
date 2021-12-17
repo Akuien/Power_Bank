@@ -8,8 +8,9 @@ public class CustomerMenu {
     private TransferMoneyToAnotherAccount transferMoneyToAnotherAccount;
     private DepositMoney depositMoney;
     private WithdrawMoney withdrawMoney;
+    private ShareholderMenu shareholderMenu;
     public static final String EOL = System.lineSeparator();
-    ShareholderMenu shareholderMenu = new ShareholderMenu();
+
 
     public CustomerMenu(){
         this.logInCustomer = new LogInCustomer();
@@ -17,6 +18,8 @@ public class CustomerMenu {
         this.transferMoneyToAnotherAccount = new TransferMoneyToAnotherAccount();
         this.depositMoney = new DepositMoney();
         this.withdrawMoney = new WithdrawMoney();
+        this.shareholderMenu = new ShareholderMenu();
+
     }
 
     public void CustomerMenu() {
@@ -94,7 +97,7 @@ public class CustomerMenu {
                     case 4 : // No feature on this.
                         break;
 
-                    case 5 : shareholderMenu.ShareHolderMenu();
+                    case 5 : shareholderMenu.printShareHolderMenu();
                         break;
 
                     case 6 : // No List.
