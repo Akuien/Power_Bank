@@ -29,7 +29,7 @@ public class MainMenu {
 
             case 0: // Terminate Program
                 break;
-            case 1 : customerMenuLogIn.MenuLogInCustomer();
+            case 1 : customerMenuLogIn.printMenuLogInCustomer();
                 break;
             case 2 : EmployeeMenuLogIn.MenuLogInEmployee();
                 break;
