@@ -19,9 +19,9 @@ public class CustomerMenu {
         this.withdrawMoney = new WithdrawMoney();
     }
 
-    public void CustomerMenu(){
+    public void CustomerMenu() {
 
-        int option = UserInput.inputInt("Customer menu:" + System.lineSeparator()+
+        System.out.println("Customer menu:" + System.lineSeparator() +
                 "0. Log Out." + EOL +
                 "1. Transfer Money." + EOL +
                 "2. Deposit Money." + EOL +
@@ -32,85 +32,86 @@ public class CustomerMenu {
                 "7. Look at transaction history" + EOL +
                 "8. " + EOL +
                 "Type an option number: ");
+    }
 
-        while(option < 0 || option > 8){
+        public void customerMainMenu (int option){
+            do {
+                switch(option){
 
-            option = UserInput.inputInt("Invalid option");
+                    case 0 :
+                        try {
+                            String accessToken = UserInput.inputString(" ");
+                            logOutCustomer.execute(accessToken);
 
-        }switch(option){
+                        }  catch (Exception exception){
+                            System.out.println(exception.getMessage());
+                        }
+                        break;
 
-            case 0 :
-              try {
-                  String accessToken = UserInput.inputString(" ");
-                  logOutCustomer.execute(accessToken);
+                    case 1 :
+                        try {
+                            long originSSN = UserInput.inputLong("Enter sender's SSN: ");
+                            long originAccountNumber = UserInput.inputLong(" Enter Sender's account Number: ");
+                            long finalSSN = UserInput.inputLong(" Enter Receiver's SSN: ");
+                            long finalAccountNumber = UserInput.inputLong(" Enter receiver's account Number: ");
+                            double amount = UserInput.inputLong(" Enter amount: ");
 
-              }  catch (Exception exception){
-                  System.out.println(exception.getMessage());
-              }
-                break;
+                            transferMoneyToAnotherAccount.execute(originSSN, originAccountNumber, finalSSN,  finalAccountNumber,  amount);
 
-            case 1 :
-             try {
-                 long originSSN = UserInput.inputLong("Enter sender's SSN: ");
-                 long originAccountNumber = UserInput.inputLong(" Enter Sender's account Number: ");
-                 long finalSSN = UserInput.inputLong(" Enter Receiver's SSN: ");
-                 long finalAccountNumber = UserInput.inputLong(" Enter receiver's account Number: ");
-                 double amount = UserInput.inputLong(" Enter amount: ");
+                        } catch (Exception exception){
+                            System.out.println(exception.getMessage());
+                        }
 
-                 transferMoneyToAnotherAccount.execute(originSSN, originAccountNumber, finalSSN,  finalAccountNumber,  amount);
+                        break;
 
-             } catch (Exception exception){
-                 System.out.println(exception.getMessage());
-             }
+                    case 2 :
+                        try {
+                            long SSN = UserInput.inputLong(" Enter SSN: ");
+                            long accountNumber = UserInput.inputInt(" Enter account Number: ");
+                            double amount = UserInput.inputLong(" Enter Amount: ");
 
-                break;
+                            depositMoney.execute(SSN, accountNumber, amount);
 
-            case 2 :
-                try {
-                    long SSN = UserInput.inputLong(" Enter SSN: ");
-                    long accountNumber = UserInput.inputInt(" Enter account Number: ");
-                    double amount = UserInput.inputLong(" Enter Amount: ");
+                        } catch (Exception exception){
+                            System.out.println(exception.getMessage());
+                        }
 
-                    depositMoney.execute(SSN, accountNumber, amount);
+                        break;
 
-                } catch (Exception exception){
-                    System.out.println(exception.getMessage());
-            }
+                    case 3 :
+                        try {
+                            long SSN = UserInput.inputLong(" Enter SSN: ");
+                            long accountNumber = UserInput.inputLong(" Enter account Number: ");
+                            double amount = UserInput.inputDouble(" Enter Amount: ");
 
-                break;
+                            withdrawMoney.execute(SSN, accountNumber, amount);
 
-            case 3 :
-                try {
-                    long SSN = UserInput.inputLong(" Enter SSN: ");
-                    long accountNumber = UserInput.inputLong(" Enter account Number: ");
-                    double amount = UserInput.inputDouble(" Enter Amount: ");
+                        } catch (Exception exception){
+                            System.out.println(exception.getMessage());
+                        }
+                        break;
 
-                    withdrawMoney.execute(SSN, accountNumber, amount);
+                    case 4 : // No feature on this.
+                        break;
 
-                } catch (Exception exception){
-                    System.out.println(exception.getMessage());
+                    case 5 : shareholderMenu.ShareHolderMenu();
+                        break;
+
+                    case 6 : // No List.
+                        break;
+
+                    case 7 :
+                        // Undone
+                        break;
+
+                    case 8 :
+                    default: System.out.println("Please enter valid option");
+                        break;
                 }
-                break;
 
-            case 4 : // No feature on this.
-                break;
-
-            case 5 : shareholderMenu.ShareHolderMenu();
-                break;
-
-            case 6 : // No List.
-                break;
-
-            case 7 :
-                // Undone
-                break;
-
-            case 8 :
-            default: System.out.println("Please enter valid option");
-                break;
+            }while(option < 0 || option > 8);
         }
 
     }
 
-}
 
