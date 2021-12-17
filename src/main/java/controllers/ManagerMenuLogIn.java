@@ -8,12 +8,13 @@ import static controllers.CustomerMenu.EOL;
 public class ManagerMenuLogIn {
 
     private static LogInEmployee logInEmployee;
+    private MainMenu mainMenu;
 
     public ManagerMenuLogIn() {
         logInEmployee = new LogInEmployee();
     }
 
-    public static void MenuLogInManager() {
+    public void MenuLogInManager() {
 
         int option = UserInput.inputInt("Log In Menu for Manager:" + EOL +
                 "0. Return to Main Menu" + EOL +
@@ -27,7 +28,7 @@ public class ManagerMenuLogIn {
         }
         switch (option) {
 
-            case 0:MainMenu.Menu();
+            case 0:mainMenu.Menu();
                 break;
 
 

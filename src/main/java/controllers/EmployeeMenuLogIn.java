@@ -4,8 +4,9 @@ import usecases.LogInEmployee;
 
 public class EmployeeMenuLogIn {
     private static LogInEmployee logInEmployee;
+    private MainMenu mainMenu;
 
-    public static void MenuLogInEmployee() {
+    public void MenuLogInEmployee() {
 
         int option = UserInput.inputInt("Log In Menu for Employee:" + System.lineSeparator() +
                 "0. Return to Main Menu" + System.lineSeparator() +
@@ -19,7 +20,7 @@ public class EmployeeMenuLogIn {
         }
         switch (option) {
 
-            case 0:MainMenu.Menu();
+            case 0: mainMenu.Menu();
                 break;
             case 1: try {
                 String email =UserInput.inputString(" Enter Email: ");

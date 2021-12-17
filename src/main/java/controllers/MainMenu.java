@@ -8,9 +8,6 @@ public class MainMenu {
     private ManagerMenuLogIn managerMenuLogIn;
 
     public MainMenu() {
-        this.customerMenuLogIn = customerMenuLogIn;
-        this.employeeMenuLogIn = employeeMenuLogIn;
-        this.managerMenuLogIn = managerMenuLogIn;
     }
 
     public void Menu(){
@@ -31,9 +28,9 @@ public class MainMenu {
                 break;
             case 1 : customerMenuLogIn.printMenuLogInCustomer();
                 break;
-            case 2 : EmployeeMenuLogIn.MenuLogInEmployee();
+            case 2 : employeeMenuLogIn.MenuLogInEmployee();
                 break;
-            case 3 : ManagerMenuLogIn.MenuLogInManager();
+            case 3 : managerMenuLogIn.MenuLogInManager();
 
             default: System.out.println("Please enter valid option");
                 break;
