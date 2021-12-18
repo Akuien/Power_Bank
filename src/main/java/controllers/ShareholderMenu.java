@@ -1,5 +1,8 @@
 package controllers;
+import data.PersistenceData;
+import domain.entities.Portfolio;
 import domain.entities.Stock;
+import repositories.PortfolioRepository;
 import usecases.*;
 
 import usecases.BuyShares;
@@ -10,6 +13,9 @@ public class ShareholderMenu {
     public static final String EOL = System.lineSeparator();
     private BuyShares buyShares;
     private SellShares sellShares;
+    private MainMenu mainMenu;
+    private PersistenceData persistenceData;
+    private PortfolioRepository portfolioRepository;
 
 
     public ShareholderMenu(){
@@ -35,9 +41,10 @@ public class ShareholderMenu {
             switch (option) {
 
                 case 0:
+                    mainMenu.Menu();
                     break;
                 case 1:
-                    ;
+                    persistenceData.getCompanies();
                     break;
                 case 2:
                     try {
@@ -64,19 +71,11 @@ public class ShareholderMenu {
                     }
                     break;
                 case 4:
-                    ;
+                    long customerSSN = UserInput.inputLong("Enter your SSN ");
+                    portfolioRepository.getPortfolioBySSN(customerSSN).getStocks();
                     break;
-                case 5:
-                    ;
-                    break;
-                case 6:
-                    ;
-                    break;
-                case 7:
-                    ;
-                    break;
-                case 8:
-                    ;
+
+
                 default:
                     System.out.println("Please enter valid option");
                     break;
