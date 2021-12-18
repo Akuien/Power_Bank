@@ -2,7 +2,7 @@ package controllers;
 
 import usecases.LogInEmployee;
 
-public class EmployeeMenuLogIn {
+public class EmployeeLogInMenu {
     private static LogInEmployee logInEmployee;
     private MainMenu mainMenu;
 

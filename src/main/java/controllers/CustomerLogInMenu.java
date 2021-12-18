@@ -6,13 +6,13 @@ import usecases.RegisterCustomer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class CustomerMenuLogIn {
+public class CustomerLogInMenu {
 
     private static LogInCustomer logInCustomer;
     private MainMenu mainmenu;
     private RegisterCustomer registerCustomer;
 
-    public CustomerMenuLogIn(MainMenu mainmenu) {
+    public CustomerLogInMenu(MainMenu mainmenu) {
 
         this.mainmenu = mainmenu;
         this.registerCustomer = new RegisterCustomer();

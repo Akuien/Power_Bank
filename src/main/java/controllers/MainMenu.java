@@ -3,9 +3,8 @@ package controllers;
 import static controllers.CustomerMenu.EOL;
 
 public class MainMenu {
-    private CustomerMenuLogIn customerMenuLogIn;
-    private EmployeeMenuLogIn employeeMenuLogIn;
-    private ManagerMenuLogIn managerMenuLogIn;
+    private CustomerLogInMenu customerMenuLogIn;
+    private EmployeeLogInMenu employeeMenuLogIn;
 
     public MainMenu() {
     }
