@@ -1,5 +1,9 @@
 package controllers;
 
+import domain.constants.UserType;
+import domain.entities.Customer;
+import domain.entities.Shareholder;
+import repositories.CustomerRepository;
 import usecases.LogInCustomer;
 import usecases.RegisterCustomer;
 
@@ -8,18 +12,22 @@ import java.util.Date;
 
 public class CustomerLogInMenu {
 
-    private static LogInCustomer logInCustomer;
-    private MainMenu mainmenu;
+    private LogInCustomer logInCustomer;
     private RegisterCustomer registerCustomer;
+    private CustomerRepository customerRepository;
+    private CustomerMenu customerMenu;
+    private ShareholderMenu shareholderMenu;
 
-    public CustomerLogInMenu(MainMenu mainmenu) {
-
-        this.mainmenu = mainmenu;
+    public CustomerLogInMenu() {
         this.registerCustomer = new RegisterCustomer();
+        this.logInCustomer = new LogInCustomer();
+        this.customerMenu = new CustomerMenu();
+        this.customerRepository = new CustomerRepository();
+        this.shareholderMenu = new ShareholderMenu();
     }
 
 
-    public void printMenuLogInCustomer() {
+    public void printMenu() {
 
         System.out.println("Log In Menu for Customer:" + System.lineSeparator() +
                 "0. Return to Main Menu" + System.lineSeparator() +
@@ -27,26 +35,37 @@ public class CustomerLogInMenu {
                 "2. Create new account ");
     }
 
-    public void customerMenuLogIn(int option){
+    public void menu(int option){
 
         do {
             switch (option) {
 
-                case 0: mainmenu.Menu();
+                case 0:
                     break;
 
                 case 1:
                     try {
                         String email =UserInput.inputString(" Enter Email: ");
                         String password = UserInput.inputString(" Enter Password: ");
-                        logInCustomer.execute(email, password);
-                        printMenuLogInCustomer();
-                        option = UserInput.inputInt("Enter an option: ");
-                    }
+                        String accessToken = logInCustomer.execute(email, password);
+                        Customer customer = customerRepository.getByAccessToken(accessToken);
 
-                    catch (Exception exception){
-                    System.out.println(exception.getMessage());
-                }
+                        System.out.println("Success! User: " + customer.getFirstName() + " logged in successfully!\n To start using your bank account, pick one of the following options:");
+                        if (customer.getType().equals(UserType.customer)){
+                            customerMenu.printMenu();
+                            option = UserInput.inputInt("Enter an option: ");
+                            customerMenu.menu(option, customer);
+                        }
+                        else{
+                            shareholderMenu.printMenu();
+                            option = UserInput.inputInt("Enter an option: ");
+                            Shareholder shareholder = (Shareholder) customer;
+                            shareholderMenu.menu(option, shareholder);
+                        }
+                    } catch (Exception exception){
+                        System.out.println(exception.getMessage());
+                        System.out.println("Wrong email/password. Please review your input and try again");
+                    }
                     break;
 
                 case 2:
