@@ -2,45 +2,67 @@ package controllers;
 
 import static controllers.CustomerMenu.EOL;
 
-public class MainMenu {
-    private CustomerLogInMenu customerMenuLogIn;
-    private EmployeeLogInMenu employeeMenuLogIn;
+public class MainMenu implements IControllers{
+    private CustomerLogInMenu customerLogInMenu;
+    private EmployeeLogInMenu employeeLogInMenu;
 
     public MainMenu() {
+        this.customerLogInMenu = new CustomerLogInMenu();
+        this.employeeLogInMenu = new EmployeeLogInMenu();
     }
 
-    public void Menu(){
+    public void printMenu() {
 
-        int option = UserInput.inputInt("MainMenu options menu:" + System.lineSeparator()+
+        System.out.println("MainMenu options menu:" + EOL +
                 "0. Quit" + EOL +
                 "1. Customer Login Menu" + EOL +
-                "2. Employee Login Menu" + EOL +
-                "3. Manager Login Menu");
+                "2. Employee Login Menu");
+    }
 
-        while(option < 0 || option > 8){
+    public void menu(int option){
+        do {
+            switch (option) {
 
-            option = UserInput.inputInt("Invalid option");
+                case 0:
+                    //closes whole system, if system is exited in successful way: parameter = 0
+                    //if system is exited in unsuccessful way: parameter = 1 || -1
+                    System.exit(0);
+                    break;
 
-        }switch(option){
+                case 1:
+                    customerLogInMenu.printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+                    customerLogInMenu.menu(option);
 
-            case 0: // Terminate Program
-                break;
-            case 1 : customerMenuLogIn.printMenuLogInCustomer();
-                break;
-            case 2 : employeeMenuLogIn.MenuLogInEmployee();
-                break;
-            case 3 : managerMenuLogIn.MenuLogInManager();
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");//redundant?
+                    break;
 
-            default: System.out.println("Please enter valid option");
-                break;
-        }
+                case 2:
+                    employeeLogInMenu.printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+                    employeeLogInMenu.menu(option);
 
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+                    break;
+
+                default:
+                    System.out.println("Please enter valid option");
+
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+                    break;
+            }
+        } while (option != 0);
     }
 
     public static void main(String[] args) {
 
-        MainMenu menuClass = new MainMenu();
-        menuClass.Menu();
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.printMenu();
+        int option = UserInput.inputInt("Enter option: ");
+        mainMenu.menu(option);
 
     }
 }
