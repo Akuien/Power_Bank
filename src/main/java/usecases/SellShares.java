@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class SellShares {
-
+    private ValidateShareholder validateShareholder;
     private ValidateCustomer validateCustomer;
     private ValidateCustomerBankAccount validateCustomerBankAccount;
     private BankAccountRepository bankAccountRepository;
@@ -21,6 +21,7 @@ public class SellShares {
     private CompanyRepository companyRepository;
 
     public SellShares() {
+        this.validateShareholder = new ValidateShareholder();
         this.validateCustomer = new ValidateCustomer();
         this.validateCustomerBankAccount = new ValidateCustomerBankAccount();
         this.bankAccountRepository = new BankAccountRepository();
@@ -31,6 +32,10 @@ public class SellShares {
 
     public String execute(String companyName, int quantity, long customerSSN, long customerAccountNumber, Stock stock ) throws Exception {
         //Validations
+        boolean shareholderExists = validateShareholder.execute(customerSSN);
+        if (!shareholderExists){
+            throw new ShareholderDoesNotExistException(customerSSN);
+        }
         boolean customerExists = validateCustomer.execute(customerSSN);
         if (!customerExists){
             throw new CustomerDoesNotExistException(customerSSN);
@@ -50,7 +55,7 @@ public class SellShares {
 
         addCreditTransaction(customerAccountNumber, purchasePrice, now);
         creditBalance(customerAccountNumber, purchasePrice);
-        removeStock(customerSSN, stock);
+        removeStock(customerSSN, companyName, quantity);
 
         return "Sale made successfully.";
     }
@@ -68,16 +73,25 @@ public class SellShares {
         bankAccountRepository.updateBankAccount(customerBankAccount); //checker
     }
 
-    private void removeStock(long customerSSN, Stock stock) throws Exception {
+    private void removeStock(long customerSSN, String companyName, int quantity) throws Exception {
         Portfolio portfolio = portfolioRepository.getPortfolioBySSN(customerSSN);
         if (portfolio == null) {
             throw new PortfolioDoesNotExistException();
         }
-        if (stock.getQuantity() > portfolioRepository.getStocksByCompanyName(customerSSN, stock.getCompany()).size()){
+        if (quantity > portfolioRepository.getStocksByCompanyName(customerSSN, companyName).size()){
             throw new PortfolioDoesNotHaveEnoughStocks();
         }
-        ArrayList<Stock> customerStocks = portfolio.getStocks();
-        customerStocks.remove(stock);
+        for (Stock currentStock : portfolio.getStocks()){
+            if (currentStock.getCompany().equals(companyName)){
+                if (currentStock.getQuantity() == quantity){
+                    portfolio.getStocks().remove(currentStock);
+                }
+                else {
+                    currentStock.setQuantity(currentStock.getQuantity()-quantity);
+                }
+            }
+        }
+        portfolioRepository.updatePortfolio(portfolio);
     }
 
 }
