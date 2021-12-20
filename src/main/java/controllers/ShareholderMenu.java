@@ -65,7 +65,7 @@ public class ShareholderMenu {
                         long customerSSN = UserInput.inputLong("Enter your SSN ");
                         long customerAccountNumber = UserInput.inputLong("Enter from which account you wish to deposit your money");
                         //Stock stock = UserInput.input("Enter stock"); !!! How do i fix this?
-                        sellShares.execute(companyName, quantity, customerSSN, customerAccountNumber, stock);
+                        //sellShares.execute(companyName, quantity, customerSSN, customerAccountNumber, stock);
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }

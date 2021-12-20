@@ -19,5 +19,9 @@ public class CompanyRepository extends AbstractRepository {
         return null;
     }
 
+    public ArrayList<Company> getAll(){
+        return CompanyRepository.persistenceData.getCompanies();
+    }
+
 
 }

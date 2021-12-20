@@ -29,8 +29,6 @@ public class MainMenu {
                 break;
             case 2 : employeeMenuLogIn.MenuLogInEmployee();
                 break;
-            case 3 : managerMenuLogIn.MenuLogInManager();
-
             default: System.out.println("Please enter valid option");
                 break;
         }
