@@ -78,23 +78,39 @@ public class CustomerLogInMenu {
                         String phoneNumber = UserInput.inputString("Enter Phone Number");
                         String birthDateString = UserInput.inputString("Enter Birth Date");
                         Date birthDate = new SimpleDateFormat("dd/MM/yyyy").parse(birthDateString);
-                        registerCustomer.execute(firstName, lastName, SSN, password, email, phoneNumber, birthDate);
 
-                        printMenuLogInCustomer();
-                        option = UserInput.inputInt("Enter an option: ");
+                        String message = registerCustomer.execute(firstName, lastName, SSN, password, email, phoneNumber, birthDate);
+                        String accessToken = logInCustomer.execute(email, password);
+                        Customer customer = customerRepository.getByAccessToken(accessToken);
+                        System.out.println(message);
+
+                        if (customer.getType().equals(UserType.customer)){
+                            customerMenu.printMenu();
+                            option = UserInput.inputInt("Enter an option: ");
+                            customerMenu.menu(option, customer);
+                        }
+                        else{
+                            shareholderMenu.printMenu();
+                            option = UserInput.inputInt("Enter an option: ");
+                            Shareholder shareholder = (Shareholder) customer;
+                            shareholderMenu.menu(option, shareholder);
+                        }
                     }
                     catch (Exception exception) {
-                        System.out.println(exception.getMessage());
+                        System.out.println("Invalid input!");
+                        System.out.println("Some of the information provided is invalid!");
+                        System.out.println("Please check if input for each field complies with the provided format, and then try again.");
                     }
-
+                    break;
                 default:
                     System.out.println("Please enter valid option");
                     option = UserInput.inputInt("Enter an option: ");
                     break;
             }
 
-        }while (option < 0 || option > 8);
-
+        }while (option !=0);
+        //0 = exit or return to MainMenu
+        //when selected, prompts the user to the main menu
     }
 
 }
