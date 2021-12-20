@@ -30,7 +30,7 @@ public class SellShares {
         this.companyRepository = new CompanyRepository();
     }
 
-    public String execute(String companyName, int quantity, long customerSSN, long customerAccountNumber, Stock stock ) throws Exception {
+    public String execute(String companyName, int quantity, long customerSSN, long customerAccountNumber) throws Exception {
         //Validations
         boolean shareholderExists = validateShareholder.execute(customerSSN);
         if (!shareholderExists){
