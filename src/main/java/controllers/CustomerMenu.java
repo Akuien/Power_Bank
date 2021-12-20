@@ -9,21 +9,45 @@ import usecases.*;
 import java.util.ArrayList;
 
 public class CustomerMenu {
-    private LogOutCustomer logOutCustomer; // will put all private attributes here
+    private LogOutCustomer logOutCustomer;
+    private CheckBalance checkBalance;
+    private ApplyForBankAccount applyForBankAccount;
+    private AppleForMortgage appleForMortgage;
+    private TransferMoneyToAnotherAccount transferMoneyToAnotherAccount;
+    private DepositMoney depositMoney;
+    private WithdrawMoney withdrawMoney;
+    private ObtainCustomerBankAccounts obtainCustomerBankAccounts;
+    private CheckTransactionHistory checkTransactionHistory;
 
     public static final String EOL = System.lineSeparator();
 
     public CustomerMenu(){
-        this.logOutCustomer = new LogOutCustomer // constructor parameters
+        this.logOutCustomer = new LogOutCustomer();
+        this.transferMoneyToAnotherAccount = new TransferMoneyToAnotherAccount();
+        this.depositMoney = new DepositMoney();
+        this.withdrawMoney = new WithdrawMoney();
+        this.checkBalance = new CheckBalance();
+        this.appleForMortgage = new ApplyForMortgage();
+        this.applyForBankAccount = new ApplyForBankAccount();
+        this.obtainCustomerBankAccounts = new ObtainCustomerBankAccounts();
+        this.checkTransactionHistory = new CheckTransactionHistory();
     }
 
     public void printMenu() {
 
         System.out.println("Customer menu:" + System.lineSeparator() +
-                "0. Log Out." + EOL +
-                "1. Transfer Money." + EOL +
-                // will put rest of menu options here
-                )
+                "0. Log Out" + EOL +
+                "1. Transfer Money" + EOL +
+                "2. Deposit Money" + EOL +
+                "3. Withdraw Money" + EOL +
+                "4. Check Balance" + EOL +
+                "5. Apply for Mortgage" + EOL +
+                "6. Apply for Bank Account" + EOL +
+                "7. List of Bank Accounts" + EOL +
+                "8. Check Transaction History" + EOL +
+                "Type an option number: ");
+                // Dot or no dot? End of each option text.
+
     }
 
     public void menu(int option, Customer customer){
