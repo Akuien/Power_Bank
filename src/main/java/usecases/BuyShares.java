@@ -3,16 +3,13 @@ package usecases;
 import domain.constants.TransactionType;
 import domain.constants.UserType;
 import domain.entities.*;
-import domain.exceptions.BankAccountDoesNotExistException;
-import domain.exceptions.CompanyDoesNotExistException;
-import domain.exceptions.CustomerDoesNotExistException;
-import domain.exceptions.DoesNotHaveEnoughFundsException;
+import domain.exceptions.*;
 import repositories.*;
 
 import java.util.Date;
 
 public class BuyShares {
-
+    private ValidateShareholder validateShareholder;
     private ValidateCustomer validateCustomer;
     private ValidateCustomerBankAccount validateCustomerBankAccount;
     private ValidateFunds validateFunds;
@@ -23,7 +20,7 @@ public class BuyShares {
     private CustomerRepository customerRepository;
 
     public BuyShares() {
-
+        this.validateShareholder = new ValidateShareholder();
         this.validateCustomer = new ValidateCustomer();
         this.validateCustomerBankAccount = new ValidateCustomerBankAccount();
         this.validateFunds = new ValidateFunds();
@@ -36,6 +33,10 @@ public class BuyShares {
 
     public String execute(String companyName, int quantity, long customerSSN, long customerAccountNumber ) throws Exception {
         //Validations
+        boolean shareholderExists = validateShareholder.execute(customerSSN);
+        if (!shareholderExists){
+            throw new ShareholderDoesNotExistException(customerSSN);
+        }
         boolean customerExists = validateCustomer.execute(customerSSN);
         if (!customerExists){
             throw new CustomerDoesNotExistException(customerSSN);

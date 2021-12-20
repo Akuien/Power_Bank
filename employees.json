@@ -1,0 +1,22 @@
+[
+  {
+    "position": "employee",
+    "firstName": "Jeff",
+    "lastName": "Bloom",
+    "SSN": 990207123,
+    "password": "boom",
+    "email": "jeff.bloom@gmail.com",
+    "phoneNumber": "07459734015",
+    "birthDate": "Jan 1, 1988, 7:28:01 PM"
+  },
+  {
+    "position": "employee",
+    "firstName": "Jack",
+    "lastName": "Black",
+    "SSN": 730309321,
+    "password": "black",
+    "email": "jack.black@gmail.com",
+    "phoneNumber": "07470923784",
+    "birthDate": "Jan 1, 1988, 7:28:01 PM"
+  }
+]
