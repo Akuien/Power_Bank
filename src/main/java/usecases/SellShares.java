@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class SellShares {
-
+    private ValidateShareholder validateShareholder;
     private ValidateCustomer validateCustomer;
     private ValidateCustomerBankAccount validateCustomerBankAccount;
     private BankAccountRepository bankAccountRepository;
@@ -21,6 +21,7 @@ public class SellShares {
     private CompanyRepository companyRepository;
 
     public SellShares() {
+        this.validateShareholder = new ValidateShareholder();
         this.validateCustomer = new ValidateCustomer();
         this.validateCustomerBankAccount = new ValidateCustomerBankAccount();
         this.bankAccountRepository = new BankAccountRepository();
@@ -31,6 +32,10 @@ public class SellShares {
 
     public String execute(String companyName, int quantity, long customerSSN, long customerAccountNumber, Stock stock ) throws Exception {
         //Validations
+        boolean shareholderExists = validateShareholder.execute(customerSSN);
+        if (!shareholderExists){
+            throw new ShareholderDoesNotExistException(customerSSN);
+        }
         boolean customerExists = validateCustomer.execute(customerSSN);
         if (!customerExists){
             throw new CustomerDoesNotExistException(customerSSN);
