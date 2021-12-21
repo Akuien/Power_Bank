@@ -16,6 +16,7 @@ public class LogInEmployee {
 
     public String execute(String email, String password) throws Exception {
         Employee employee = employeeRepository.getByEmail(email);
+        //We must check if the password is correct
         if (employee == null || !employee.getPassword().equals(password)){
             throw new EmailPasswordDoesNotExistException();
         }

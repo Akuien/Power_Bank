@@ -19,10 +19,12 @@ public class CheckTransactionHistory {
     }
 
     public ArrayList<Transaction> execute(long SSN, long accountNumber) throws Exception {
+        // checks if the customers exists
         boolean customerExists = validateCustomer.execute(SSN);
         if (!customerExists){
             throw new CustomerDoesNotExistException(SSN);
         }
+        // checks first if the bank account exists
         boolean customerBankAccountExists = validateCustomerBankAccount.execute(SSN, accountNumber);
         if (!customerBankAccountExists){
             throw new BankAccountDoesNotExistException(accountNumber);
