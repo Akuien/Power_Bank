@@ -31,11 +31,16 @@ public abstract class AbstractUser {
     public long getAge(){
         Date now = new Date(); //gives the current date
         return (now.getTime() - birthDate.getTime()) / 86400000 / 365;
+        // gives the age in years
     }
 
     public boolean equals(AbstractUser abstractUser){
         return this.getSSN() == abstractUser.getSSN();
     }
+    // checks if it is the same user using the unique SSN ( Social Security Number)
+
+
+    // Getters and Setters
 
     public String getFirstName() {
         return firstName;

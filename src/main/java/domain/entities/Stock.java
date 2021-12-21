@@ -29,6 +29,8 @@ public class Stock {
         return "Stock from " + this.company + ": " + this.purchasePrice + " bought on " + date;
     }
 
+
+    //Getters and Setters
     public double getPurchasePrice() {
         return purchasePrice;
     }

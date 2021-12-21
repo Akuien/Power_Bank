@@ -23,6 +23,7 @@ public class Transaction {
         return type + " Transaction " + transactionId + " from " + originBankAccountNumber + " to " + finalBankAccountNumber + " with " + amount + " SEK.";
     }
 
+    //Getters and Setters
     public long getTransactionId() {
         return transactionId;
     }
