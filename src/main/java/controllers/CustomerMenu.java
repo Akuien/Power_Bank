@@ -1,9 +1,6 @@
 package controllers;
 
-import domain.entities.BankAccount;
-import domain.entities.Customer;
-import domain.entities.Transaction;
-import repositories.BankAccountRepository;
+import domain.entities.*;
 import usecases.*;
 
 import java.util.ArrayList;
@@ -18,6 +15,9 @@ public class CustomerMenu {
     private WithdrawMoney withdrawMoney;
     private ObtainCustomerBankAccounts obtainCustomerBankAccounts;
     private CheckTransactionHistory checkTransactionHistory;
+    private BuyShares buyShares;
+    private ObtainCompanies obtainCompanies;
+    private ShareholderMenu shareholderMenu;
 
     public static final String EOL = System.lineSeparator();
 
@@ -31,6 +31,9 @@ public class CustomerMenu {
         this.applyForBankAccount = new ApplyForBankAccount();
         this.obtainCustomerBankAccounts = new ObtainCustomerBankAccounts();
         this.checkTransactionHistory = new CheckTransactionHistory();
+        this.buyShares = new BuyShares();
+        this.obtainCompanies = new ObtainCompanies();
+        this.shareholderMenu = new ShareholderMenu();
     }
 
     public void printMenu() {
@@ -45,6 +48,8 @@ public class CustomerMenu {
                 "6. Apply for Bank Account" + EOL +
                 "7. List of Bank Accounts" + EOL +
                 "8. Check Transaction History" + EOL +
+                "9. Buy Shares" + EOL +
+                "10. List companies with stocks" + EOL +
                 "Type an option number: ");
 
     }
@@ -169,6 +174,39 @@ public class CustomerMenu {
                             System.out.println(currentTransaction.toString());
                         }
                     } catch (Exception exception) {
+                        System.out.println(exception.getMessage());
+                    }
+                    break;
+
+                case 9:
+                    try{
+                        String companyName = UserInput.inputString("Enter the name of the company: ");
+                        int quantity = UserInput.inputInt("Enter the number of stocks you desire to buy: ");
+                        long customerSSN = customer.getSSN();
+                        long customerAccountNumber = UserInput.inputLong("Enter the account number: ");
+                        String message = buyShares.execute(companyName, quantity, customerSSN, customerAccountNumber);
+                        System.out.println(message);
+
+                        //Goes to the shareholder menu since by buying shares his/her type automatically changed to a shareholder.
+                        shareholderMenu.printMenu();
+                        option = UserInput.inputInt("Enter an option: ");
+                        //We need to pass a Shareholder object so we cast downcast the already obtained customer through the menu
+                        Shareholder shareholder = (Shareholder) customer;
+                        shareholderMenu.menu(option, shareholder);
+                    }
+                    catch (Exception exception){
+                        System.out.println(exception.getMessage());
+                    }
+                    break;
+
+                case 10:
+                    try{
+                        ArrayList<Company> companiesList = obtainCompanies.execute();
+                        for (Company currentCompany : companiesList){
+                            System.out.println(currentCompany.toString());
+                        }
+                    }
+                    catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
                     break;
