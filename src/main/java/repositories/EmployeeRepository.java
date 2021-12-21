@@ -4,15 +4,15 @@ import domain.entities.Employee;
 
 import java.util.ArrayList;
 
-public class EmployeeRepository extends AbstractRepository {
+public class EmployeeRepository extends AbstractRepository { // This Repository handles Employee data.
 
 
     public ArrayList<Employee> getAll() {
         return EmployeeRepository.persistenceData.getEmployees();
-    }
+    } // Returns entire Employee list.
 
 
-    public Employee getBySSN(long SSN) {
+    public Employee getBySSN(long SSN) { // Search for employee by SSN.
         ArrayList<Employee> employees = EmployeeRepository.persistenceData.getEmployees();
         Employee foundEmployee = null;
         for (Employee employee : employees){
@@ -24,7 +24,7 @@ public class EmployeeRepository extends AbstractRepository {
     }
 
 
-    public Employee getByAccessToken(String accessToken) {
+    public Employee getByAccessToken(String accessToken) { // Checks the Employees access token.
         ArrayList<Employee> employees = EmployeeRepository.persistenceData.getEmployees();
         Employee foundEmployee = null;
         for (Employee employee : employees){
@@ -48,14 +48,14 @@ public class EmployeeRepository extends AbstractRepository {
     }
 
 
-    public void createProfile(Employee employee) {
+    public void createProfile(Employee employee) { // Creates an Employee profile inside the corresponding list.
         ArrayList<Employee> employees = EmployeeRepository.persistenceData.getEmployees();
         employees.add(employee);
         EmployeeRepository.persistenceData.setEmployees(employees);
     }
 
 
-    public void updateProfile(Employee employee) {
+    public void updateProfile(Employee employee) { // Updates an Employee profile information.
         ArrayList<Employee> employees = EmployeeRepository.persistenceData.getEmployees();
         for (Employee currentEmployee : employees){
             if (currentEmployee.equals(employee)){

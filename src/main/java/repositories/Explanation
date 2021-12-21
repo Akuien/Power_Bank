@@ -1,0 +1,16 @@
+Notes about the Repositories go here.
+
+PersistenceData is basically our database that stores all the data we're working with.
+
+In our program, a Repository is a class that is in charge of accessing, modifying or deleting the PersistenceData.
+For example, the CompanyRepository class deals only with the company-related data. Therefore, the getCompanyByName()
+method inside that class first accesses the database, and then checks the existence of the company that we provided
+the name for (as a parameter).
+
+In terms of natural language, Repositories follow "orders" made by Use Cases and do all the "hard work". For example,
+the CompanyRepository accesses the ArrayList with companies and adds/deletes data from in.
+
+Access tokens:
+Every user  gets an accessToken once they sign a contract with the bank.
+The Use Cases will always ask for an accessToken before performing a task.
+If a user does not have an accessToken, they cannot access the Use Cases and will be logged out.

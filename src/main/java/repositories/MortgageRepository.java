@@ -7,7 +7,9 @@ import domain.entities.Mortgage;
 
 import java.util.ArrayList;
 
-public class MortgageRepository extends AbstractRepository {
+public class MortgageRepository extends AbstractRepository { // This Repository works with mortgage data.
+
+    // The methods below are rather self-explanatory and follow the same logic we used in previous Repositories.
 
     public ArrayList<Mortgage> getMortgagesBySSN(long SSN) {
         ArrayList<Mortgage> mortgages = MortgageRepository.persistenceData.getMortgages();

@@ -7,7 +7,7 @@ import domain.entities.Stock;
 
 import java.util.ArrayList;
 
-public class CompanyRepository extends AbstractRepository {
+public class CompanyRepository extends AbstractRepository { // Detailed information about this class is provided in "Explanation".
 
     public Company getCompanyByName(String companyName) {
         ArrayList<Company> companies = CompanyRepository.persistenceData.getCompanies();
