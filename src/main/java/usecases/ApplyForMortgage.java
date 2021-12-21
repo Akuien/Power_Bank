@@ -24,10 +24,12 @@ public class ApplyForMortgage {
 
     public String execute(long SSN, long accountNumber, double totalMortgageValue, double years, double initialDeposit) throws Exception {
         boolean customerExists = validateCustomer.execute(SSN);
+        // checks if the customer applying for the mortgage exists in the system.
         if (!customerExists){
             throw new CustomerDoesNotExistException(SSN);
         }
         boolean bankAccountExists = validateCustomerBankAccount.execute(SSN, accountNumber);
+        //checks if the bank account exists
         if (!bankAccountExists){
             throw new BankAccountDoesNotExistException(accountNumber);
         }

@@ -17,6 +17,7 @@ public class ObtainShareholderPortfolio {
         }
 
         public Portfolio execute(long customerSSN) throws Exception {
+            //check if shareholder exists
             boolean shareholderExists = validateShareholder.execute(customerSSN);
             if (!shareholderExists){
                 throw new ShareholderDoesNotExistException(customerSSN);
