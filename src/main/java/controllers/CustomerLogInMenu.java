@@ -10,6 +10,9 @@ import usecases.RegisterCustomer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+//Class used as user interface for logging in and registering
+// for customer and shareholder type of users
+
 public class CustomerLogInMenu {
 
     private LogInCustomer logInCustomer;
@@ -18,6 +21,7 @@ public class CustomerLogInMenu {
     private CustomerMenu customerMenu;
     private ShareholderMenu shareholderMenu;
 
+    //constructor to initialize the
     public CustomerLogInMenu() {
         this.registerCustomer = new RegisterCustomer();
         this.logInCustomer = new LogInCustomer();
