@@ -12,6 +12,7 @@ public class Company {
         this.stockPrice = stockPrice;
     }
 
+    //Getters and Setters
     public String getName() {
         return name;
     }

@@ -6,6 +6,7 @@ import java.util.Date;
 public class Customer extends AbstractUser {
 
     protected String type;
+    // type is used to define the specific type of user eg customer, employee
 
     public Customer(String firstName, String lastName, long SSN, String password, String email, String phoneNumber, Date birthDate){
         super(firstName, lastName, SSN, password, email, phoneNumber, birthDate);

@@ -24,8 +24,10 @@ public class BankAccount {
 
     public boolean equals(BankAccount bankAccount){
         return this.getCustomerSSN() == bankAccount.getCustomerSSN() && this.getAccountNumber() == bankAccount.getAccountNumber();
+        //Checks if bank account is the same using the customerSSN and bankAccountNumber
     }
 
+    //Getters and setters
     public double getBalance() {
         return balance;
     }
@@ -66,8 +68,8 @@ public class BankAccount {
         this.customerSSN = customerSSN;
     }
 
+    // FixedDeposit is a class within the bankAccount class
     private static class FixedDeposit{
-
 
         private static final double interestRate = 0.05;
         private static final int compoundInterest = 4;

@@ -27,8 +27,10 @@ public class Mortgage {
 
     public boolean equals(Mortgage mortgage){
         return (this.getLoanID() == mortgage.getLoanID()) && (this.getCustomerSSN() == mortgage.getCustomerSSN());
-    }
+    } //Checks whether the mortgage is equal if loanID and customerSSN are equal.
 
+
+    //Getters and Setters
     public long getCustomerSSN() {
         return customerSSN;
     }

@@ -15,6 +15,8 @@ public class Portfolio {
     public boolean equals(Portfolio portfolio){
         return this.getCustomerSSN() == portfolio.getCustomerSSN();
     }
+    //Checks if portfolio is equal if customerSSN is equal
+
 
     public void addStock(Stock stock){
         stocks.add(stock);
