@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CustomJsonIo {
+//Type: this "Type" parameter specifies the type of object from which we are going to read or write in the json files like the ArrayList class (java library).
+public class CustomJsonIo<Type>{
 
     private Gson gson;
     private Writer writer;
@@ -23,31 +24,8 @@ public class CustomJsonIo {
         gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
-    public void writeObjectToJson(String fileName, Object object){
-        try{
-            writer = Files.newBufferedWriter(Paths.get(fileName));
-            gson.toJson(object, writer);
-            writer.close();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public Object readObjectFromJson(String fileName, Object object){
-        Object returnObject = null;
-        try{
-            reader = Files.newBufferedReader(Paths.get(fileName));
-            returnObject = gson.fromJson(reader, Object.class);
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return returnObject;
-    }
-
-    public void writeArrayToJson(String fileName, ArrayList<Object> list){
+    public void writeArrayToJson(String fileName, ArrayList<Type> list){
         try{
             //initialize writer
             writer = Files.newBufferedWriter(Paths.get(fileName));
@@ -62,13 +40,13 @@ public class CustomJsonIo {
         }
     }
 
-    public ArrayList<Object> readArrayFromJson(String fileName, Object[] objects){
-        ArrayList<Object> list = new ArrayList<>();
+    public ArrayList<Type> readArrayFromJson(String fileName, Class destinationType){
+        ArrayList<Type> list = new ArrayList<>();
 
         try{
             reader = Files.newBufferedReader(Paths.get(fileName));
-            List<Object> temp = (List<Object>) Arrays.asList(gson.fromJson(reader, objects.getClass()));
-            list = new ArrayList<Object>(temp);
+            List<Type> temp = (List<Type>) Arrays.asList(gson.fromJson(reader, destinationType));
+            list = new ArrayList<Type>(temp);
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();

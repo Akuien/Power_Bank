@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class PersistenceData {
-    private CustomJsonIo file;
 
     private ArrayList<Employee> employees;
     private ArrayList<Customer> customers;
@@ -19,7 +18,6 @@ public class PersistenceData {
 
 
     public PersistenceData(){
-        file = new CustomJsonIo();
 
         employees = new ArrayList<>();
         customers = new ArrayList<>();
@@ -32,94 +30,95 @@ public class PersistenceData {
         //Infinite amount of shares
     }
 
+    //We need to specify the type of object we are going to read or write for each method, for this reason the CustomJsonIo class needs to receive the "Type" parameter.
     public ArrayList<Employee> getEmployees() {
-        Employee[] arr = new Employee[0];
-        employees = (ArrayList<Employee>)(Object) file.readArrayFromJson("employees.json", arr);
+        CustomJsonIo<Employee> file = new CustomJsonIo<>();
+        employees = file.readArrayFromJson("employees.json", Employee.class);
         return employees;
     }
 
     public void setEmployees(ArrayList<Employee> employees) {
-        ArrayList<Object> objects = (ArrayList<Object>)(Object) employees;
+        CustomJsonIo<Employee> file = new CustomJsonIo<>();
         file.clearFile("employees.json");
-        file.writeArrayToJson("employees.json", objects);
+        file.writeArrayToJson("employees.json", employees);
         this.employees = employees;
     }
 
     public ArrayList<Customer> getCustomers() {
-        Customer[] arr = new Customer[0];
-        customers = (ArrayList<Customer>)(Object) file.readArrayFromJson("customers.json", arr);
+        CustomJsonIo<Customer> file = new CustomJsonIo<>();
+        customers = file.readArrayFromJson("customers.json", Customer.class);
         return customers;
     }
 
     public void setCustomers(ArrayList<Customer> customers) {
-        ArrayList<Object> objects = (ArrayList<Object>)(Object) customers;
-        file.clearFile("customer.json");
-        file.writeArrayToJson("customers.json", objects);
+        CustomJsonIo<Customer> file = new CustomJsonIo<>();
+        file.clearFile("customers.json");
+        file.writeArrayToJson("customers.json", customers);
         this.customers = customers;
     }
 
     public ArrayList<BankAccount> getBankAccounts() {
-        BankAccount[] arr = new BankAccount[0];
-        bankAccounts = (ArrayList<BankAccount>)(Object) file.readArrayFromJson("bankAccounts.json", arr);
+        CustomJsonIo<BankAccount> file = new CustomJsonIo<>();
+        bankAccounts = file.readArrayFromJson("bankAccounts.json", BankAccount.class);
         return bankAccounts;
     }
 
     public void setBankAccounts(ArrayList<BankAccount> bankAccounts) {
-        ArrayList<Object> objects = (ArrayList<Object>)(Object) bankAccounts;
+        CustomJsonIo<BankAccount> file = new CustomJsonIo<>();
         file.clearFile("bankAccounts.json");
-        file.writeArrayToJson("bankAccounts.json", objects);
+        file.writeArrayToJson("bankAccounts.json", bankAccounts);
         this.bankAccounts = bankAccounts;
     }
 
     public ArrayList<Transaction> getTransactions() {
-        Transaction[] arr = new Transaction[0];
-        transactions = (ArrayList<Transaction>)(Object) file.readArrayFromJson("transactions.json", arr);
+        CustomJsonIo<Transaction> file = new CustomJsonIo<>();
+        transactions = file.readArrayFromJson("transactions.json", Transaction.class);
         return transactions;
     }
 
     public void setTransactions(ArrayList<Transaction> transactions) {
-        ArrayList<Object> objects = (ArrayList<Object>)(Object) transactions;
+        CustomJsonIo<Transaction> file = new CustomJsonIo<>();
         file.clearFile("transactions.json");
-        file.writeArrayToJson("transactions.json", objects);
+        file.writeArrayToJson("transactions.json", transactions);
         this.transactions = transactions;
     }
 
     public ArrayList<Portfolio> getPortfolios() {
-        Portfolio[] arr = new Portfolio[0];
-        portfolios = (ArrayList<Portfolio>)(Object) file.readArrayFromJson("portfolios.json", arr);
+        CustomJsonIo<Portfolio> file = new CustomJsonIo<>();
+        portfolios = file.readArrayFromJson("portfolios.json", Portfolio.class);
         return portfolios;
     }
 
     public void setPortfolios(ArrayList<Portfolio> portfolios) {
-        ArrayList<Object> objects = (ArrayList<Object>)(Object) portfolios;
+        CustomJsonIo<Portfolio> file = new CustomJsonIo<>();
         file.clearFile("portfolios.json");
-        file.writeArrayToJson("portfolios.json", objects);
+        file.writeArrayToJson("portfolios.json", portfolios);
         this.portfolios = portfolios;
     }
 
     public ArrayList<Company> getCompanies() {
-        Company[] arr = new Company[0];
-        companies = (ArrayList<Company>)(Object) file.readArrayFromJson("companies.json", arr);
+        CustomJsonIo<Company> file = new CustomJsonIo<>();
+        companies = file.readArrayFromJson("companies.json", Company.class);
         return companies;
     }
 
     public void setCompanies(ArrayList<Company> companies) {
-        ArrayList<Object> objects = (ArrayList<Object>)(Object) companies;
+        CustomJsonIo<Company> file = new CustomJsonIo<>();
         file.clearFile("companies.json");
-        file.writeArrayToJson("companies.json", objects);
+        file.writeArrayToJson("companies.json", companies);
         this.companies = companies;
     }
 
     public ArrayList<Mortgage> getMortgages() {
-        Mortgage[] arr = new Mortgage[0];
-        mortgages = (ArrayList<Mortgage>)(Object) file.readArrayFromJson("mortgages.json", arr);
+        CustomJsonIo<Mortgage> file = new CustomJsonIo<>();
+        mortgages = file.readArrayFromJson("mortgages.json", Mortgage.class);
         return mortgages;
     }
 
     public void setMortgages(ArrayList<Mortgage> mortgages) {
-        ArrayList<Object> objects = (ArrayList<Object>)(Object) mortgages;
+        CustomJsonIo<Mortgage> file = new CustomJsonIo<>();
         file.clearFile("mortgages.json");
-        file.writeArrayToJson("mortgages.json", objects);
+        file.writeArrayToJson("mortgages.json", mortgages);
         this.mortgages = mortgages;
     }
 }
