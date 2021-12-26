@@ -24,6 +24,7 @@ public class EmployeeMenu {
     private ObtainPendingBankAccounts obtainPendingBankAccounts;
     private ChangeStatusMortgage changeStatusMortgage;
     private ChangeStatusBankAccount changeStatusBankAccount;
+    private CreateBankAccount createBankAccount;
 
     public EmployeeMenu(){
         this.logOutEmployee = new LogOutEmployee();
@@ -33,6 +34,7 @@ public class EmployeeMenu {
         this.obtainPendingBankAccounts = new ObtainPendingBankAccounts();
         this.changeStatusMortgage = new ChangeStatusMortgage();
         this.changeStatusBankAccount = new ChangeStatusBankAccount();
+        this.createBankAccount = new CreateBankAccount();
     }
 
     public void printMenu() {
@@ -46,6 +48,7 @@ public class EmployeeMenu {
                 "4. List bank account applications." + EOL +
                 "5. Change status mortgage." + EOL +
                 "6. Change status bank account." + EOL +
+                "7. Create customer bank account (customer at office)" + EOL +
                 "Type an option number: ");
     }
 
@@ -142,11 +145,26 @@ public class EmployeeMenu {
                         System.out.println(exception.getMessage());
                     }
                     break;
+
+                case 7:
+                    try{
+                        long employeeSSN = employee.getSSN();
+                        long customerSSN = UserInput.inputLong("Enter the customer's SSN: ");
+                        String bankAccountName = UserInput.inputString("Enter the name of the bank account: ");
+                        createBankAccount.execute(employeeSSN, customerSSN, bankAccountName);
+                    }
+
+                    catch (Exception exception){
+                        System.out.println(exception.getMessage());
+                    }
+
                 // if user enters anything above 6, below 0 or not a digit, then the system will ask the user to print out a valid option.
                 default:
                     System.out.println("Please enter valid option");
                     option = UserInput.inputInt("Enter an option: ");
                     break;
+
+
             }
         } while (option != 0);
     }

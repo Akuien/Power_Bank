@@ -26,6 +26,8 @@ public class ManagerMenu {
     private ChangeStatusBankAccount changeStatusBankAccount;
     private PromoteEmployee promoteEmployee;
     private RegisterEmployee registerEmployee;
+    private RegisterManager registerManager;
+    private CreateBankAccount createBankAccount;
 
     public ManagerMenu() {
         this.logOutEmployee = new LogOutEmployee();
@@ -38,6 +40,8 @@ public class ManagerMenu {
         this.changeStatusBankAccount = new ChangeStatusBankAccount();
         this.promoteEmployee = new PromoteEmployee();
         this.registerEmployee = new RegisterEmployee();
+        this.registerManager = new RegisterManager();
+        this.createBankAccount = new CreateBankAccount();
     }
 
     public void printMenu() {
@@ -52,7 +56,9 @@ public class ManagerMenu {
                 "6. Change status mortgage." + EOL +
                 "7. Change status bank account." + EOL +
                 "8. Promote employee." + EOL +
-                "9. Create employee account");
+                "9. Create employee account" + EOL +
+                "10. Create manager account" + EOL +
+                "11. Create customer bank account (customer at office)");
     }
 
     public void menu(int option, Manager manager) {
@@ -171,6 +177,7 @@ public class ManagerMenu {
 
                 case 9:
                     try {
+                        long managerSSN = manager.getSSN();
                         String firstName = UserInput.inputString("Enter First Name: ");
                         String lastName = UserInput.inputString("Enter Last Name: ");
                         long SSN = UserInput.inputLong("Enter SSN: ");
@@ -180,7 +187,7 @@ public class ManagerMenu {
                         String birthDateString = UserInput.inputString("Enter Birth Date");
                         Date birthDate = new SimpleDateFormat("dd/MM/yyyy").parse(birthDateString);
 
-                        String message = registerEmployee.execute(firstName, lastName, SSN, password,email, phoneNumber, birthDate);
+                        String message = registerEmployee.execute(firstName, lastName, SSN, password,email, phoneNumber, birthDate, managerSSN);
 
                         System.out.println(message);
 
@@ -189,6 +196,41 @@ public class ManagerMenu {
                         System.out.println("Information introduced is not correct.");
                         System.out.println("Please introduce again the correct information.");
                     }
+
+                case 10:
+                    try {
+                        long managerSSN = manager.getSSN();
+                        String firstName = UserInput.inputString("Enter First Name: ");
+                        String lastName = UserInput.inputString("Enter Last Name: ");
+                        long newManagerSSN = UserInput.inputLong("Enter SSN: ");
+                        String password = UserInput.inputString("Enter Password: ");
+                        String email = UserInput.inputString("Enter Email: ");
+                        String phoneNumber = UserInput.inputString("Enter Phone Number");
+                        String birthDateString = UserInput.inputString("Enter Birth Date");
+                        Date birthDate = new SimpleDateFormat("dd/MM/yyyy").parse(birthDateString);
+
+                        String message = registerManager.execute(firstName, lastName, newManagerSSN, managerSSN, password, email, phoneNumber, birthDate);
+
+                        System.out.println(message);
+
+                    }
+                    catch (Exception exception) {
+                        System.out.println("Information introduced is not correct.");
+                        System.out.println("Please introduce again the correct information.");
+                    }
+
+                case 11:
+                    try{
+                        long managerSSN = manager.getSSN();
+                        long customerSSN = UserInput.inputLong("Enter the customer's SSN: ");
+                        String bankAccountName = UserInput.inputString("Enter the name of the bank account: ");
+                        createBankAccount.execute(managerSSN, customerSSN, bankAccountName);
+                    }
+
+                    catch (Exception exception){
+                        System.out.println(exception.getMessage());
+                    }
+
 
                 default:
                     System.out.println("Please enter valid option");
