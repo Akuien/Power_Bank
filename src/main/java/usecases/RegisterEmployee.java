@@ -9,6 +9,7 @@ import java.util.Date;
 
 public class RegisterEmployee {
 
+    private ValidateManager validateManager;
     private ValidateEmployee validateEmployee;
     private ValidatePassword validatePassword;
     private ValidateEmail validateEmail;
@@ -16,6 +17,7 @@ public class RegisterEmployee {
     private ValidatePhoneNumber validatePhoneNumber;
 
     public RegisterEmployee(){
+        this.validateManager = new ValidateManager();
         this.validateEmployee = new ValidateEmployee();
         this.validateEmail = new ValidateEmail();
         this.validatePassword = new ValidatePassword();
@@ -23,11 +25,16 @@ public class RegisterEmployee {
         this.validatePhoneNumber = new ValidatePhoneNumber();
     }
 
-    public String execute(String firstName, String lastName, long SSN, String password, String email, String phoneNumber, Date birthDate) throws Exception {
+    public String execute(String firstName, String lastName, long employeeSSN, String password, String email, String phoneNumber, Date birthDate, long managerSSN) throws Exception {
 
-        boolean customerExists = validateEmployee.execute(SSN);
-        if (!customerExists) {
-            throw new EmployeeDoesNotExistException(SSN);
+        boolean managerExists = validateManager.execute(managerSSN);
+        if (!managerExists) {
+            throw new ManagerDoesNotExistException(managerSSN);
+        }
+
+        boolean employeeExists = validateEmployee.execute(employeeSSN);
+        if (employeeExists){
+            throw new EmployeeAlreadyExistsException(employeeSSN);
         }
 
         boolean firstNameIsCorrect = !firstName.isBlank();
@@ -40,7 +47,6 @@ public class RegisterEmployee {
             throw new NameIsBlankException();
         }
 
-        //It does not show why the password is incorrect.
         boolean passwordIsCorrect = validatePassword.execute(password);
         if (!passwordIsCorrect){
             throw new IncorrectPasswordException();
@@ -56,7 +62,7 @@ public class RegisterEmployee {
             throw new IncorrectPhoneNumberException();
         }
 
-        Employee employee = new Employee(firstName, lastName, SSN, password, email, phoneNumber, birthDate);
+        Employee employee = new Employee(firstName, lastName, employeeSSN, password, email, phoneNumber, birthDate);
         employeeRepository.createProfile(employee);
         return "Customer registered successfully"; // add toString later
 

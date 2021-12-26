@@ -24,11 +24,16 @@ public class RegisterManager {
             this.validatePhoneNumber = new ValidatePhoneNumber();
         }
 
-    public String execute(String firstName, String lastName, long SSN, String password, String email, String phoneNumber, Date birthDate) throws Exception {
+    public String execute(String firstName, String lastName, long newManagerSSN, long managerSSN, String password, String email, String phoneNumber, Date birthDate) throws Exception {
 
-        boolean customerExists = validateManager.execute(SSN);
-        if (!customerExists) {
-            throw new EmployeeDoesNotExistException(SSN);
+        boolean managerExists = validateManager.execute(managerSSN);
+        if (!managerExists) {
+            throw new ManagerDoesNotExistException(managerSSN);
+        }
+
+        boolean newManagerExists = validateManager.execute(newManagerSSN);
+        if (newManagerExists) {
+            throw new ManagerAlreadyExistsException(newManagerSSN);
         }
 
         boolean firstNameIsCorrect = !firstName.isBlank();
@@ -57,7 +62,7 @@ public class RegisterManager {
             throw new IncorrectPhoneNumberException();
         }
 
-            Employee employee = new Employee(firstName, lastName, SSN, password, email, phoneNumber, birthDate);
+            Employee employee = new Employee(firstName, lastName, newManagerSSN, password, email, phoneNumber, birthDate);
             employeeRepository.createProfile(employee);
             return "Customer registered successfully"; // add toString later
 

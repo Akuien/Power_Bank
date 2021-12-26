@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class CustomJsonIo<Type>{
     public void writeArrayToJson(String fileName, ArrayList<Type> list){
         try{
             //initialize writer
-            writer = Files.newBufferedWriter(Paths.get(fileName));
+            writer = Files.newBufferedWriter(Paths.get(fileName), StandardCharsets.UTF_8);
 
             //convert an arraylist to json file
             gson.toJson(list, writer);
@@ -44,9 +45,9 @@ public class CustomJsonIo<Type>{
         ArrayList<Type> list = new ArrayList<>();
 
         try{
-            reader = Files.newBufferedReader(Paths.get(fileName));
-            List<Type> temp = (List<Type>) Arrays.asList(gson.fromJson(reader, destinationType));
-            list = new ArrayList<Type>(temp);
+            reader = Files.newBufferedReader(Paths.get(fileName), StandardCharsets.UTF_8);
+            List<Type> temp = Arrays.asList((Type) gson.fromJson(reader, destinationType));
+            list = new ArrayList<>(temp);
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();

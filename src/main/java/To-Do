@@ -1,0 +1,10 @@
+-There are json files missing that should have been finished.
+    -File for BankAccounts
+    -File for Mortgages
+    -File for Transactions
+    -File for Portfolios
+    -File for Companies
+    -File for Customers
+    (all of them should have the encoding UTF-8)
+-The encoding of the json files should be UTF-8, not any other, since the other teammates may not be able to see the content.
+-Testing is required for the rest of the ArrayLists.

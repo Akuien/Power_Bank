@@ -33,10 +33,6 @@ public class BuyShares {
 
     public String execute(String companyName, int quantity, long customerSSN, long customerAccountNumber ) throws Exception {
         //Validations
-        boolean shareholderExists = validateShareholder.execute(customerSSN);
-        if (!shareholderExists){
-            throw new ShareholderDoesNotExistException(customerSSN);
-        }
         boolean customerExists = validateCustomer.execute(customerSSN);
         if (!customerExists){
             throw new CustomerDoesNotExistException(customerSSN);

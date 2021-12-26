@@ -23,8 +23,8 @@ public class RegisterCustomer {
     }
     public String execute (String firstName, String lastName, long SSN, String password, String email, String phoneNumber, Date birthDate) throws Exception {
         boolean customerExists = validateCustomer.execute(SSN);
-        if (!customerExists) {
-            throw new EmployeeDoesNotExistException(SSN);
+        if (customerExists) {
+            throw new CustomerAlreadyExistsException(SSN);
         }
 
         boolean firstNameIsCorrect = !firstName.isBlank();

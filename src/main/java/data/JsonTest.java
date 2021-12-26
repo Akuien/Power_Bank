@@ -10,6 +10,8 @@ import java.util.Date;
 
 public class JsonTest {
     public static void main(String[] args) {
+
+        //Testing for Employees
         PersistenceData data = new PersistenceData();
 
         Calendar cal = Calendar.getInstance();
@@ -36,5 +38,7 @@ public class JsonTest {
         System.out.println(employees);
 
         System.out.println(test);
+
+        //Testing for Customers
     }
 }
