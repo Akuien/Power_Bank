@@ -32,7 +32,7 @@ public class BuyShares {
     }
 
     public String execute(String companyName, int quantity, long customerSSN, long customerAccountNumber ) throws Exception {
-        //Validations
+        // Validates details of the operation.
         boolean customerExists = validateCustomer.execute(customerSSN);
         if (!customerExists){
             throw new CustomerDoesNotExistException(customerSSN);
@@ -51,7 +51,7 @@ public class BuyShares {
             throw new DoesNotHaveEnoughFundsException();
         }
 
-        //Use Case
+        // The use case code, this is where the share is being purchased.
         Date now = new Date();
         Stock stock = new Stock(purchasePrice, now, companyName, quantity,customerSSN, customerAccountNumber);
 
@@ -63,8 +63,9 @@ public class BuyShares {
         return "Purchase made successfully.";
     }
 
-    //We created these three private methods to make the execute method more understandable
-    //We do not want to use these methods onwards, just here
+    // We created these three private methods to make the execution method more understandable.
+    // We do not want to use these methods onwards, just here, inside this class.
+
     private void addDebitTransaction(long accountNumber, double price, Date currentDate){
         Transaction transaction = new Transaction(accountNumber, accountNumber, price, TransactionType.debit, currentDate);
         transactionRepository.createTransaction(transaction);
@@ -95,8 +96,7 @@ public class BuyShares {
     }
 
 
-    //Before being able to buy any stock the system should validate the Bank Account where all the funds are coming from
-    //Before being able to buy any stock the system should validate the existence of the User.
-    //Before being able to buy any stock the system should validate that the account has enough funds to do the purchase.
+    // Before being able to buy any stock the system should validate the Bank Account where all the funds are coming from,
+    // whether the User actually exists, and that there are sufficient funds to make the purchase.
 
 }

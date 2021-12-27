@@ -24,22 +24,22 @@ public class ChangeStatusBankAccount {
     }
 
     public String execute(long accountNumber, long customerSSN, long employeeSSN, String choice) throws Exception {
-        //Checks if the employee exists
+        // Checks if the employee exists.
         boolean employeeExists = validateEmployee.execute(employeeSSN);
         if (!employeeExists){
             throw new EmployeeDoesNotExistException(employeeSSN);
         }
-        //Checks if bank account exists
+        // Checks if bank account exists.
         boolean bankAccountExists = validateCustomerBankAccount.execute(customerSSN, accountNumber);
         if (!bankAccountExists){
             throw new BankAccountDoesNotExistException(accountNumber);
         }
-        //Checks if customer exists
+        // Checks if customer exists.
         boolean customerExists = validateCustomer.execute(customerSSN);
         if (!customerExists){
             throw new CustomerDoesNotExistException(customerSSN);
         }
-        //Checks if status is either rejected or approved
+        // Checks if status is either rejected or approved.
         if (!choice.toLowerCase().equals(BankAccountStatus.approved) || !choice.toLowerCase().equals(BankAccountStatus.rejected)){
             throw new StatusNotAllowedException();
         }

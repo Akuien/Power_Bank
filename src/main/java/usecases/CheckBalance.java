@@ -18,19 +18,19 @@ public class CheckBalance {
     }
 
     public double execute(long SSN, long accountNumber) throws Exception {
-        //Checks if customer exists
+        // Checks if customer exists.
         boolean customerExists = validateCustomer.execute(SSN);
         if (!customerExists){
             throw new CustomerDoesNotExistException(SSN);
         }
-        //Checks if the bank account exists
+        // Checks if the bank account exists.
         boolean customerBankAccountExists = validateCustomerBankAccount.execute(SSN, accountNumber);
         if (!customerBankAccountExists){
             throw new BankAccountDoesNotExistException(accountNumber);
         }
-        //We get the account where we want to check the balance with account number
+        // We get the account where we want to check the balance with account number.
         BankAccount customerBankAccount = bankAccountRepository.getAccountByAccountNumber(accountNumber);
-        //We execute the getBalance method from the entity class
+        // We execute the getBalance method from the entity class.
         return customerBankAccount.getBalance();
     }
 

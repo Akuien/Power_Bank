@@ -11,14 +11,14 @@ import java.util.ArrayList;
 public class ObtainCompanies {
 
         private CompanyRepository companyRepository;
-        //Calling companyRepository class as a component.
+        // Calling companyRepository class as a component.
         public ObtainCompanies(){
             this.companyRepository = new CompanyRepository();
         }
 
         public ArrayList<Company> execute() throws Exception {
             return companyRepository.getAll();
-            // helps the customer to see the list of companies to choose from.
+            // Helps the customer to see the list of companies to choose from.
         }
 
     }

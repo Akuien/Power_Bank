@@ -19,13 +19,13 @@ public class PromoteEmployee {
 
         public String execute(long managerSSN, long employeeSSN) throws Exception {
 
-            //Checks if the manager exists
+            // Checks if the manager exists.
             boolean managerExists = validateManager.execute(managerSSN);
             if (!managerExists){
                 throw new EmployeeDoesNotExistException(managerSSN);
             }
 
-            //Checks if the employee exists
+            // Checks if the employee exists.
             boolean employeeExists = validateEmployee.execute(employeeSSN);
             if (!employeeExists){
                 throw new EmployeeDoesNotExistException(employeeSSN);

@@ -33,7 +33,7 @@ public class CustomerRepository extends AbstractRepository { // this Repository 
         ArrayList<Customer> customers = CustomerRepository.persistenceData.getCustomers();
         Customer foundCustomer = null;
         for (Customer customer : customers){
-            if (customer.getAccessToken() == accessToken){
+            if (customer.getAccessToken() != null && customer.getAccessToken().equals(accessToken)){
                 foundCustomer = customer;
             }
         }
@@ -45,7 +45,7 @@ public class CustomerRepository extends AbstractRepository { // this Repository 
         ArrayList<Customer> customers = CustomerRepository.persistenceData.getCustomers();
         Customer foundCustomer = null;
         for (Customer customer : customers){
-            if (customer.getEmail() == email){
+            if (customer.getEmail().equals(email)){
                 foundCustomer = customer;
             }
         }

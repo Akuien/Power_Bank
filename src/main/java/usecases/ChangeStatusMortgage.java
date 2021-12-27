@@ -24,25 +24,25 @@ public class ChangeStatusMortgage {
 
     public String execute(long customerSSN, long accountNumber, long mortgageLoanID, long employeeSSN, String choice) throws Exception {
 
-        //Checks if the employee exists
+        // Checks if the employee exists.
         boolean employeeExists = validateEmployee.execute(employeeSSN);
         if (!employeeExists){
             throw new EmployeeDoesNotExistException(employeeSSN);
         }
 
-        //Checks if customer exists
+        // Checks if the customer exists.
         boolean customerExists = validateCustomer.execute(customerSSN);
         if (!customerExists){
             throw new CustomerDoesNotExistException(customerSSN);
         }
 
-        //Check if the bank account exists
+        // Check if the bank account exists.
         boolean bankAccountExists = validateCustomerBankAccount.execute(customerSSN, accountNumber);
         if (!bankAccountExists){
             throw new BankAccountDoesNotExistException(accountNumber);
         }
 
-        //Checks if the mortgage exists
+        // Checks if the mortgage exists.
         boolean mortgageExists = validateMortgage(mortgageLoanID);
         if (!mortgageExists){
             throw new MortgageDoesNotExistException(mortgageLoanID);
@@ -50,7 +50,7 @@ public class ChangeStatusMortgage {
 
         Mortgage mortgage = mortgageRepository.getMortgageByLoanID(mortgageLoanID);
 
-        //Checks if bank account has enough funds
+        // Checks if bank account has enough funds.
         boolean hasEnoughFunds = validateFunds.execute(accountNumber, mortgage.getInitialDeposit());
         if (!hasEnoughFunds){
             mortgage.setStatus(MortgageStatus.rejected);
@@ -58,7 +58,7 @@ public class ChangeStatusMortgage {
             return "Mortgage has been rejected due to the lack of funds";
         }
 
-        //Checks if status is either rejected or approved
+        // Checks if status is either rejected or approved.
         if (!choice.toLowerCase().equals(MortgageStatus.approved) || !choice.toLowerCase().equals(MortgageStatus.rejected)){
             throw new StatusNotAllowedException();
         }
