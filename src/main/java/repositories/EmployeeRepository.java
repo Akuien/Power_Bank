@@ -44,7 +44,6 @@ public class EmployeeRepository extends AbstractRepository { // This Repository 
                 foundEmployee = employee;
             }
         }
-        System.out.println("Here first:" + foundEmployee);
         return foundEmployee;
     }
 
