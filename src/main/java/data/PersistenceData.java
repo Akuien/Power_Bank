@@ -10,6 +10,8 @@ public class PersistenceData {
 
     private ArrayList<Employee> employees;
     private ArrayList<Customer> customers;
+    private ArrayList<Shareholder> shareholders;
+    private ArrayList<Manager> managers;
     private ArrayList<BankAccount> bankAccounts;
     private ArrayList<Transaction> transactions;
     private ArrayList<Portfolio> portfolios;
@@ -21,6 +23,8 @@ public class PersistenceData {
 
         employees = new ArrayList<>();
         customers = new ArrayList<>();
+        shareholders = new ArrayList<>();
+        managers = new ArrayList<>();
         bankAccounts = new ArrayList<>();
         transactions = new ArrayList<>();
         portfolios = new ArrayList<>();
@@ -55,6 +59,32 @@ public class PersistenceData {
         file.clearFile("customers.json");
         file.writeArrayToJson("customers.json", customers);
         this.customers = customers;
+    }
+
+    public ArrayList<Shareholder> getShareHolders() {
+        CustomJsonIo<Shareholder> file = new CustomJsonIo<>();
+        shareholders = file.readArrayFromJson("shareholders.json", Shareholder.class);
+        return shareholders;
+    }
+
+    public void setShareHolders(ArrayList<Shareholder> shareholders) {
+        CustomJsonIo<Shareholder> file = new CustomJsonIo<>();
+        file.clearFile("shareholders.json");
+        file.writeArrayToJson("shareholders.json", shareholders);
+        this.shareholders = shareholders;
+    }
+
+    public ArrayList<Manager> getManagers() {
+        CustomJsonIo<Manager> file = new CustomJsonIo<>();
+        managers = file.readArrayFromJson("managers.json", Manager.class);
+        return managers;
+    }
+
+    public void setManagers(ArrayList<Manager> managers) {
+        CustomJsonIo<Manager> file = new CustomJsonIo<>();
+        file.clearFile("managers.json");
+        file.writeArrayToJson("managers.json", managers);
+        this.managers = managers;
     }
 
     public ArrayList<BankAccount> getBankAccounts() {
