@@ -1,9 +1,6 @@
 package data;
 
-import domain.entities.Customer;
-import domain.entities.Employee;
-import domain.entities.Manager;
-import domain.entities.Shareholder;
+import domain.entities.*;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -47,6 +44,12 @@ public class DataSetInitializer {
         //Populate the employee.json file with an initial data set
 
         data.setEmployees(employees);
+
+        employees = data.getEmployees();
+
+        Employee test = employees.get(1);
+
+        System.out.println(test.getPassword());
 
         //Create 2 customer and add them to the arraylist
         //which will later be stored in the customer.json file
@@ -142,6 +145,24 @@ public class DataSetInitializer {
         //Populate the managers.json file with an initial data set
 
         data.setManagers(managers);
+
+        //Create 2 bankAccounts and add them to the arraylist
+        //which will later be stored in the bankAccounts.json file
+
+
+/*        //We create 2 bankAccounts,
+        // and then add them to the bankAccounts arraylist
+        BankAccount account1 = new BankAccount(100, "Elizabeth Banks", 481046478, 970213742);
+        BankAccount account2 = new BankAccount(300, "Elizabeth Banks", 481046478, 970213742);
+        ArrayList<Manager> managers = new ArrayList<>();
+        managers.add(manager1);
+        managers.add(manager2);
+
+        //Populate the managers.json file with an initial data set
+
+        data.setManagers(managers);*/
+
+
 
     }
 }

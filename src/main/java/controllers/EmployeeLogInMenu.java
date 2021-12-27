@@ -13,7 +13,6 @@ public class EmployeeLogInMenu implements IControllers{
     public EmployeeLogInMenu(){
         this.logInEmployee = new LogInEmployee();
         this.employeeRepository = new EmployeeRepository();
-        this.employeeRepository = new EmployeeRepository();
         this.employeeMenu = new EmployeeMenu();
         this.managerMenu = new ManagerMenu();
     }

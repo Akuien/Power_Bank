@@ -41,12 +41,12 @@ public class CustomJsonIo<Type>{
         }
     }
 
-    public ArrayList<Type> readArrayFromJson(String fileName, Class destinationType){
+    public ArrayList<Type> readArrayFromJson(String fileName, Type[] destinationType){
         ArrayList<Type> list = new ArrayList<>();
 
         try{
             reader = Files.newBufferedReader(Paths.get(fileName), StandardCharsets.UTF_8);
-            List<Type> temp = Arrays.asList((Type) gson.fromJson(reader, destinationType));
+            List<Type> temp = (List<Type>) Arrays.asList(gson.fromJson(reader, destinationType.getClass()));
             list = new ArrayList<>(temp);
             reader.close();
         } catch (IOException e) {

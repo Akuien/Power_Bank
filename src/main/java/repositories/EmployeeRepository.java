@@ -28,7 +28,7 @@ public class EmployeeRepository extends AbstractRepository { // This Repository 
         ArrayList<Employee> employees = EmployeeRepository.persistenceData.getEmployees();
         Employee foundEmployee = null;
         for (Employee employee : employees){
-            if (employee.getAccessToken() == accessToken){
+            if (employee.getAccessToken() != null && employee.getAccessToken().equals(accessToken)){
                 foundEmployee = employee;
             }
         }
@@ -40,10 +40,11 @@ public class EmployeeRepository extends AbstractRepository { // This Repository 
         ArrayList<Employee> employees = EmployeeRepository.persistenceData.getEmployees();
         Employee foundEmployee = null;
         for (Employee employee : employees){
-            if (employee.getEmail() == email){
+            if (employee.getEmail().equals(email)){
                 foundEmployee = employee;
             }
         }
+        System.out.println("Here first:" + foundEmployee);
         return foundEmployee;
     }
 

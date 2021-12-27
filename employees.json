@@ -3,11 +3,11 @@
     "position": "employee",
     "firstName": "Jeff",
     "lastName": "Bloom",
-    "SSN": 990207123,
+    "SSN": 860409123,
     "password": "boom",
     "email": "jeff.bloom@gmail.com",
     "phoneNumber": "07459734015",
-    "birthDate": "Jan 1, 1988, 11:04:11 AM"
+    "birthDate": "Apr 9, 1986, 12:36:28 PM"
   },
   {
     "position": "employee",
@@ -17,6 +17,6 @@
     "password": "black",
     "email": "jack.black@gmail.com",
     "phoneNumber": "07470923784",
-    "birthDate": "Jan 1, 1988, 11:04:11 AM"
+    "birthDate": "Mar 9, 1973, 12:36:28 PM"
   }
 ]

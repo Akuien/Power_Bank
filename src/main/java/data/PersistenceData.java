@@ -37,7 +37,8 @@ public class PersistenceData {
     //We need to specify the type of object we are going to read or write for each method, for this reason the CustomJsonIo class needs to receive the "Type" parameter.
     public ArrayList<Employee> getEmployees() {
         CustomJsonIo<Employee> file = new CustomJsonIo<>();
-        employees = file.readArrayFromJson("employees.json", Employee.class);
+        Employee[] array = new Employee[0];
+        employees = file.readArrayFromJson("employees.json", array);
         return employees;
     }
 
@@ -50,7 +51,8 @@ public class PersistenceData {
 
     public ArrayList<Customer> getCustomers() {
         CustomJsonIo<Customer> file = new CustomJsonIo<>();
-        customers = file.readArrayFromJson("customers.json", Customer.class);
+        Customer[] array = new Customer[0];
+        customers = file.readArrayFromJson("customers.json", array);
         return customers;
     }
 
@@ -63,7 +65,8 @@ public class PersistenceData {
 
     public ArrayList<Shareholder> getShareHolders() {
         CustomJsonIo<Shareholder> file = new CustomJsonIo<>();
-        shareholders = file.readArrayFromJson("shareholders.json", Shareholder.class);
+        Shareholder[] array = new Shareholder[0];
+        shareholders = file.readArrayFromJson("shareholders.json", array);
         return shareholders;
     }
 
@@ -76,7 +79,8 @@ public class PersistenceData {
 
     public ArrayList<Manager> getManagers() {
         CustomJsonIo<Manager> file = new CustomJsonIo<>();
-        managers = file.readArrayFromJson("managers.json", Manager.class);
+        Manager[] array = new Manager[0];
+        managers = file.readArrayFromJson("managers.json", array);
         return managers;
     }
 
@@ -89,7 +93,8 @@ public class PersistenceData {
 
     public ArrayList<BankAccount> getBankAccounts() {
         CustomJsonIo<BankAccount> file = new CustomJsonIo<>();
-        bankAccounts = file.readArrayFromJson("bankAccounts.json", BankAccount.class);
+        BankAccount[] array = new BankAccount[0];
+        bankAccounts = file.readArrayFromJson("bankAccounts.json", array);
         return bankAccounts;
     }
 
@@ -102,7 +107,8 @@ public class PersistenceData {
 
     public ArrayList<Transaction> getTransactions() {
         CustomJsonIo<Transaction> file = new CustomJsonIo<>();
-        transactions = file.readArrayFromJson("transactions.json", Transaction.class);
+        Transaction[] array = new Transaction[0];
+        transactions = file.readArrayFromJson("transactions.json", array);
         return transactions;
     }
 
@@ -115,7 +121,8 @@ public class PersistenceData {
 
     public ArrayList<Portfolio> getPortfolios() {
         CustomJsonIo<Portfolio> file = new CustomJsonIo<>();
-        portfolios = file.readArrayFromJson("portfolios.json", Portfolio.class);
+        Portfolio[] array = new Portfolio[0];
+        portfolios = file.readArrayFromJson("portfolios.json", array);
         return portfolios;
     }
 
@@ -128,7 +135,8 @@ public class PersistenceData {
 
     public ArrayList<Company> getCompanies() {
         CustomJsonIo<Company> file = new CustomJsonIo<>();
-        companies = file.readArrayFromJson("companies.json", Company.class);
+        Company[] array = new Company[0];
+        companies = file.readArrayFromJson("companies.json", array);
         return companies;
     }
 
@@ -141,7 +149,8 @@ public class PersistenceData {
 
     public ArrayList<Mortgage> getMortgages() {
         CustomJsonIo<Mortgage> file = new CustomJsonIo<>();
-        mortgages = file.readArrayFromJson("mortgages.json", Mortgage.class);
+        Mortgage[] array = new Mortgage[0];
+        mortgages = file.readArrayFromJson("mortgages.json", array);
         return mortgages;
     }
 
