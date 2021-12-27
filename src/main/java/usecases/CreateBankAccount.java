@@ -21,19 +21,19 @@ public class CreateBankAccount {
     }
 
     public String execute(long employeeSSN, long customerSSN, String bankAccountName) throws Exception {
-        //Checks if the employee exists
+        // Checks if the employee exists.
         boolean employeeExists = validateEmployee.execute(employeeSSN);
         if (!employeeExists){
             throw new EmployeeDoesNotExistException(employeeSSN);
         }
 
-        //We check if the customer who is doing the application exists
+        // We check if the customer who is doing the operation exists.
         boolean customerExists = validateCustomer.execute(customerSSN);
         if (!customerExists){
             throw new CustomerDoesNotExistException(customerSSN);
         }
 
-        //With this method we can generate an accountNumber
+        // With this method we can generate an accountNumber.
         long accountNumber = ThreadLocalRandom.current().nextLong(100000000,999999999);
 
         BankAccount bankAccount = new BankAccount(0, bankAccountName, accountNumber, customerSSN);

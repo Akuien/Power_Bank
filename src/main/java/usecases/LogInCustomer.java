@@ -22,7 +22,7 @@ public class LogInCustomer {
         customer.setAccessToken(UUID.randomUUID().toString());
         customerRepository.updateProfile(customer);
         return customer.getAccessToken();
-        //We return the token so that javaFX can keep it for future operations
+        // We return the token so that javaFX can keep it for future operations, if we decide to implement it.
     }
 
 }

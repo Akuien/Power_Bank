@@ -28,48 +28,48 @@ public class TransferMoneyToAnotherAccount {
     }
 
     public double execute(long originSSN, long originAccountNumber, long finalSSN, long finalAccountNumber, double amount) throws Exception {
-        //Checks if origin customer exists
+        // Checks if origin customer exists.
         boolean originCustomerExists = validateCustomer.execute(originSSN);
         if (!originCustomerExists){
             throw new CustomerDoesNotExistException(originSSN);
         }
 
-        //Checks if origin customer bankAccount exists
+        // Checks if origin customer bankAccount exists.
         boolean originCustomerBankAccountExists = validateCustomerBankAccount.execute(originSSN, originAccountNumber);
         if (!originCustomerBankAccountExists){
             throw new BankAccountDoesNotExistException(originAccountNumber);
         }
 
-        //Checks if origin customer has enough funds to do the transaction
+        // Checks if origin customer has enough funds to do the transaction.
         boolean hasFunds = validateFunds.execute(originAccountNumber, amount);
         if (!hasFunds){
             throw new DoesNotHaveEnoughFundsException();
         }
 
-        //checks if final customer exists
+        // Checks if final customer exists.
         boolean finalCustomerExists = validateCustomer.execute(finalSSN);
         if (!finalCustomerExists){
             throw new CustomerDoesNotExistException(finalSSN);
         }
 
-        //Checks if final customer bankAccount exists
+        // Checks if final customer bankAccount exists.
         boolean finalCustomerBankAccountExists = validateCustomerBankAccount.execute(finalSSN, finalAccountNumber);
         if (!finalCustomerBankAccountExists){
             throw new BankAccountDoesNotExistException(finalAccountNumber);
         }
 
-        //Executes the program
+        // Executes the program.
         double originBalance = debitOriginBalance(originAccountNumber, amount);
         double finalBalance = creditFinalBalance(finalAccountNumber, amount);
         addTransaction(originAccountNumber, finalAccountNumber, amount, TransactionType.debit, new Date());
         return originBalance;
     }
 
-    //Debit means when the money goes out of your account
-    //Credit means when the money goes into your account
+    // Debit means when the money goes out of your account.
+    // Credit means when the money goes into your account.
 
 
-    //This method gets out the money from the origin customer
+    // This method gets out the money from the origin customer.
     private double debitOriginBalance(long originAccountNumber, double amount){
         BankAccount originBankAccount = bankAccountRepository.getAccountByAccountNumber(originAccountNumber);
         originBankAccount.setBalance(originBankAccount.getBalance() - amount);
@@ -77,7 +77,7 @@ public class TransferMoneyToAnotherAccount {
         return originBankAccount.getBalance();
     }
 
-    //This method adds in the money to the final customer
+    // This method adds in the money to the final customer.
     private double creditFinalBalance(long finalAccountNumber, double amount){
         BankAccount finalBankAccount = bankAccountRepository.getAccountByAccountNumber(finalAccountNumber);
         finalBankAccount.setBalance(finalBankAccount.getBalance() + amount);
@@ -85,7 +85,7 @@ public class TransferMoneyToAnotherAccount {
         return finalBankAccount.getBalance();
     }
 
-    //This method adds the transaction to the ArrayList in persistenceData
+    // This method adds the transaction to the ArrayList in persistenceData.
     private void addTransaction(long originAccountNumber, long finalAccountNumber, double price, String type, Date currentDate){
         Transaction transaction = new Transaction(originAccountNumber, finalAccountNumber, price, type, currentDate);
         transactionRepository.createTransaction(transaction);

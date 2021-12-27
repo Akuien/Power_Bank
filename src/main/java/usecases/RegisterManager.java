@@ -46,7 +46,6 @@ public class RegisterManager {
             throw new NameIsBlankException();
         }
 
-        //It does not show why the password is incorrect.
         boolean passwordIsCorrect = validatePassword.execute(password);
         if (!passwordIsCorrect) {
             throw new IncorrectPasswordException();
@@ -64,7 +63,7 @@ public class RegisterManager {
 
             Employee employee = new Employee(firstName, lastName, newManagerSSN, password, email, phoneNumber, birthDate);
             employeeRepository.createProfile(employee);
-            return "Customer registered successfully"; // add toString later
+            return "Customer registered successfully"; // The exact same logic as other "register" Classes.
 
         }
     }

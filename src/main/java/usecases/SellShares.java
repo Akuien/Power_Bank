@@ -31,7 +31,7 @@ public class SellShares {
     }
 
     public String execute(String companyName, int quantity, long customerSSN, long customerAccountNumber) throws Exception {
-        //Validations
+        // Below are validations, which check the requirements and throw exceptions to stop code from executing.
         boolean shareholderExists = validateShareholder.execute(customerSSN);
         if (!shareholderExists){
             throw new ShareholderDoesNotExistException(customerSSN);
@@ -50,7 +50,7 @@ public class SellShares {
         }
         double purchasePrice = company.getStockPrice() * quantity;
 
-        //Use Case
+        // The central code for this use case, which sells shares.
         Date now = new Date();
 
         addCreditTransaction(customerAccountNumber, purchasePrice, now);
@@ -60,8 +60,8 @@ public class SellShares {
         return "Sale made successfully.";
     }
 
-    //We created these three private methods to make the execute method more understandable
-    //We do not want to use these methods onwards, just here
+    // We created these three private methods to make the execute method more understandable.
+    // We do not want to use these methods onwards, just in this class.
     private void addCreditTransaction(long accountNumber, double price, Date currentDate){
         Transaction transaction = new Transaction(accountNumber, accountNumber, price, TransactionType.debit, currentDate);
         transactionRepository.createTransaction(transaction);

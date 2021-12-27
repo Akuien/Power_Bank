@@ -29,11 +29,12 @@ public class ApplyForMortgage {
             throw new CustomerDoesNotExistException(SSN);
         }
         boolean bankAccountExists = validateCustomerBankAccount.execute(SSN, accountNumber);
-        //checks if the bank account exists
+        // checks if the bank account exists.
         if (!bankAccountExists){
             throw new BankAccountDoesNotExistException(accountNumber);
         }
         boolean acceptsMortgage = validateMortgage.execute(accountNumber, totalMortgageValue, years);
+        // checks if conditions for a Mortgage are met.
         if (!acceptsMortgage){
             throw new DoesNotComplyConditionsForMortgage();
         }
@@ -41,7 +42,7 @@ public class ApplyForMortgage {
         long loanID = ThreadLocalRandom.current().nextLong(100000000,999999999);
         double monthPayment = monthPayment(totalMortgageValue, 0.03, initialDeposit, years);
         Mortgage mortgage = new Mortgage(SSN, loanID, years, initialDeposit, totalMortgageValue, monthPayment);
-        mortgageRepository.createMortgage(mortgage);
+        mortgageRepository.createMortgage(mortgage); // Mortgage details.
 
 
         return "Mortgage request with " + loanID + " created successfully with a month payment of " + monthPayment + " SEK. Please wait till an operator checks the application.";
@@ -49,7 +50,7 @@ public class ApplyForMortgage {
 
     private double monthPayment(double totalMortgageValue, double interestRate, double initialDeposit, double years){
         double totalInterest = interestRate * totalMortgageValue;
-        return ((totalMortgageValue + totalInterest - initialDeposit) / (years * 12));
+        return ((totalMortgageValue + totalInterest - initialDeposit) / (years * 12)); // calculates monthly payment.
     }
 
 

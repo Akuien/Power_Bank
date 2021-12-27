@@ -2,7 +2,7 @@ package usecases;
 
 public class ValidatePassword {
 
-    public boolean execute(String password) { // Password need to contain Uppercase, lowercase, number and be longer then 8
+    public boolean execute(String password) { // Password needs to contain uppercase, lowercase, a number and be longer then 8 symbols.
         int count = 0;
         for (int i = 0; i < password.length(); i++) {
             if (Character.isUpperCase(password.charAt(i))){

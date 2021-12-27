@@ -29,22 +29,22 @@ public class WithdrawMoney {
     }
 
     public double execute(long SSN, long accountNumber, double amount) throws Exception {
-        //Check if customer exists
+        // Check if customer exists.
         boolean customerExists = validateCustomer.execute(SSN);
         if (!customerExists){
             throw new CustomerDoesNotExistException(SSN);
         }
-        //Check if a customer bank account exists
+        // Check if a customer bank account exists.
         boolean customerBankAccountExists = validateCustomerBankAccount.execute(SSN, accountNumber);
         if (!customerBankAccountExists){
             throw new BankAccountDoesNotExistException(accountNumber);
         }
-        //Check if account has enough funds
+        // Check if account has enough funds.
         boolean hasFunds = validateFunds.execute(accountNumber, amount);
         if (!hasFunds){
             throw new DoesNotHaveEnoughFundsException();
         }
-        //Execute the program
+        // Execute the program.
         addDebitTransaction(accountNumber, amount, new Date());
         return debitBalance(accountNumber, amount);
     }

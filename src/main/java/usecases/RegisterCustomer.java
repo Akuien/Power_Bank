@@ -27,7 +27,7 @@ public class RegisterCustomer {
             throw new CustomerAlreadyExistsException(SSN);
         }
 
-        boolean firstNameIsCorrect = !firstName.isBlank();
+        boolean firstNameIsCorrect = !firstName.isBlank(); // These methods check so that customer doesn't enter an empty name.
         if (!firstNameIsCorrect) {
             throw new NameIsBlankException();
         }
@@ -37,7 +37,6 @@ public class RegisterCustomer {
             throw new NameIsBlankException();
         }
 
-        //It does not show why the password is incorrect.
         boolean passwordIsCorrect = validatePassword.execute(password);
         if (!passwordIsCorrect) {
             throw new IncorrectPasswordException();
@@ -55,7 +54,7 @@ public class RegisterCustomer {
         } else {
             Customer customer = new Customer(firstName, lastName, SSN, password, email, phoneNumber, birthDate);
             customerRepository.createProfile(customer);
-            return "Customer registered successfully"; // add toString later
+            return "Customer registered successfully"; // When all the requirements are met, a new customer profile is created in our system.
         }
     }
 }

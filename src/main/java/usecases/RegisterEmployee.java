@@ -64,7 +64,11 @@ public class RegisterEmployee {
 
         Employee employee = new Employee(firstName, lastName, employeeSSN, password, email, phoneNumber, birthDate);
         employeeRepository.createProfile(employee);
-        return "Customer registered successfully"; // add toString later
+        return "Employee registered successfully";
+
+        // Employee profile is created once every requirement is met.
+        // Because of throw-exceptions, code will stop executing if a requirement is not meant.
+        // This prevents the system from creating bad profiles. Same with the previous Class.
 
     }
 

@@ -20,11 +20,10 @@ public class ValidateMortgage {
 
     public boolean execute(long accountNumber,double totalMortgageValue, double time){
         BankAccount bankAccount = bankAccountRepository.getAccountByAccountNumber(accountNumber);
-        //Do we need any other validations for
         if (bankAccount.getBalance() < 0.2 * totalMortgageValue){
-            return false;
+            return false; // It is impossible to get a Mortgage if you do not have 20% of the total Mortgage value in your funds.
         }
-        //The customer cannot ask for a mortgage to pay in +40 years
+        // The customer cannot ask for a Mortgage to pay in +40 years.
         if (time > 40){
             return false;
         }
