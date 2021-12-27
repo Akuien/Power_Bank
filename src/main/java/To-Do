@@ -1,3 +1,5 @@
+-Pull the code modified yesterday (Oscar)
+-Show use-case diagram (Oscar)
 -There are json files missing that should have been finished.
     -File for BankAccounts
     -File for Mortgages
@@ -7,4 +9,12 @@
     -File for Customers
     (all of them should have the encoding UTF-8)
 -The encoding of the json files should be UTF-8, not any other, since the other teammates may not be able to see the content.
--Testing is required for the rest of the ArrayLists.
+-Testing is required for the rest of the ArrayLists. (Sabin) --> CustomJsonIo
+-Continue with the documentation right on point
+-Presentation preparation with Aleksey
+-Project management experience report
+-Plan next activities for trello and clean the current template
+
+DOING:
+-Aleksey: comments for use cases
+-
