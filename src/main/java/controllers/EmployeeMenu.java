@@ -64,6 +64,8 @@ public class EmployeeMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
                 // Customer list address is now pointing to obtainCustomers execute method,
                 // and then the for loop loops through the list and print out every customer.
@@ -77,6 +79,8 @@ public class EmployeeMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
                 // take input from the user, and loop through all the bank accounts in the list and print them out.
                 case 2:
@@ -89,6 +93,8 @@ public class EmployeeMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
                 // loop through the list of pending mortgages and print each one of them.
                 case 3:
@@ -101,6 +107,8 @@ public class EmployeeMenu {
                     catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
                 // loop through the list of pending bank accounts and print them out.
                 case 4:
@@ -113,6 +121,8 @@ public class EmployeeMenu {
                     catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
                 // entering all the values for changing the mortgage status, and then calling the change mortgage status class.
                 case 5:
@@ -129,6 +139,8 @@ public class EmployeeMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
                 // entering all the values for changing the bank account status, and the calling change bank account status class.
                 case 6:
@@ -144,6 +156,8 @@ public class EmployeeMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 7:
@@ -158,13 +172,16 @@ public class EmployeeMenu {
                         System.out.println(exception.getMessage());
                     }
 
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+
+                    break;
+
                 // if user enters anything above 6, below 0 or not a digit, then the system will ask the user to print out a valid option.
                 default:
                     System.out.println("Please enter valid option");
                     option = UserInput.inputInt("Enter an option: ");
                     break;
-
-
             }
         } while (option != 0);
     }
