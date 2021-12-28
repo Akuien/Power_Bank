@@ -65,6 +65,8 @@ public class CustomerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 1:
@@ -81,6 +83,8 @@ public class CustomerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 2:
@@ -95,6 +99,8 @@ public class CustomerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 3:
@@ -109,6 +115,8 @@ public class CustomerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 4:
@@ -122,6 +130,8 @@ public class CustomerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 5:
@@ -138,6 +148,8 @@ public class CustomerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 6:
@@ -151,6 +163,8 @@ public class CustomerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 7:
@@ -163,6 +177,8 @@ public class CustomerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 8:
@@ -176,6 +192,8 @@ public class CustomerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 9:
@@ -197,6 +215,8 @@ public class CustomerMenu {
                     catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 10:
@@ -209,6 +229,8 @@ public class CustomerMenu {
                     catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 default:
