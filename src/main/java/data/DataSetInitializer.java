@@ -2,6 +2,10 @@ package data;
 
 import domain.entities.*;
 
+import javax.sound.sampled.Port;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -78,7 +82,7 @@ public class DataSetInitializer {
         customers.add(customer1);
         customers.add(customer2);
 
-        //Populate the employee.json file with an initial data set
+        //Populate the customers.json file with an initial data set
 
         data.setCustomers(customers);
 
@@ -150,19 +154,81 @@ public class DataSetInitializer {
         //which will later be stored in the bankAccounts.json file
 
 
-/*        //We create 2 bankAccounts,
+        //We create 2 bankAccounts,
         // and then add them to the bankAccounts arraylist
         BankAccount account1 = new BankAccount(100, "Elizabeth Banks", 481046478, 970213742);
-        BankAccount account2 = new BankAccount(300, "Elizabeth Banks", 481046478, 970213742);
-        ArrayList<Manager> managers = new ArrayList<>();
-        managers.add(manager1);
-        managers.add(manager2);
+        BankAccount account2 = new BankAccount(300, "Michaela Snow", 740375897, 970213742);
+        ArrayList<BankAccount> bankAccounts = new ArrayList<>();
+        bankAccounts.add(account1);
+        bankAccounts.add(account2);
 
-        //Populate the managers.json file with an initial data set
+        //Populate the bankAccounts.json file with an initial data set
 
-        data.setManagers(managers);*/
+        data.setBankAccounts(bankAccounts);
 
+        //Create 2 transactions and add them to the arraylist
+        //which will later be stored in the transactions.json file
 
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        Date transactionDate = Date.from(now.atZone(ZoneId.systemDefault()).toInstant());
+
+        //We create 2 transactions,
+        // and then add them to the transactions arraylist
+        Transaction transaction1 = new Transaction(740375897, 481046478, 50, "debit", transactionDate);
+        Transaction transaction2 = new Transaction(481046478, 740375897, 20, "debit", transactionDate);
+        ArrayList<Transaction> transactions = new ArrayList<>();
+        transactions.add(transaction1);
+        transactions.add(transaction2);
+
+        //Populate the bankAccounts.json file with an initial data set
+
+        data.setTransactions(transactions);
+
+        //Create 2 portfolios for each shareholder and add them to the arraylist
+        //which will later be stored in the portfolios.json file
+
+        //We create 2 portfolios,
+        // and then add them to the portfolios arraylist
+        Portfolio portfolio1 = new Portfolio(941205153);
+        Portfolio portfolio2 = new Portfolio(790504871);
+        ArrayList<Portfolio> portfolios = new ArrayList<>();
+        portfolios.add(portfolio1);
+        portfolios.add(portfolio2);
+
+        //Populate the portfolios.json file with an initial data set
+
+        data.setPortfolios(portfolios);
+
+        //Create 2 companies to use them for stock trading and add them to the arraylist
+        //which will later be stored in the companies.json file
+
+        //We create 2 companies,
+        // and then add them to the companies arraylist
+        Company company1 = new Company("Tesla", 30.45);
+        Company company2 = new Company("Google", 20.87);
+        ArrayList<Company> companies = new ArrayList<>();
+        companies.add(company1);
+        companies.add(company2);
+
+        //Populate the companies.json file with an initial data set
+
+        data.setCompanies(companies);
+
+        //Create 2 mortgages for each customer and add them to the arraylist
+        //which will later be stored in the mortgages.json file
+
+        //We create 2 mortgages,
+        // and then add them to the mortgages arraylist
+        Mortgage mortgage1 = new Mortgage(970213742, 1, 10.00, 45, 400, 10);
+        Mortgage mortgage2 = new Mortgage(880702813, 2, 13.15, 70, 800, 25);
+        ArrayList<Mortgage> mortgages = new ArrayList<>();
+        mortgages.add(mortgage1);
+        mortgages.add(mortgage2);
+
+        //Populate the mortgages.json file with an initial data set
+
+        data.setMortgages(mortgages);
 
     }
 }
