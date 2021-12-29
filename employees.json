@@ -18,6 +18,7 @@
     "password": "black",
     "email": "jack.black@gmail.com",
     "phoneNumber": "07470923784",
-    "birthDate": "Mar 9, 1973, 12:36:28 PM"
+    "birthDate": "Mar 9, 1973, 12:36:28 PM",
+    "accessToken": "a9328497-5df7-4ff2-8b7f-1bc946f6136a"
   }
 ]

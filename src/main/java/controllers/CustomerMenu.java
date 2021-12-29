@@ -65,8 +65,6 @@ public class CustomerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
-                    printMenu();
-                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 1:

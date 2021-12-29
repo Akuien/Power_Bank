@@ -64,8 +64,6 @@ public class EmployeeMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
-                    printMenu();
-                    option = UserInput.inputInt("Enter option: ");
                     break;
                 // Customer list address is now pointing to obtainCustomers execute method,
                 // and then the for loop loops through the list and print out every customer.
@@ -179,8 +177,7 @@ public class EmployeeMenu {
 
                 // if user enters anything above 6, below 0 or not a digit, then the system will ask the user to print out a valid option.
                 default:
-                    System.out.println("Please enter valid option");
-                    option = UserInput.inputInt("Enter an option: ");
+                    option = UserInput.inputInt("Please enter a valid option: ");
                     break;
             }
         } while (option != 0);
