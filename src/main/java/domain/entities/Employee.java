@@ -2,9 +2,10 @@ package domain.entities;
 
 import domain.constants.UserType;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Employee extends AbstractUser{
+public class Employee extends AbstractUser {
     protected String position;
 
     public Employee(String firstName, String lastName, long SSN, String password, String email, String phoneNumber, Date birthDate){

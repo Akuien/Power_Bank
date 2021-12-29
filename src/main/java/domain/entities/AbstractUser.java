@@ -25,7 +25,7 @@ public abstract class AbstractUser {
     }
 
     public String toString(){
-        return firstName + lastName + " " + SSN;
+        return firstName + " " + lastName + ", SSN: " + SSN;
     }
 
     public long getAge(){
