@@ -55,10 +55,10 @@ public class ShareholderMenu {
                 "6. Apply for Bank Account" + EOL +
                 "7. List of bank accounts " + EOL +
                 "8. Look at transaction history" + EOL +
-                "9. Check portfolio" + EOL +
                 "9. Buy shares" + EOL +
                 "10. Sell shares" + EOL +
                 "11. List companies with stocks" + EOL +
+                "12. Check portfolio" + EOL +
                 "Type an option number: ");
     }
 

@@ -63,7 +63,15 @@ public class CustomerLogInMenu {
                         else{
                             shareholderMenu.printMenu();
                             option = UserInput.inputInt("Enter an option: ");
-                            Shareholder shareholder = (Shareholder) customer;
+                            Shareholder shareholder = new Shareholder(
+                                    customer.getFirstName(),
+                                    customer.getLastName(),
+                                    customer.getSSN(),
+                                    customer.getPassword(),
+                                    customer.getEmail(),
+                                    customer.getPhoneNumber(),
+                                    customer.getBirthDate()
+                            );
                             shareholderMenu.menu(option, shareholder);
                         }
                         printMenu();
@@ -99,7 +107,15 @@ public class CustomerLogInMenu {
                         else{
                             shareholderMenu.printMenu();
                             option = UserInput.inputInt("Enter an option: ");
-                            Shareholder shareholder = (Shareholder) customer;
+                            Shareholder shareholder = new Shareholder(
+                                    customer.getFirstName(),
+                                    customer.getLastName(),
+                                    customer.getSSN(),
+                                    customer.getPassword(),
+                                    customer.getEmail(),
+                                    customer.getPhoneNumber(),
+                                    customer.getBirthDate()
+                            );
                             shareholderMenu.menu(option, shareholder);
                         }
                         printMenu();

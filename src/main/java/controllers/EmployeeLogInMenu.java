@@ -46,7 +46,15 @@ public class EmployeeLogInMenu implements IControllers{
                         } else {
                             managerMenu.printMenu(); // checks if it is a manager who logs in.
                             option = UserInput.inputInt("Enter option: ");
-                            Manager manager = (Manager) employee;
+                            Manager manager = new Manager(
+                                    employee.getFirstName(),
+                                    employee.getLastName(),
+                                    employee.getSSN(),
+                                    employee.getPassword(),
+                                    employee.getEmail(),
+                                    employee.getPhoneNumber(),
+                                    employee.getBirthDate()
+                            );
                             managerMenu.menu(option, manager);
                         }
                         printMenu();

@@ -33,5 +33,33 @@
     "amount": 50.0,
     "type": "debit",
     "createdAt": "Jan 1, 2022, 6:04:06 PM"
+  },
+  {
+    "originBankAccountNumber": 498145866,
+    "finalBankAccountNumber": 498145866,
+    "amount": 970.0,
+    "type": "debit",
+    "createdAt": "Jan 1, 2022, 6:36:13 PM"
+  },
+  {
+    "originBankAccountNumber": 498145866,
+    "finalBankAccountNumber": 498145866,
+    "amount": 10000.0,
+    "type": "credit",
+    "createdAt": "Jan 1, 2022, 6:46:28 PM"
+  },
+  {
+    "originBankAccountNumber": 498145866,
+    "finalBankAccountNumber": 498145866,
+    "amount": 1940.0,
+    "type": "debit",
+    "createdAt": "Jan 1, 2022, 6:47:07 PM"
+  },
+  {
+    "originBankAccountNumber": 498145866,
+    "finalBankAccountNumber": 498145866,
+    "amount": 194.0,
+    "type": "debit",
+    "createdAt": "Jan 1, 2022, 6:51:39 PM"
   }
 ]
