@@ -59,7 +59,7 @@ public class ChangeStatusMortgage {
         }
 
         // Checks if status is either rejected or approved.
-        if (!choice.toLowerCase().equals(MortgageStatus.approved) || !choice.toLowerCase().equals(MortgageStatus.rejected)){
+        if (!choice.toLowerCase().equals(MortgageStatus.approved) && !choice.toLowerCase().equals(MortgageStatus.rejected)){
             throw new StatusNotAllowedException();
         }
 

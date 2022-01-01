@@ -8,7 +8,7 @@ public class ValidateFunds {
     private BankAccountRepository bankAccountRepository;
 
     public ValidateFunds(){
-        BankAccountRepository bankAccountRepository = new BankAccountRepository();
+         this.bankAccountRepository = new BankAccountRepository();
     }
 
     public boolean execute(long accountNumber, double totalAmount){

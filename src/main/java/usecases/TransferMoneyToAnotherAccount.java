@@ -4,6 +4,7 @@ import domain.constants.TransactionType;
 import domain.entities.BankAccount;
 import domain.entities.Transaction;
 import domain.exceptions.BankAccountDoesNotExistException;
+import domain.exceptions.BankAccountNotApprovedException;
 import domain.exceptions.CustomerDoesNotExistException;
 import domain.exceptions.DoesNotHaveEnoughFundsException;
 import repositories.BankAccountRepository;
@@ -15,6 +16,7 @@ public class TransferMoneyToAnotherAccount {
 
     private ValidateCustomer validateCustomer;
     private ValidateCustomerBankAccount validateCustomerBankAccount;
+    private ValidateCustomerBankAccountStatus validateCustomerBankAccountStatus;
     private ValidateFunds validateFunds;
     private BankAccountRepository bankAccountRepository;
     private TransactionRepository transactionRepository;
@@ -22,6 +24,7 @@ public class TransferMoneyToAnotherAccount {
     public TransferMoneyToAnotherAccount(){
         this.validateCustomer = new ValidateCustomer();
         this.validateCustomerBankAccount = new ValidateCustomerBankAccount();
+        this.validateCustomerBankAccountStatus = new ValidateCustomerBankAccountStatus();
         this.validateFunds = new ValidateFunds();
         this.bankAccountRepository = new BankAccountRepository();
         this.transactionRepository = new TransactionRepository();
@@ -38,6 +41,10 @@ public class TransferMoneyToAnotherAccount {
         boolean originCustomerBankAccountExists = validateCustomerBankAccount.execute(originSSN, originAccountNumber);
         if (!originCustomerBankAccountExists){
             throw new BankAccountDoesNotExistException(originAccountNumber);
+        }
+        boolean approvedOriginBankAccount = validateCustomerBankAccountStatus.execute(originSSN, originAccountNumber);
+        if (!approvedOriginBankAccount){
+            throw new BankAccountNotApprovedException(originAccountNumber);
         }
 
         // Checks if origin customer has enough funds to do the transaction.
@@ -57,7 +64,10 @@ public class TransferMoneyToAnotherAccount {
         if (!finalCustomerBankAccountExists){
             throw new BankAccountDoesNotExistException(finalAccountNumber);
         }
-
+        boolean approvedFinalBankAccount = validateCustomerBankAccountStatus.execute(finalSSN, finalAccountNumber);
+        if (!approvedFinalBankAccount){
+            throw new BankAccountNotApprovedException(finalAccountNumber);
+        }
         // Executes the program.
         double originBalance = debitOriginBalance(originAccountNumber, amount);
         double finalBalance = creditFinalBalance(finalAccountNumber, amount);

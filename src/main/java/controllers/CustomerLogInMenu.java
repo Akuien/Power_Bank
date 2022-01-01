@@ -66,6 +66,9 @@ public class CustomerLogInMenu {
                             Shareholder shareholder = (Shareholder) customer;
                             shareholderMenu.menu(option, shareholder);
                         }
+                        printMenu();
+                        option = UserInput.inputInt("Enter an option: ");
+
                     } catch (Exception exception){
                         System.out.println(exception.getMessage());
                         System.out.println("Wrong email/password. Please review your input and try again");
@@ -99,6 +102,8 @@ public class CustomerLogInMenu {
                             Shareholder shareholder = (Shareholder) customer;
                             shareholderMenu.menu(option, shareholder);
                         }
+                        printMenu();
+                        option = UserInput.inputInt("Enter an option: ");
                     }
                     catch (Exception exception) {
                         System.out.println("Invalid input!");
@@ -106,6 +111,7 @@ public class CustomerLogInMenu {
                         System.out.println("Please check if input for each field complies with the provided format, and then try again.");
                     }
                     break;
+
                 default:
                     System.out.println("Please enter valid option");
                     option = UserInput.inputInt("Enter an option: ");

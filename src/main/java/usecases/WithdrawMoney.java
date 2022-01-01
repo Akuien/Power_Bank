@@ -4,6 +4,7 @@ import domain.constants.TransactionType;
 import domain.entities.BankAccount;
 import domain.entities.Transaction;
 import domain.exceptions.BankAccountDoesNotExistException;
+import domain.exceptions.BankAccountNotApprovedException;
 import domain.exceptions.CustomerDoesNotExistException;
 import domain.exceptions.DoesNotHaveEnoughFundsException;
 import repositories.BankAccountRepository;
@@ -15,6 +16,7 @@ public class WithdrawMoney {
 
     private ValidateCustomer validateCustomer;
     private ValidateCustomerBankAccount validateCustomerBankAccount;
+    private ValidateCustomerBankAccountStatus validateCustomerBankAccountStatus;
     private ValidateFunds validateFunds;
     private BankAccountRepository bankAccountRepository;
     private TransactionRepository transactionRepository;
@@ -23,6 +25,7 @@ public class WithdrawMoney {
     public WithdrawMoney(){
         this.validateCustomer = new ValidateCustomer();
         this.validateCustomerBankAccount = new ValidateCustomerBankAccount();
+        this.validateCustomerBankAccountStatus = new ValidateCustomerBankAccountStatus();
         this.validateFunds = new ValidateFunds();
         this.bankAccountRepository = new BankAccountRepository();
         this.transactionRepository = new TransactionRepository();
@@ -38,6 +41,10 @@ public class WithdrawMoney {
         boolean customerBankAccountExists = validateCustomerBankAccount.execute(SSN, accountNumber);
         if (!customerBankAccountExists){
             throw new BankAccountDoesNotExistException(accountNumber);
+        }
+        boolean approvedBankAccount = validateCustomerBankAccountStatus.execute(SSN, accountNumber);
+        if (!approvedBankAccount){
+            throw new BankAccountNotApprovedException(accountNumber);
         }
         // Check if account has enough funds.
         boolean hasFunds = validateFunds.execute(accountNumber, amount);

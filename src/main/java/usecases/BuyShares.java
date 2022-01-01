@@ -12,6 +12,7 @@ public class BuyShares {
     private ValidateShareholder validateShareholder;
     private ValidateCustomer validateCustomer;
     private ValidateCustomerBankAccount validateCustomerBankAccount;
+    private ValidateCustomerBankAccountStatus validateCustomerBankAccountStatus;
     private ValidateFunds validateFunds;
     private BankAccountRepository bankAccountRepository;
     private PortfolioRepository portfolioRepository;
@@ -23,6 +24,7 @@ public class BuyShares {
         this.validateShareholder = new ValidateShareholder();
         this.validateCustomer = new ValidateCustomer();
         this.validateCustomerBankAccount = new ValidateCustomerBankAccount();
+        this.validateCustomerBankAccountStatus = new ValidateCustomerBankAccountStatus();
         this.validateFunds = new ValidateFunds();
         this.bankAccountRepository = new BankAccountRepository();
         this.portfolioRepository = new PortfolioRepository();
@@ -40,6 +42,10 @@ public class BuyShares {
         boolean customerBankAccountExists = validateCustomerBankAccount.execute(customerSSN, customerAccountNumber);
         if (!customerBankAccountExists){
             throw new BankAccountDoesNotExistException(customerAccountNumber);
+        }
+        boolean approvedBankAccount = validateCustomerBankAccountStatus.execute(customerSSN, customerAccountNumber);
+        if (!approvedBankAccount){
+            throw new BankAccountNotApprovedException(customerAccountNumber);
         }
         Company company = companyRepository.getCompanyByName(companyName);
         if (company == null){

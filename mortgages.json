@@ -1,0 +1,22 @@
+[
+  {
+    "customerSSN": 970213742,
+    "loanID": 929899041,
+    "time": 3.0,
+    "interestRate": 0.03,
+    "initialDeposit": 100.0,
+    "totalValue": 1000.0,
+    "monthPayment": 25.833333333333332,
+    "status": "pending"
+  },
+  {
+    "customerSSN": 970213742,
+    "loanID": 647299613,
+    "time": 20.0,
+    "interestRate": 0.03,
+    "initialDeposit": 2.0,
+    "totalValue": 1200.0,
+    "monthPayment": 5.141666666666667,
+    "status": "pending"
+  }
+]

@@ -73,7 +73,7 @@ public class CustomerMenu {
                         long originAccountNumber = UserInput.inputLong(" Enter sender's Account Number: ");
                         long finalSSN = UserInput.inputLong(" Enter receiver's SSN: ");
                         long finalAccountNumber = UserInput.inputLong(" Enter receiver's Account Number: ");
-                        double amount = UserInput.inputLong(" Enter Amount: ");
+                        double amount = UserInput.inputDouble(" Enter Amount(e.g 100,07): ");
 
                         double balance = transferMoneyToAnotherAccount.execute(originSSN, originAccountNumber, finalSSN, finalAccountNumber, amount);
                         System.out.println("Your balance after the operation is: " + balance);
@@ -88,8 +88,8 @@ public class CustomerMenu {
                 case 2:
                     try {
                         long SSN = customer.getSSN();
-                        long accountNumber = UserInput.inputInt(" Enter Account Number: ");
-                        double amount = UserInput.inputDouble(" Enter Amount: ");
+                        long accountNumber = UserInput.inputLong(" Enter Account Number: ");
+                        double amount = UserInput.inputDouble(" Enter Amount(e.g 100,07): ");
 
                         double balance = depositMoney.execute(SSN, accountNumber, amount);
                         System.out.println("Your balance after the operation is: " + balance);
@@ -105,7 +105,7 @@ public class CustomerMenu {
                     try {
                         long SSN = customer.getSSN();
                         long accountNumber = UserInput.inputLong(" Enter Account Number: ");
-                        double amount = UserInput.inputDouble(" Enter Amount: ");
+                        double amount = UserInput.inputDouble(" Enter Amount(e.g 100,07): ");
 
                         double balance = withdrawMoney.execute(SSN, accountNumber, amount);
                         System.out.println("Your balance after the operation is: " + balance);
@@ -123,7 +123,7 @@ public class CustomerMenu {
                         long accountNumber = UserInput.inputLong(" Enter Account Number: ");
 
                         double balance = checkBalance.execute(SSN, accountNumber);
-                        System.out.println("Your balance is: " + balance);
+                        System.out.println("Your balance is: " + balance + " SEK.");
 
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
@@ -136,9 +136,9 @@ public class CustomerMenu {
                     try {
                         long SSN = customer.getSSN();
                         long accountNumber = UserInput.inputLong(" Enter account number: ");
-                        double totalMortgageValue = UserInput.inputDouble("Enter the total amount of the mortgage: ");
-                        double years = UserInput.inputDouble("Enter amount of years to pay off mortgage: ");
-                        double initialDeposit = UserInput.inputDouble(" Enter the initial deposit: ");
+                        double totalMortgageValue = UserInput.inputDouble("Enter the total amount of the mortgage(e.g 100,07): ");
+                        double years = UserInput.inputDouble("Enter amount of years to pay off mortgage(e.g 2,3): ");
+                        double initialDeposit = UserInput.inputDouble(" Enter the initial deposit(e.g 100,07): ");
 
                         String message = applyForMortgage.execute(SSN, accountNumber, totalMortgageValue, years, initialDeposit);
                         System.out.println(message);
@@ -169,8 +169,13 @@ public class CustomerMenu {
                     try {
                         long SSN = customer.getSSN();
                         ArrayList<BankAccount> customerBankAccounts = obtainCustomerBankAccounts.execute(SSN);
-                        for (BankAccount currentBankAccount : customerBankAccounts) {
-                            System.out.println(currentBankAccount.toString());
+                        if (customerBankAccounts.size() > 0){
+                            for (BankAccount currentBankAccount : customerBankAccounts) {
+                                System.out.println(currentBankAccount.toString());
+                            }
+                        }
+                        else{
+                            System.out.println("No bank accounts registered yet.");
                         }
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());

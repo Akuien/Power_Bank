@@ -127,9 +127,9 @@ public class EmployeeMenu {
                     try {
                         long customerSSN = UserInput.inputLong("Enter the customer's SSN: ");
                         long accountNumber = UserInput.inputLong("Enter the customer's bank account number: ");
-                        long mortgageLoanID = UserInput.inputInt("Enter the mortgage ID: ");
+                        long mortgageLoanID = UserInput.inputLong("Enter the mortgage ID: ");
                         long employeeSSN = employee.getSSN();
-                        String choice = UserInput.inputString("Enter the next status of the mortgage (Accepted/Rejected)");
+                        String choice = UserInput.inputString("Enter the next status of the mortgage (approved/rejected)");
 
                         String message = changeStatusMortgage.execute(customerSSN, accountNumber, mortgageLoanID, employeeSSN, choice);
                         System.out.println(message);
@@ -146,7 +146,7 @@ public class EmployeeMenu {
                         long customerSSN = UserInput.inputLong("Enter the customer's SSN: ");
                         long accountNumber = UserInput.inputLong("Enter the account number of the desired bank account: ");
                         long employeeSSN = employee.getSSN();
-                        String choice = UserInput.inputString("Enter the next status of the bank account (Accepted/Rejected)");
+                        String choice = UserInput.inputString("Enter the next status of the bank account (approved/rejected)");
 
                         String message = changeStatusBankAccount.execute(accountNumber, customerSSN, employeeSSN, choice);
                         System.out.println(message);

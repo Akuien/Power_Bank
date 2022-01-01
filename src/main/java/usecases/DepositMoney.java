@@ -4,6 +4,7 @@ import domain.constants.TransactionType;
 import domain.entities.BankAccount;
 import domain.entities.Transaction;
 import domain.exceptions.BankAccountDoesNotExistException;
+import domain.exceptions.BankAccountNotApprovedException;
 import domain.exceptions.CustomerDoesNotExistException;
 import repositories.BankAccountRepository;
 import repositories.TransactionRepository;
@@ -14,12 +15,14 @@ public class DepositMoney{
 
     private ValidateCustomer validateCustomer;
     private ValidateCustomerBankAccount validateCustomerBankAccount;
+    private ValidateCustomerBankAccountStatus validateCustomerBankAccountStatus;
     private BankAccountRepository bankAccountRepository;
     private TransactionRepository transactionRepository;
 
     public DepositMoney(){
         this.validateCustomer = new ValidateCustomer();
         this.validateCustomerBankAccount = new ValidateCustomerBankAccount();
+        this.validateCustomerBankAccountStatus = new ValidateCustomerBankAccountStatus();
         this.bankAccountRepository = new BankAccountRepository();
         this.transactionRepository = new TransactionRepository();
     }
@@ -36,6 +39,11 @@ public class DepositMoney{
         boolean customerBankAccountExists = validateCustomerBankAccount.execute(SSN, accountNumber);
         if (!customerBankAccountExists){
             throw new BankAccountDoesNotExistException(accountNumber);
+        }
+
+        boolean approvedBankAccount = validateCustomerBankAccountStatus.execute(SSN, accountNumber);
+        if (!approvedBankAccount){
+            throw new BankAccountNotApprovedException(accountNumber);
         }
 
         //These two methods execute the whole thing

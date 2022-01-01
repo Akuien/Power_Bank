@@ -2,11 +2,13 @@ package data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -46,7 +48,11 @@ public class CustomJsonIo<Type>{
 
         try{
             reader = Files.newBufferedReader(Paths.get(fileName), StandardCharsets.UTF_8);
-            List<Type> temp = (List<Type>) Arrays.asList(gson.fromJson(reader, destinationType.getClass()));
+            Object[] json = gson.fromJson(reader, destinationType.getClass());
+            if (json == null ){
+                return list;
+            }
+            List<Type> temp = (List<Type>) Arrays.asList(json);
             list = new ArrayList<>(temp);
             reader.close();
         } catch (IOException e) {

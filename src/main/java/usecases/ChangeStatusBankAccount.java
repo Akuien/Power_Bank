@@ -40,7 +40,7 @@ public class ChangeStatusBankAccount {
             throw new CustomerDoesNotExistException(customerSSN);
         }
         // Checks if status is either rejected or approved.
-        if (!choice.toLowerCase().equals(BankAccountStatus.approved) || !choice.toLowerCase().equals(BankAccountStatus.rejected)){
+        if (!choice.toLowerCase().equals(BankAccountStatus.approved) && !choice.toLowerCase().equals(BankAccountStatus.rejected)){
             throw new StatusNotAllowedException();
         }
 

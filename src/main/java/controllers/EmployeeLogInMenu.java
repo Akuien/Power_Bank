@@ -49,6 +49,8 @@ public class EmployeeLogInMenu implements IControllers{
                             Manager manager = (Manager) employee;
                             managerMenu.menu(option, manager);
                         }
+                        printMenu();
+                        option = UserInput.inputInt("Enter an option: ");
 
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());

@@ -2,6 +2,7 @@ package usecases;
 
 import domain.entities.Mortgage;
 import domain.exceptions.BankAccountDoesNotExistException;
+import domain.exceptions.BankAccountNotApprovedException;
 import domain.exceptions.CustomerDoesNotExistException;
 import domain.exceptions.DoesNotComplyConditionsForMortgage;
 import repositories.MortgageRepository;
@@ -11,6 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class ApplyForMortgage {
     private ValidateCustomer validateCustomer;
     private ValidateCustomerBankAccount validateCustomerBankAccount;
+    private ValidateCustomerBankAccountStatus validateCustomerBankAccountStatus;
     private ValidateMortgage validateMortgage;
     private MortgageRepository mortgageRepository;
 
@@ -18,6 +20,7 @@ public class ApplyForMortgage {
     public ApplyForMortgage(){
         this.validateCustomer = new ValidateCustomer();
         this.validateCustomerBankAccount = new ValidateCustomerBankAccount();
+        this.validateCustomerBankAccountStatus = new ValidateCustomerBankAccountStatus();
         this.validateMortgage = new ValidateMortgage();
         this.mortgageRepository = new MortgageRepository();
     }
@@ -33,14 +36,20 @@ public class ApplyForMortgage {
         if (!bankAccountExists){
             throw new BankAccountDoesNotExistException(accountNumber);
         }
+        boolean approvedBankAccount = validateCustomerBankAccountStatus.execute(SSN, accountNumber);
+        if (!approvedBankAccount){
+            throw new BankAccountNotApprovedException(accountNumber);
+        }
         boolean acceptsMortgage = validateMortgage.execute(accountNumber, totalMortgageValue, years);
         // checks if conditions for a Mortgage are met.
         if (!acceptsMortgage){
             throw new DoesNotComplyConditionsForMortgage();
         }
-
+        if (initialDeposit > totalMortgageValue){
+            throw new DoesNotComplyConditionsForMortgage();
+        }
         long loanID = ThreadLocalRandom.current().nextLong(100000000,999999999);
-        double monthPayment = monthPayment(totalMortgageValue, 0.03, initialDeposit, years);
+        double monthPayment = Math.round(monthPayment(totalMortgageValue, 0.03, initialDeposit, years));
         Mortgage mortgage = new Mortgage(SSN, loanID, years, initialDeposit, totalMortgageValue, monthPayment);
         mortgageRepository.createMortgage(mortgage); // Mortgage details.
 
