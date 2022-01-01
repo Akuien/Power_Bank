@@ -28,7 +28,7 @@ public class PersistenceData {
         bankAccounts = new ArrayList<>();
         transactions = new ArrayList<>();
         portfolios = new ArrayList<>();
-        companies = new ArrayList<>(Arrays.asList(new Company("Apple", 194), new Company("Microsoft", 100), new Company("Amazon", 3000)));
+        companies = new ArrayList<>();
         mortgages = new ArrayList<>();
 
         //Infinite amount of shares
