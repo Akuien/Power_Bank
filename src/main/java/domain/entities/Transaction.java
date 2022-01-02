@@ -19,7 +19,7 @@ public class Transaction {
     }
 
     public String toString(){
-        return type + " Transaction from " + originBankAccountNumber + " to " + finalBankAccountNumber + " with " + amount + " SEK.";
+        return type + " Transaction from " + originBankAccountNumber + " to " + finalBankAccountNumber + " with " + amount + " SEK. - " + this.createdAt;
     }
 
     //Getters and Setters

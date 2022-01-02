@@ -2,64 +2,85 @@
   {
     "originBankAccountNumber": 498145866,
     "finalBankAccountNumber": 498145866,
-    "amount": 1000.0,
+    "amount": 5000.0,
     "type": "credit",
-    "createdAt": "Jan 1, 2022, 4:50:43 PM"
-  },
-  {
-    "originBankAccountNumber": 498145866,
-    "finalBankAccountNumber": 498145866,
-    "amount": 1000.05,
-    "type": "credit",
-    "createdAt": "Jan 1, 2022, 4:51:41 PM"
-  },
-  {
-    "originBankAccountNumber": 208563656,
-    "finalBankAccountNumber": 208563656,
-    "amount": 100.07,
-    "type": "credit",
-    "createdAt": "Jan 1, 2022, 5:01:47 PM"
-  },
-  {
-    "originBankAccountNumber": 498145866,
-    "finalBankAccountNumber": 735618278,
-    "amount": 500.5,
-    "type": "debit",
-    "createdAt": "Jan 1, 2022, 6:00:30 PM"
-  },
-  {
-    "originBankAccountNumber": 498145866,
-    "finalBankAccountNumber": 498145866,
-    "amount": 50.0,
-    "type": "debit",
-    "createdAt": "Jan 1, 2022, 6:04:06 PM"
-  },
-  {
-    "originBankAccountNumber": 498145866,
-    "finalBankAccountNumber": 498145866,
-    "amount": 970.0,
-    "type": "debit",
-    "createdAt": "Jan 1, 2022, 6:36:13 PM"
-  },
-  {
-    "originBankAccountNumber": 498145866,
-    "finalBankAccountNumber": 498145866,
-    "amount": 10000.0,
-    "type": "credit",
-    "createdAt": "Jan 1, 2022, 6:46:28 PM"
-  },
-  {
-    "originBankAccountNumber": 498145866,
-    "finalBankAccountNumber": 498145866,
-    "amount": 1940.0,
-    "type": "debit",
-    "createdAt": "Jan 1, 2022, 6:47:07 PM"
+    "createdAt": "Jan 2, 2022, 6:11:22 PM"
   },
   {
     "originBankAccountNumber": 498145866,
     "finalBankAccountNumber": 498145866,
     "amount": 194.0,
     "type": "debit",
-    "createdAt": "Jan 1, 2022, 6:51:39 PM"
+    "createdAt": "Jan 2, 2022, 6:11:59 PM"
+  },
+  {
+    "originBankAccountNumber": 498145866,
+    "finalBankAccountNumber": 735618278,
+    "amount": 100.0,
+    "type": "debit",
+    "createdAt": "Jan 2, 2022, 6:24:45 PM"
+  },
+  {
+    "originBankAccountNumber": 498145866,
+    "finalBankAccountNumber": 498145866,
+    "amount": 100.0,
+    "type": "credit",
+    "createdAt": "Jan 2, 2022, 6:25:23 PM"
+  },
+  {
+    "originBankAccountNumber": 498145866,
+    "finalBankAccountNumber": 498145866,
+    "amount": 500.0,
+    "type": "debit",
+    "createdAt": "Jan 2, 2022, 6:25:50 PM"
+  },
+  {
+    "originBankAccountNumber": 498145866,
+    "finalBankAccountNumber": 498145866,
+    "amount": 194.0,
+    "type": "debit",
+    "createdAt": "Jan 2, 2022, 6:32:29 PM"
+  },
+  {
+    "originBankAccountNumber": 498145866,
+    "finalBankAccountNumber": 498145866,
+    "amount": 194.0,
+    "type": "debit",
+    "createdAt": "Jan 2, 2022, 6:34:01 PM"
+  },
+  {
+    "originBankAccountNumber": 498145866,
+    "finalBankAccountNumber": 498145866,
+    "amount": 194.0,
+    "type": "debit",
+    "createdAt": "Jan 2, 2022, 6:41:46 PM"
+  },
+  {
+    "originBankAccountNumber": 498145866,
+    "finalBankAccountNumber": 498145866,
+    "amount": 582.0,
+    "type": "debit",
+    "createdAt": "Jan 2, 2022, 6:43:46 PM"
+  },
+  {
+    "originBankAccountNumber": 498145866,
+    "finalBankAccountNumber": 498145866,
+    "amount": 194.0,
+    "type": "credit",
+    "createdAt": "Jan 2, 2022, 6:44:44 PM"
+  },
+  {
+    "originBankAccountNumber": 498145866,
+    "finalBankAccountNumber": 498145866,
+    "amount": 388.0,
+    "type": "credit",
+    "createdAt": "Jan 2, 2022, 6:45:29 PM"
+  },
+  {
+    "originBankAccountNumber": 498145866,
+    "finalBankAccountNumber": 498145866,
+    "amount": 388.0,
+    "type": "credit",
+    "createdAt": "Jan 2, 2022, 6:49:06 PM"
   }
 ]

@@ -12,6 +12,10 @@ public class Company {
         this.stockPrice = stockPrice;
     }
 
+    public String toString(){
+        return this.name + " has shares at " + this.stockPrice + " SEK.";
+    }
+
     //Getters and Setters
     public String getName() {
         return name;

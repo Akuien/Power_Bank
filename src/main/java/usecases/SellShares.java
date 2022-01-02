@@ -69,7 +69,7 @@ public class SellShares {
     // We created these three private methods to make the execute method more understandable.
     // We do not want to use these methods onwards, just in this class.
     private void addCreditTransaction(long accountNumber, double price, Date currentDate){
-        Transaction transaction = new Transaction(accountNumber, accountNumber, price, TransactionType.debit, currentDate);
+        Transaction transaction = new Transaction(accountNumber, accountNumber, price, TransactionType.credit, currentDate);
         transactionRepository.createTransaction(transaction);
     }
 
@@ -84,17 +84,31 @@ public class SellShares {
         if (portfolio == null) {
             throw new PortfolioDoesNotExistException();
         }
-        if (quantity > portfolioRepository.getStocksByCompanyName(customerSSN, companyName).size()){
+        ArrayList<Stock> stocks = portfolioRepository.getStocksByCompanyName(customerSSN, companyName);
+        int stockQuantity = 0;
+        for (Stock currentStock : stocks){
+            stockQuantity += currentStock.getQuantity();
+        }
+        if (quantity > stockQuantity){
             throw new PortfolioDoesNotHaveEnoughStocks();
         }
+
+        int soldQuantity = 0;
+        ArrayList<Stock> stocksToDelete = new ArrayList<>();
         for (Stock currentStock : portfolio.getStocks()){
             if (currentStock.getCompany().equals(companyName)){
-                if (currentStock.getQuantity() == quantity){
-                    portfolio.getStocks().remove(currentStock);
+                if (currentStock.getQuantity() <= (quantity - soldQuantity)){
+                    stocksToDelete.add(currentStock);
+                    soldQuantity += currentStock.getQuantity();
                 }
                 else {
                     currentStock.setQuantity(currentStock.getQuantity()-quantity);
                 }
+            }
+        }
+        if (stocksToDelete.size() > 0){
+            for (Stock stock : stocksToDelete){
+                portfolio.getStocks().remove(stock);
             }
         }
         portfolioRepository.updatePortfolio(portfolio);

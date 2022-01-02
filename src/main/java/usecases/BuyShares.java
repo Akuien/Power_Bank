@@ -59,7 +59,7 @@ public class BuyShares {
 
         // The use case code, this is where the share is being purchased.
         Date now = new Date();
-        Stock stock = new Stock(purchasePrice, now, companyName, quantity,customerSSN, customerAccountNumber);
+        Stock stock = new Stock(now, companyName, quantity,customerSSN, customerAccountNumber);
 
         addDebitTransaction(customerAccountNumber, purchasePrice, now);
         debitBalance(customerAccountNumber, purchasePrice);

@@ -189,8 +189,13 @@ public class CustomerMenu {
                         long SSN = customer.getSSN();
                         long accountNumber = UserInput.inputLong("Enter the number of bank account: ");
                         ArrayList<Transaction> transactionsList = checkTransactionHistory.execute(SSN, accountNumber);
-                        for (Transaction currentTransaction : transactionsList) {
-                            System.out.println(currentTransaction.toString());
+                        if (transactionsList.size() > 0){
+                            for (Transaction currentTransaction : transactionsList) {
+                                System.out.println(currentTransaction.toString());
+                            }
+                        }
+                        else {
+                            System.out.println("No transactions registered yet for this account.");
                         }
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
@@ -212,7 +217,15 @@ public class CustomerMenu {
                         shareholderMenu.printMenu();
                         option = UserInput.inputInt("Enter an option: ");
                         //We need to pass a Shareholder object so we cast downcast the already obtained customer through the menu
-                        Shareholder shareholder = (Shareholder) customer;
+                        Shareholder shareholder = new Shareholder(
+                                customer.getFirstName(),
+                                customer.getLastName(),
+                                customer.getSSN(),
+                                customer.getPassword(),
+                                customer.getEmail(),
+                                customer.getPhoneNumber(),
+                                customer.getBirthDate()
+                        );
                         shareholderMenu.menu(option, shareholder);
                     }
                     catch (Exception exception){

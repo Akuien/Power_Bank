@@ -1,23 +1,30 @@
 [
   {
-    "balance": 8345.55,
+    "balance": 13233.55,
     "name": "account1",
     "accountNumber": 498145866,
     "status": "approved",
     "customerSSN": 970213742
   },
   {
-    "balance": 100.07,
+    "balance": 0.0,
     "name": "savings",
     "accountNumber": 208563656,
     "status": "pending",
     "customerSSN": 970213742
   },
   {
-    "balance": 500.5,
+    "balance": 600.5,
     "name": "car",
     "accountNumber": 735618278,
     "status": "approved",
     "customerSSN": 880702813
+  },
+  {
+    "balance": 0.0,
+    "name": "mortgage",
+    "accountNumber": 355816026,
+    "status": "pending",
+    "customerSSN": 970213742
   }
 ]

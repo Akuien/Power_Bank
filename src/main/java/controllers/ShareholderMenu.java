@@ -90,6 +90,10 @@ public class ShareholderMenu {
                     } catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+
                     break;
 
                 case 2 :
@@ -101,9 +105,13 @@ public class ShareholderMenu {
                         double balance = depositMoney.execute(SSN, accountNumber, amount);
                         System.out.println("Your balance after the operation is: " + balance);
 
+
                     } catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+
                     break;
 
                 case 3 :
@@ -118,6 +126,10 @@ public class ShareholderMenu {
                     } catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+
                     break;
 
                 case 4 :
@@ -131,6 +143,11 @@ public class ShareholderMenu {
                     } catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+
+
                     break;
 
                 case 5 :
@@ -147,6 +164,10 @@ public class ShareholderMenu {
                     } catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+
                     break;
 
                 case 6 :
@@ -161,6 +182,10 @@ public class ShareholderMenu {
                     catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+
                     break;
 
                 case 7 :
@@ -170,10 +195,15 @@ public class ShareholderMenu {
                         for (BankAccount currentBankAccount : customerBankAccounts){
                             System.out.println(currentBankAccount.toString());
                         }
+
                     }
                     catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+
                     break;
 
                 case 8 :
@@ -181,13 +211,20 @@ public class ShareholderMenu {
                         long SSN = shareholder.getSSN();
                         long accountNumber = UserInput.inputLong("Enter the bank account number: ");
                         ArrayList<Transaction> transactionsList = checkTransactionHistory.execute(SSN,accountNumber);
-                        for (Transaction currentTransaction : transactionsList){
-                            System.out.println(currentTransaction.toString());
+                        if (transactionsList.size() > 0){
+                            for (Transaction currentTransaction : transactionsList) {
+                                System.out.println(currentTransaction.toString());
+                            }
+                        }
+                        else {
+                            System.out.println("No transactions registered yet for this account.");
                         }
                     }
                     catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 9:
@@ -198,10 +235,15 @@ public class ShareholderMenu {
                         long customerAccountNumber = UserInput.inputLong("Enter the account number: ");
                         String message = buyShares.execute(companyName, quantity, customerSSN, customerAccountNumber);
                         System.out.println(message);
+
                     }
                     catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+
                     break;
 
                 case 10:
@@ -216,6 +258,10 @@ public class ShareholderMenu {
                     catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+
                     break;
 
                 case 11:
@@ -228,6 +274,10 @@ public class ShareholderMenu {
                     catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+
                     break;
 
                 case 12:
@@ -241,6 +291,10 @@ public class ShareholderMenu {
                     catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+
                     break;
 
                 default:

@@ -86,6 +86,8 @@ public class ManagerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 2:
@@ -98,6 +100,8 @@ public class ManagerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 3:
@@ -109,6 +113,8 @@ public class ManagerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 4:
@@ -120,6 +126,8 @@ public class ManagerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 5:
@@ -131,6 +139,9 @@ public class ManagerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+                    break;
 
 
                 case 6:
@@ -147,6 +158,8 @@ public class ManagerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 7:
@@ -162,6 +175,8 @@ public class ManagerMenu {
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 8:
@@ -174,6 +189,9 @@ public class ManagerMenu {
                     catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+                    break;
 
                 case 9:
                     try {
@@ -196,6 +214,9 @@ public class ManagerMenu {
                         System.out.println("Information introduced is not correct.");
                         System.out.println("Please introduce again the correct information.");
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+                    break;
 
                 case 10:
                     try {
@@ -219,6 +240,10 @@ public class ManagerMenu {
                         System.out.println("Please introduce again the correct information.");
                     }
 
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+                    break;
+
                 case 11:
                     try{
                         long managerSSN = manager.getSSN();
@@ -230,6 +255,9 @@ public class ManagerMenu {
                     catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
+                    printMenu();
+                    option = UserInput.inputInt("Enter option: ");
+                    break;
 
 
                 default:
