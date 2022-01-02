@@ -102,7 +102,7 @@ public class SellShares {
                     soldQuantity += currentStock.getQuantity();
                 }
                 else {
-                    currentStock.setQuantity(currentStock.getQuantity()-quantity);
+                    currentStock.setQuantity(currentStock.getQuantity() - quantity + soldQuantity);
                 }
             }
         }

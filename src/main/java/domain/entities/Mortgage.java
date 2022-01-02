@@ -4,6 +4,7 @@ import domain.constants.MortgageStatus;
 
 public class Mortgage {
 
+    private long customerAccountNumber;
     private long customerSSN;
     private long loanID;
     private double time;
@@ -13,8 +14,9 @@ public class Mortgage {
     private double monthPayment;
     private String status;
 
-    public Mortgage(long customerSSN, long loanID, double time, double initialDeposit, double totalValue, double monthPayment){
+    public Mortgage(long customerAccountNumber, long customerSSN, long loanID, double time, double initialDeposit, double totalValue, double monthPayment){
 
+        this.customerAccountNumber = customerAccountNumber;
         this.customerSSN = customerSSN;
         this.loanID = loanID;
         this.time = time;
@@ -29,6 +31,9 @@ public class Mortgage {
         return (this.getLoanID() == mortgage.getLoanID()) && (this.getCustomerSSN() == mortgage.getCustomerSSN());
     } //Checks whether the mortgage is equal if loanID and customerSSN are equal.
 
+    public String toString(){
+        return this.status + " - " + "Total mortgage value: " + this.totalValue + ", Month payment: " + this.monthPayment + ", Initial deposit: " + this.initialDeposit;
+    }
 
     //Getters and Setters
     public long getCustomerSSN() {
@@ -94,4 +99,13 @@ public class Mortgage {
     public void setLoanID(long loanID) {
         this.loanID = loanID;
     }
+
+    public long getCustomerAccountNumber() {
+        return customerAccountNumber;
+    }
+
+    public void setCustomerAccountNumber(long customerAccountNumber) {
+        this.customerAccountNumber = customerAccountNumber;
+    }
+
 }

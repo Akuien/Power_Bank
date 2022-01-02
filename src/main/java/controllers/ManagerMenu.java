@@ -94,8 +94,13 @@ public class ManagerMenu {
                     try {
                         long customerSSN = UserInput.inputLong("Introduce the customer's SSN: ");
                         ArrayList<BankAccount> customersBankAccounts = obtainCustomerBankAccounts.execute(customerSSN);
-                        for (BankAccount currentBankAccount : customersBankAccounts) {
-                            System.out.println(currentBankAccount.toString());
+                        if (customersBankAccounts.size()> 0){
+                            for (BankAccount currentBankAccount : customersBankAccounts){
+                                System.out.println(currentBankAccount.toString());
+                            }
+                        }
+                        else {
+                            System.out.println("No bank accounts registered yet. ");
                         }
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
@@ -107,8 +112,13 @@ public class ManagerMenu {
                 case 3:
                     try {
                         ArrayList<Mortgage> pendingMortgages = obtainPendingMortgages.execute();
-                        for (Mortgage currentMortgage : pendingMortgages) {
-                            System.out.println(currentMortgage.toString());
+                        if (pendingMortgages.size()> 0){
+                            for (Mortgage currentMortgage : pendingMortgages){
+                                System.out.println(currentMortgage.toString());
+                            }
+                        }
+                        else {
+                            System.out.println("There are no pending mortgages.");
                         }
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
@@ -120,8 +130,13 @@ public class ManagerMenu {
                 case 4:
                     try {
                         ArrayList<BankAccount> pendingBankAccounts = obtainPendingBankAccounts.execute();
-                        for (BankAccount currentBankAccount : pendingBankAccounts) {
-                            System.out.println(currentBankAccount.toString());
+                        if (pendingBankAccounts.size()> 0){
+                            for (BankAccount currentBankAccount : pendingBankAccounts){
+                                System.out.println(currentBankAccount.toString());
+                            }
+                        }
+                        else{
+                            System.out.println("There are no pending bank accounts.");
                         }
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
@@ -249,7 +264,8 @@ public class ManagerMenu {
                         long managerSSN = manager.getSSN();
                         long customerSSN = UserInput.inputLong("Enter the customer's SSN: ");
                         String bankAccountName = UserInput.inputString("Enter the name of the bank account: ");
-                        createBankAccount.execute(managerSSN, customerSSN, bankAccountName);
+                        String message = createBankAccount.execute(managerSSN, customerSSN, bankAccountName);
+                        System.out.println(message);
                     }
 
                     catch (Exception exception){

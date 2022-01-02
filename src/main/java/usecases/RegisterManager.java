@@ -1,6 +1,6 @@
 package usecases;
 
-import domain.entities.Employee;
+import domain.entities.Manager;
 import domain.exceptions.*;
 import repositories.EmployeeRepository;
 
@@ -61,9 +61,9 @@ public class RegisterManager {
             throw new IncorrectPhoneNumberException();
         }
 
-            Employee employee = new Employee(firstName, lastName, newManagerSSN, password, email, phoneNumber, birthDate);
-            employeeRepository.createProfile(employee);
-            return "Customer registered successfully"; // The exact same logic as other "register" Classes.
+            Manager manager = new Manager(firstName, lastName, newManagerSSN, password, email, phoneNumber, birthDate);
+            employeeRepository.createProfile(manager);
+            return "Manager registered successfully"; // The exact same logic as other "register" Classes.
 
         }
     }

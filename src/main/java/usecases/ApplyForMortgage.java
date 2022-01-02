@@ -50,7 +50,7 @@ public class ApplyForMortgage {
         }
         long loanID = ThreadLocalRandom.current().nextLong(100000000,999999999);
         double monthPayment = Math.round(monthPayment(totalMortgageValue, 0.03, initialDeposit, years));
-        Mortgage mortgage = new Mortgage(SSN, loanID, years, initialDeposit, totalMortgageValue, monthPayment);
+        Mortgage mortgage = new Mortgage(accountNumber, SSN, loanID, years, initialDeposit, totalMortgageValue, monthPayment);
         mortgageRepository.createMortgage(mortgage); // Mortgage details.
 
 

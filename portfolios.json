@@ -2,17 +2,15 @@
   {
     "stocks": [
       {
-        "purchasePrice": 582.0,
-        "date": "Jan 2, 2022, 6:43:46 PM",
+        "date": "Jan 2, 2022, 6:53:46 PM",
         "company": "Apple",
-        "quantity": 2,
+        "quantity": 1,
         "customerSSN": 970213742,
         "customerAccountNumber": 498145866
       },
       {
-        "purchasePrice": 582.0,
-        "date": "Jan 2, 2022, 6:53:46 PM",
-        "company": "Apple",
+        "date": "Jan 2, 2022, 7:17:58 PM",
+        "company": "Microsoft",
         "quantity": 2,
         "customerSSN": 970213742,
         "customerAccountNumber": 498145866

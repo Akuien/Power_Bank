@@ -220,8 +220,8 @@ public class DataSetInitializer {
 
         //We create 2 mortgages,
         // and then add them to the mortgages arraylist
-        Mortgage mortgage1 = new Mortgage(970213742, 1, 10.00, 45, 400, 10);
-        Mortgage mortgage2 = new Mortgage(880702813, 2, 13.15, 70, 800, 25);
+        Mortgage mortgage1 = new Mortgage(880702813, 970213742, 1, 10.00, 45, 400, 10);
+        Mortgage mortgage2 = new Mortgage(970213742, 880702813, 2, 13.15, 70, 800, 25);
         ArrayList<Mortgage> mortgages = new ArrayList<>();
         mortgages.add(mortgage1);
         mortgages.add(mortgage2);

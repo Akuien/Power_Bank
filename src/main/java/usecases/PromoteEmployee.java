@@ -3,6 +3,7 @@ package usecases;
 import domain.constants.UserType;
 import domain.entities.Employee;
 import domain.exceptions.EmployeeDoesNotExistException;
+import domain.exceptions.EmployeeIsManagerException;
 import repositories.EmployeeRepository;
 
 public class PromoteEmployee {
@@ -32,6 +33,9 @@ public class PromoteEmployee {
             }
 
             Employee employee = employeeRepository.getBySSN(employeeSSN);
+            if (employee.getPosition().equals(UserType.manager)){
+                throw new EmployeeIsManagerException(employeeSSN);
+            }
             employee.setPosition(UserType.manager);
             employeeRepository.updateProfile(employee);
 
