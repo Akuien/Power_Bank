@@ -23,8 +23,8 @@ class MortgageRepositoryTest {
 
         //We create 2 mortgages,
         // and then add them to the mortgages arraylist
-        Mortgage mortgage1 = new Mortgage(880702813, 970213742, 10.34, 40, 400, 10);
-        Mortgage mortgage2 = new Mortgage(970213742, 880702813, 14.16, 80, 800, 60);
+        Mortgage mortgage1 = new Mortgage(880702813, 970213742, 1000000, 10.30, 10, 400, 30);
+        Mortgage mortgage2 = new Mortgage(970213742, 880702813, 1000001, 13.43, 60, 800.58, 40);
 
         mortgageRepository.createMortgage(mortgage1);
         mortgageRepository.createMortgage(mortgage2);
@@ -41,9 +41,9 @@ class MortgageRepositoryTest {
 
         //We create 2 mortgages,
         // and then add them to the mortgages arraylist
-        Mortgage mortgage1 = new Mortgage(880702813, 970213742, 10.34, 40, 400, 10);
-        Mortgage mortgage2 = new Mortgage(970213742, 880702813, 14.16, 80, 800, 60);
-        Mortgage mortgage3 = new Mortgage(970213742, 880702813, 15.16, 95, 950, 75);
+        Mortgage mortgage1 = new Mortgage(880702813, 970213742, 1000000, 10.30, 10, 400, 30);
+        Mortgage mortgage2 = new Mortgage(970213742, 880702813, 1000001, 13.43, 60, 800.58, 40);
+        Mortgage mortgage3 = new Mortgage(970213742, 880702813, 1000002, 15.26, 75, 950.35, 67);
 
         mortgage1.setStatus("approved");
         mortgage2.setStatus("pending");
@@ -68,8 +68,8 @@ class MortgageRepositoryTest {
 
         //We create 2 mortgages,
         // and then add them to the mortgages arraylist
-        Mortgage mortgage1 = new Mortgage(880702813, 970213742, 10.34, 40, 400, 10);
-        Mortgage mortgage2 = new Mortgage(970213742, 880702813, 14.16, 80, 800, 60);
+        Mortgage mortgage1 = new Mortgage(880702813, 970213742, 1000000, 10.30, 10, 400, 30);
+        Mortgage mortgage2 = new Mortgage(970213742, 880702813, 1000001, 13.43, 60, 800.58, 40);
 
         mortgageRepository.createMortgage(mortgage1);
         mortgageRepository.createMortgage(mortgage2);
@@ -86,8 +86,9 @@ class MortgageRepositoryTest {
 
         //We create 2 mortgages,
         // and then add them to the mortgages arraylist
-        Mortgage mortgage1 = new Mortgage(880702813, 970213742, 10.34, 40, 400, 10);
-        Mortgage mortgage2 = new Mortgage(970213742, 880702813, 14.16, 80, 800, 60);
+        Mortgage mortgage1 = new Mortgage(880702813, 970213742, 1000000, 10.30, 10, 400, 30);
+        Mortgage mortgage2 = new Mortgage(970213742, 880702813, 1000001, 13.43, 60, 800.58, 40);
+
         ArrayList<Mortgage> temp = new ArrayList<>();
         temp.add(mortgage1);
         temp.add(mortgage2);
@@ -104,7 +105,7 @@ class MortgageRepositoryTest {
 
     @org.junit.jupiter.api.Test
     void createMortgage() {
-        Mortgage mortgage1 = new Mortgage(880702813, 970213742, 10.34, 40, 400, 10);
+        Mortgage mortgage1 = new Mortgage(880702813, 970213742, 1000000, 10.30, 10, 400, 30);
 
         mortgageRepository.createMortgage(mortgage1);
 
@@ -113,11 +114,11 @@ class MortgageRepositoryTest {
 
     @org.junit.jupiter.api.Test
     void updateMortgage() {
-        Mortgage test1 = new Mortgage(880702813, 970213742, 10.34, 40, 400, 10);
+        Mortgage test1 = new Mortgage(880702813, 970213742, 1000000, 10.30, 10, 400, 30);
 
         mortgageRepository.createMortgage(test1);
 
-        Mortgage test2 = new Mortgage(880702813, 970213742, 15.26, 40, 400, 40);
+        Mortgage test2 = new Mortgage(880702813, 970213742, 1000000, 14.30, 10, 400, 50);
 
         mortgageRepository.updateMortgage(test2);
 

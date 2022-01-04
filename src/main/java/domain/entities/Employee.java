@@ -13,6 +13,10 @@ public class Employee extends AbstractUser {
         this.position = UserType.employee;
     }
 
+    public String toString(){
+        return super.getFirstName() + " " + super.getLastName() + ", SSN: " + super.getSSN() + " - " + this.position;
+    }
+
     public String getPosition(){ //these methods inherit automatically to all classes extended from this first
         return this.position;
     }

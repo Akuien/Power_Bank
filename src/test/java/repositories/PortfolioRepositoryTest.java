@@ -65,7 +65,7 @@ class PortfolioRepositoryTest {
         Company company1 = new Company("Tesla", 30.45);
 
 
-        Stock stock1 = new Stock(30.45, stockDate, "Tesla", 11, 941205153, 481046478);
+        Stock stock1 = new Stock(stockDate, "Tesla", 11, 941205153, 481046478);
 
         ArrayList<Stock> stocks =new ArrayList<>();
 
@@ -94,7 +94,7 @@ class PortfolioRepositoryTest {
         Company company1 = new Company("Tesla", 30.45);
 
 
-        Stock stock1 = new Stock(30.45, stockDate, "Tesla", 11, 941205153, 481046478);
+        Stock stock1 = new Stock(stockDate, "Tesla", 11, 941205153, 481046478);
 
         ArrayList<Stock> stocks =new ArrayList<>();
 
