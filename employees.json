@@ -1,44 +1,22 @@
 [
   {
-    "position": "manager",
+    "position": "employee",
     "firstName": "Jeff",
     "lastName": "Bloom",
     "SSN": 860409123,
     "password": "boom",
     "email": "jeff.bloom@gmail.com",
     "phoneNumber": "07459734015",
-    "birthDate": "Apr 9, 1986, 12:36:28 PM",
-    "accessToken": "ef894c1f-7785-4f80-b2d7-f943d3623b24"
+    "birthDate": "Apr 9, 1986, 10:48:48 AM"
   },
   {
-    "position": "manager",
+    "position": "employee",
     "firstName": "Jack",
     "lastName": "Black",
     "SSN": 730309321,
     "password": "black",
     "email": "jack.black@gmail.com",
     "phoneNumber": "07470923784",
-    "birthDate": "Mar 9, 1973, 12:36:28 PM",
-    "accessToken": "1f80f5a3-fcd1-48fc-ad6e-1389f4a9c196"
-  },
-  {
-    "position": "employee",
-    "firstName": "Oscar",
-    "lastName": "Reina",
-    "SSN": 132847123409,
-    "password": "cuenca",
-    "email": "gusreinaos@student.gu.se",
-    "phoneNumber": "07123456789",
-    "birthDate": "Feb 18, 1980, 12:00:00 AM"
-  },
-  {
-    "position": "manager",
-    "firstName": "Ivan",
-    "lastName": "Alvarez",
-    "SSN": 374198412097,
-    "password": "soria",
-    "email": "ivanalvarez@gmail.com",
-    "phoneNumber": "07987654321",
-    "birthDate": "Nov 5, 1992, 12:00:00 AM"
+    "birthDate": "Mar 9, 1973, 10:48:48 AM"
   }
 ]

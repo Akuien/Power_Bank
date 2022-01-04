@@ -1,13 +1,24 @@
 [
   {
-    "customerAccountNumber": 0,
+    "customerAccountNumber": 880702813,
     "customerSSN": 970213742,
-    "loanID": 744079101,
-    "time": 20.0,
+    "loanID": 1,
+    "time": 10.0,
     "interestRate": 0.03,
-    "initialDeposit": 25000.0,
-    "totalValue": 60000.0,
-    "monthPayment": 153.0,
-    "status": "rejected"
+    "initialDeposit": 45.0,
+    "totalValue": 400.0,
+    "monthPayment": 10.0,
+    "status": "pending"
+  },
+  {
+    "customerAccountNumber": 970213742,
+    "customerSSN": 880702813,
+    "loanID": 2,
+    "time": 13.15,
+    "interestRate": 0.03,
+    "initialDeposit": 70.0,
+    "totalValue": 800.0,
+    "monthPayment": 25.0,
+    "status": "pending"
   }
 ]

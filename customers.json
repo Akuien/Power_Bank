@@ -1,14 +1,13 @@
 [
   {
-    "type": "shareholder",
+    "type": "customer",
     "firstName": "Elizabeth",
     "lastName": "Banks",
     "SSN": 970213742,
     "password": "harbor",
     "email": "elizabeth.banks@gmail.com",
     "phoneNumber": "07410036992",
-    "birthDate": "Feb 13, 1997, 12:36:28 PM",
-    "accessToken": "0f08f8c9-22c9-4f41-80aa-0aaf06787849"
+    "birthDate": "Feb 13, 1997, 10:48:48 AM"
   },
   {
     "type": "customer",
@@ -18,18 +17,6 @@
     "password": "castle",
     "email": "michaela.snow@gmail.com",
     "phoneNumber": "07429909567",
-    "birthDate": "Jul 2, 1988, 12:36:28 PM",
-    "accessToken": "7a61ade3-196e-48a9-933e-ce2696595b98"
-  },
-  {
-    "type": "customer",
-    "firstName": "Oscar",
-    "lastName": "Reina",
-    "SSN": 303046031,
-    "password": "albacete",
-    "email": "oscareinagus@gmail.com",
-    "phoneNumber": "07123456789",
-    "birthDate": "Mar 4, 2003, 12:00:00 AM",
-    "accessToken": "e115c19c-7a4f-4e89-8667-3160bc3745b8"
+    "birthDate": "Jul 2, 1988, 10:48:48 AM"
   }
 ]

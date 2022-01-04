@@ -58,7 +58,7 @@ public class EmployeeRepository extends AbstractRepository { // This Repository 
     public void updateProfile(Employee employee) { // Updates an Employee profile information.
         ArrayList<Employee> employees = EmployeeRepository.persistenceData.getEmployees();
         for (Employee currentEmployee : employees){
-            if (currentEmployee.equals(employee)){
+            if (currentEmployee.getSSN() == employee.getSSN()){
                 currentEmployee.setFirstName(employee.getFirstName());
                 currentEmployee.setLastName(employee.getLastName());
                 currentEmployee.setPassword(employee.getPassword());

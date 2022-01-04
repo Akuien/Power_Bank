@@ -19,7 +19,7 @@ public class BankAccount {
     }
 
     public String toString(){
-        return this.status + ": " + "Account(" +this.name+ ") - " + this.accountNumber +": has " + this.balance + " SEK.";
+        return "Account(" +this.name+ "): has " + this.balance + " SEK.";
     }
 
     public boolean equals(BankAccount bankAccount){

@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Transaction {
 
+    private long transactionId;
     private long originBankAccountNumber;
     private long finalBankAccountNumber;
     private double amount;
@@ -19,10 +20,17 @@ public class Transaction {
     }
 
     public String toString(){
-        return type + " Transaction from " + originBankAccountNumber + " to " + finalBankAccountNumber + " with " + amount + " SEK. - " + this.createdAt;
+        return type + " Transaction " + transactionId + " from " + originBankAccountNumber + " to " + finalBankAccountNumber + " with " + amount + " SEK.";
     }
 
     //Getters and Setters
+    public long getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(long transactionId) {
+        this.transactionId = transactionId;
+    }
 
     public long getOriginBankAccountNumber() {
         return originBankAccountNumber;

@@ -1,18 +1,10 @@
 [
   {
-    "name": "Microsoft",
-    "stockPrice": 100.0
-  },
-  {
-    "name": "Apple",
-    "stockPrice": 194.0
-  },
-  {
-    "name": "Amazon",
-    "stockPrice": 2300.0
+    "name": "Tesla",
+    "stockPrice": 30.45
   },
   {
     "name": "Google",
-    "stockPrice": 3000.0
+    "stockPrice": 20.87
   }
 ]

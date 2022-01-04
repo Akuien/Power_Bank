@@ -2,7 +2,6 @@ package data;
 
 import domain.entities.*;
 
-import javax.sound.sampled.Port;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -157,7 +156,7 @@ public class DataSetInitializer {
         //We create 2 bankAccounts,
         // and then add them to the bankAccounts arraylist
         BankAccount account1 = new BankAccount(100, "Elizabeth Banks", 481046478, 970213742);
-        BankAccount account2 = new BankAccount(300, "Michaela Snow", 740375897, 970213742);
+        BankAccount account2 = new BankAccount(300, "Michaela Snow", 740375897, 880702813);
         ArrayList<BankAccount> bankAccounts = new ArrayList<>();
         bankAccounts.add(account1);
         bankAccounts.add(account2);
@@ -220,8 +219,8 @@ public class DataSetInitializer {
 
         //We create 2 mortgages,
         // and then add them to the mortgages arraylist
-        Mortgage mortgage1 = new Mortgage(880702813, 970213742, 1, 10.00, 45, 400, 10);
-        Mortgage mortgage2 = new Mortgage(970213742, 880702813, 2, 13.15, 70, 800, 25);
+        Mortgage mortgage1 = new Mortgage(880702813, 970213742, 10.34, 40, 400, 10);
+        Mortgage mortgage2 = new Mortgage(970213742, 880702813, 14.16, 80, 800, 60);
         ArrayList<Mortgage> mortgages = new ArrayList<>();
         mortgages.add(mortgage1);
         mortgages.add(mortgage2);
