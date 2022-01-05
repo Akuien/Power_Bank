@@ -27,11 +27,11 @@ public class EmployeeLogInMenu implements IControllers{
         do {
             switch (option) {
 
-                case 0: //When break it will be redirected to main
+                case 0: // When "break", it will be redirected to main menu.
                     ;
                     break;
                 case 1: // Log in employees, you log-in by giving your email and password, then we call the access token
-                    //which determines if you will be sent to employee menu or manager menu.
+                    // which determines if you will be sent to employee menu or manager menu.
                     try {
                         String email = UserInput.inputString(" Enter Email: ");
                         String password = UserInput.inputString(" Enter Password: ");
@@ -39,12 +39,12 @@ public class EmployeeLogInMenu implements IControllers{
                         Employee employee = employeeRepository.getByAccessToken(accessToken);
                         System.out.println("Employee logged in! These are your available functionalities: ");
 
-                        if (employee.getPosition().equals(UserType.employee)) { //Checks if it is a employee logging in
+                        if (employee.getPosition().equals(UserType.employee)) { // Checks if it is an employee logging in.
                             employeeMenu.printMenu();
                             option = UserInput.inputInt("Enter option: ");
                             employeeMenu.menu(option, employee);
                         } else {
-                            managerMenu.printMenu(); // checks if it is a manager who logs in.
+                            managerMenu.printMenu(); // Checks if it is a manager who logs in.
                             option = UserInput.inputInt("Enter option: ");
                             Manager manager = new Manager(
                                     employee.getFirstName(),
@@ -63,7 +63,7 @@ public class EmployeeLogInMenu implements IControllers{
                     } catch (Exception exception) {
                         System.out.println(exception.getMessage());
                         System.out.println("Please introduce again the correct credentials.");
-                        //Since option remains to be 1 the credentials are requested again.
+                        // Since option remains to be 1 the credentials are requested again.
                     }
 
                     break;
@@ -73,7 +73,7 @@ public class EmployeeLogInMenu implements IControllers{
                     break;
             }
         } while (option != 0) ;
-        //We use option != 0 because option != 0 means the exit of this menu and therefore no option will be available
+        // We use option != 0 because it means the exit of this menu and therefore no option will be available.
 
     }
 }

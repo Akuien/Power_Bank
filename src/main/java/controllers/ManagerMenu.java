@@ -14,7 +14,7 @@ import java.util.Date;
 
 import static controllers.CustomerMenu.EOL;
 
-public class ManagerMenu {
+public class ManagerMenu { // This menu can only be accessed by a manager that works for the bank.
 
     private LogOutEmployee logOutEmployee;
     private ObtainCustomers obtainCustomers;
@@ -61,7 +61,8 @@ public class ManagerMenu {
                 "11. Create customer bank account (customer at office)");
     }
 
-    public void menu(int option, Manager manager) {
+    public void menu(int option, Manager manager) { // Once again, we use a switch-statement with try-catch Exceptions
+        // witch prohibit
 
 
         do {
