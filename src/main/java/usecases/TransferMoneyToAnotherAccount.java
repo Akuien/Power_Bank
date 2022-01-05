@@ -37,33 +37,35 @@ public class TransferMoneyToAnotherAccount {
             throw new CustomerDoesNotExistException(originSSN);
         }
 
-        // Checks if origin customer bankAccount exists.
+        //Validates if the origin customer bankAccount exists or not.
         boolean originCustomerBankAccountExists = validateCustomerBankAccount.execute(originSSN, originAccountNumber);
         if (!originCustomerBankAccountExists){
             throw new BankAccountDoesNotExistException(originAccountNumber);
         }
+        // Validates if the origin bank account is approved or not.
         boolean approvedOriginBankAccount = validateCustomerBankAccountStatus.execute(originSSN, originAccountNumber);
         if (!approvedOriginBankAccount){
             throw new BankAccountNotApprovedException(originAccountNumber);
         }
 
-        // Checks if origin customer has enough funds to do the transaction.
+        //Validates if the origin customer bank account has enough funds to do the action or not.
         boolean hasFunds = validateFunds.execute(originAccountNumber, amount);
         if (!hasFunds){
             throw new DoesNotHaveEnoughFundsException();
         }
 
-        // Checks if final customer exists.
+        //Validates if the final customer who is going to receive the transfer of money exsits or not.
         boolean finalCustomerExists = validateCustomer.execute(finalSSN);
         if (!finalCustomerExists){
             throw new CustomerDoesNotExistException(finalSSN);
         }
 
-        // Checks if final customer bankAccount exists.
+        //Validates if the final customer bankAccount exists or not.
         boolean finalCustomerBankAccountExists = validateCustomerBankAccount.execute(finalSSN, finalAccountNumber);
         if (!finalCustomerBankAccountExists){
             throw new BankAccountDoesNotExistException(finalAccountNumber);
         }
+        //Validates if the final customer bank account is approved or not.
         boolean approvedFinalBankAccount = validateCustomerBankAccountStatus.execute(finalSSN, finalAccountNumber);
         if (!approvedFinalBankAccount){
             throw new BankAccountNotApprovedException(finalAccountNumber);
@@ -79,7 +81,7 @@ public class TransferMoneyToAnotherAccount {
     // Credit means when the money goes into your account.
 
 
-    // This method gets out the money from the origin customer.
+    // This private method gets out the money from the origin customer.
     private double debitOriginBalance(long originAccountNumber, double amount){
         BankAccount originBankAccount = bankAccountRepository.getAccountByAccountNumber(originAccountNumber);
         originBankAccount.setBalance(originBankAccount.getBalance() - amount);
@@ -87,7 +89,7 @@ public class TransferMoneyToAnotherAccount {
         return originBankAccount.getBalance();
     }
 
-    // This method adds in the money to the final customer.
+    // This private method adds in the money to the final customer.
     private double creditFinalBalance(long finalAccountNumber, double amount){
         BankAccount finalBankAccount = bankAccountRepository.getAccountByAccountNumber(finalAccountNumber);
         finalBankAccount.setBalance(finalBankAccount.getBalance() + amount);
@@ -95,7 +97,7 @@ public class TransferMoneyToAnotherAccount {
         return finalBankAccount.getBalance();
     }
 
-    // This method adds the transaction to the ArrayList in persistenceData.
+    // This private method creates the transaction.
     private void addTransaction(long originAccountNumber, long finalAccountNumber, double price, String type, Date currentDate){
         Transaction transaction = new Transaction(originAccountNumber, finalAccountNumber, price, type, currentDate);
         transactionRepository.createTransaction(transaction);
