@@ -5,7 +5,7 @@ import usecases.*;
 
 import java.util.ArrayList;
 
-public class CustomerMenu {
+public class CustomerMenu { // Each member below is protected with Encapsulation to reduce bugs and other risks.
     private LogOutCustomer logOutCustomer;
     private CheckBalance checkBalance;
     private ApplyForBankAccount applyForBankAccount;
@@ -54,7 +54,7 @@ public class CustomerMenu {
 
     }
 
-    public void menu(int option, Customer customer) {
+    public void menu(int option, Customer customer) { // The menu uses try-catch Exceptions where the code might throw an exception.
         do {
             switch (option) {
 
@@ -213,10 +213,10 @@ public class CustomerMenu {
                         String message = buyShares.execute(companyName, quantity, customerSSN, customerAccountNumber);
                         System.out.println(message);
 
-                        //Goes to the shareholder menu since by buying shares his/her type automatically changed to a shareholder.
+                        // Goes to the shareholder menu since by buying shares his/her type automatically changed to a shareholder.
                         shareholderMenu.printMenu();
                         option = UserInput.inputInt("Enter an option: ");
-                        //We need to pass a Shareholder object so we cast downcast the already obtained customer through the menu
+                        // We need to pass a Shareholder object, so we downcast the already obtained customer through the menu.
                         Shareholder shareholder = new Shareholder(
                                 customer.getFirstName(),
                                 customer.getLastName(),

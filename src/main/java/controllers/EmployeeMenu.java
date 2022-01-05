@@ -56,7 +56,7 @@ public class EmployeeMenu {
 
         do {
             switch (option) {
-                //In order for the user to log out, first we call the access token from employee class, and then logOutEmployee class.
+                // In order for the user to log out, first we call the access token from employee class, and then logOutEmployee class.
                 case 0:
                     try {
                         String accessToken = employee.getAccessToken();
@@ -66,7 +66,7 @@ public class EmployeeMenu {
                     }
                     break;
                 // Customer list address is now pointing to obtainCustomers execute method,
-                // and then the for loop loops through the list and print out every customer.
+                // and then the for-loops through the list and print out every customer.
                 case 1:
                     try {
                         ArrayList<Customer> customersList = obtainCustomers.execute();

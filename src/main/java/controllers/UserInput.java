@@ -3,12 +3,12 @@ package controllers;
 import javax.xml.crypto.Data;
 import java.util.Scanner;
 
-public class UserInput {
+public class UserInput { // As the title suggests, this is where we keep all of our user input functionality.
 
 
         public static Scanner input = new Scanner(System.in);
 
-        // method that takes in a message like "Enter an int value" and returns that value.
+        // Method for taking integer-type input.
         public static int inputInt(String message){
 
             System.out.println(message);
@@ -17,21 +17,21 @@ public class UserInput {
             return value;
 
         }
-        // method that takes in a message like "Enter a String value" and returns that value.
+        // Method that takes String-type input.
         public static String inputString(String message){
 
             System.out.println(message);
             return input.nextLine();
         }
 
-        // method that takes in a message like "Enter a double value" and returns that value.
+        // Method that takes double-type input.
         public static double inputDouble(String message){
             System.out.println(message);
             double value = input.nextDouble();
             input.nextLine();
             return value;
         }
-        // method that takes in a message like "Enter a long value" and returns that value.
+        // Method that takes long-type input.
 
         public static long inputLong(String message){
             System.out.println(message);
