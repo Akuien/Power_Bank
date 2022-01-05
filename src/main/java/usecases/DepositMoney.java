@@ -41,6 +41,7 @@ public class DepositMoney{
             throw new BankAccountDoesNotExistException(accountNumber);
         }
 
+        //Validation that checks whether the bank account where we are trying to deposit to is approved or not
         boolean approvedBankAccount = validateCustomerBankAccountStatus.execute(SSN, accountNumber);
         if (!approvedBankAccount){
             throw new BankAccountNotApprovedException(accountNumber);
@@ -51,13 +52,13 @@ public class DepositMoney{
         return creditBalance(accountNumber, amount);
     }
 
-    // This method is in charge of adding the deposit transaction in the arrayList of the persistence data.
+    // This method is in charge of creating the credit transaction.
     private void addCreditTransaction(long accountNumber, double price, Date currentDate){
         Transaction transaction = new Transaction(accountNumber, accountNumber, price, TransactionType.credit, currentDate);
         transactionRepository.createTransaction(transaction);
     }
 
-    // This method is in charge of adding the money for the deposit functionality.
+    // This method is in charge of adding the money to the specified bank account.
     private double creditBalance(long accountNumber, double price){
         BankAccount customerBankAccount = bankAccountRepository.getAccountByAccountNumber(accountNumber);
         customerBankAccount.setBalance(customerBankAccount.getBalance() + price);

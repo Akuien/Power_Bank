@@ -33,24 +33,28 @@ public class SellShares {
     }
 
     public String execute(String companyName, int quantity, long customerSSN, long customerAccountNumber) throws Exception {
-        // Below are validations, which check the requirements and throw exceptions to stop code from executing.
+        //Validates if the shareholder who is trying to sell shares exists or not.
         boolean shareholderExists = validateShareholder.execute(customerSSN);
         if (!shareholderExists){
             throw new ShareholderDoesNotExistException(customerSSN);
         }
+        //Validates if the customer exists or not.
         boolean customerExists = validateCustomer.execute(customerSSN);
         if (!customerExists){
             throw new CustomerDoesNotExistException(customerSSN);
         }
+        //Validates if the customer bank account where all the money is going to be deposited exists or not.
         boolean customerBankAccountExists = validateCustomerBankAccount.execute(customerSSN, customerAccountNumber);
         if (!customerBankAccountExists){
             throw new BankAccountDoesNotExistException(customerAccountNumber);
         }
+        //Validates if the customer's bank account where all the money is going to be deposited is approved or not.
         boolean approvedBankAccount = validateCustomerBankAccountStatus.execute(customerSSN, customerAccountNumber);
         if (!approvedBankAccount){
             throw new BankAccountNotApprovedException(customerAccountNumber);
         }
         Company company = companyRepository.getCompanyByName(companyName);
+        //Checks if the company introduced exists or not
         if (company == null){
             throw new CompanyDoesNotExistException(companyName);
         }
@@ -68,17 +72,20 @@ public class SellShares {
 
     // We created these three private methods to make the execute method more understandable.
     // We do not want to use these methods onwards, just in this class.
+    //Creates the credit transaction for the operation
     private void addCreditTransaction(long accountNumber, double price, Date currentDate){
         Transaction transaction = new Transaction(accountNumber, accountNumber, price, TransactionType.credit, currentDate);
         transactionRepository.createTransaction(transaction);
     }
 
+    //Adds the benefit done from the selling to the customer's specified bank account.
     private void creditBalance(long accountNumber, double price){
         BankAccount customerBankAccount = bankAccountRepository.getAccountByAccountNumber(accountNumber);
         customerBankAccount.setBalance(customerBankAccount.getBalance() + price);
         bankAccountRepository.updateBankAccount(customerBankAccount); //checker
     }
 
+    //Removes the stock from the portfolio after selling
     private void removeStock(long customerSSN, String companyName, int quantity) throws Exception {
         Portfolio portfolio = portfolioRepository.getPortfolioBySSN(customerSSN);
         if (portfolio == null) {
@@ -89,6 +96,7 @@ public class SellShares {
         for (Stock currentStock : stocks){
             stockQuantity += currentStock.getQuantity();
         }
+        //Checks if the quantity we are trying to sell oversizes the stocks in the portfolio or not.
         if (quantity > stockQuantity){
             throw new PortfolioDoesNotHaveEnoughStocks();
         }

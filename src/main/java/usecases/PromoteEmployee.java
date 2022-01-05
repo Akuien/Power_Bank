@@ -32,6 +32,7 @@ public class PromoteEmployee {
                 throw new EmployeeDoesNotExistException(employeeSSN);
             }
 
+            //Checks if the employee that we are trying to promote to manager is already a manager or not
             Employee employee = employeeRepository.getBySSN(employeeSSN);
             if (employee.getPosition().equals(UserType.manager)){
                 throw new EmployeeIsManagerException(employeeSSN);
