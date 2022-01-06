@@ -62,7 +62,7 @@ public class ShareholderMenu {
                 "Type an option number: ");
     }
 
-    public void menu(int option, Shareholder shareholder){
+    public int menu(int option, Shareholder shareholder){
         do {
             switch(option){
 
@@ -79,10 +79,10 @@ public class ShareholderMenu {
                 case 1 :
                     try {
                         long originSSN = shareholder.getSSN();
-                        long originAccountNumber = UserInput.inputLong(" Enter sender's Account Number: ");
-                        long finalSSN = UserInput.inputLong(" Enter receiver's SSN: ");
-                        long finalAccountNumber = UserInput.inputLong(" Enter receiver's Account Number: ");
-                        double amount = UserInput.inputDouble(" Enter Amount(e.g 100,07): ");
+                        long originAccountNumber = UserInput.inputLong("Enter sender's Account Number: ");
+                        long finalSSN = UserInput.inputLong("Enter receiver's SSN: ");
+                        long finalAccountNumber = UserInput.inputLong("Enter receiver's Account Number: ");
+                        double amount = UserInput.inputDouble("Enter Amount(e.g 100,07): ");
 
                         double balance = transferMoneyToAnotherAccount.execute(originSSN, originAccountNumber, finalSSN,  finalAccountNumber,  amount);
                         System.out.println("Your balance after the operation is: " + balance);
@@ -99,8 +99,8 @@ public class ShareholderMenu {
                 case 2 :
                     try {
                         long SSN = shareholder.getSSN();
-                        long accountNumber = UserInput.inputLong(" Enter Account Number: ");
-                        double amount = UserInput.inputDouble(" Enter Amount(e.g 100,07): ");
+                        long accountNumber = UserInput.inputLong("Enter Account Number: ");
+                        double amount = UserInput.inputDouble("Enter Amount(e.g 100,07): ");
 
                         double balance = depositMoney.execute(SSN, accountNumber, amount);
                         System.out.println("Your balance after the operation is: " + balance);
@@ -117,8 +117,8 @@ public class ShareholderMenu {
                 case 3 :
                     try {
                         long SSN = shareholder.getSSN();
-                        long accountNumber = UserInput.inputLong(" Enter Account Number: ");
-                        double amount = UserInput.inputDouble(" Enter Amount(e.g 100,07): ");
+                        long accountNumber = UserInput.inputLong("Enter Account Number: ");
+                        double amount = UserInput.inputDouble("Enter Amount(e.g 100,07): ");
 
                         double balance = withdrawMoney.execute(SSN, accountNumber, amount);
                         System.out.println("Your balance after the operation is: " + balance);
@@ -135,7 +135,7 @@ public class ShareholderMenu {
                 case 4 :
                     try {
                         long SSN = shareholder.getSSN();
-                        long accountNumber = UserInput.inputLong(" Enter Account Number: ");
+                        long accountNumber = UserInput.inputLong("Enter Account Number: ");
 
                         double balance = checkBalance.execute(SSN, accountNumber);
                         System.out.println("Your balance is: " + balance);
@@ -153,10 +153,10 @@ public class ShareholderMenu {
                 case 5 :
                     try {
                         long SSN = shareholder.getSSN();
-                        long accountNumber = UserInput.inputLong(" Enter account number: ");
+                        long accountNumber = UserInput.inputLong("Enter account number: ");
                         double totalMortgageValue = UserInput.inputDouble("Enter the total amount of the property(e.g 100,07): ");
                         double years = UserInput.inputDouble("Enter the years to pay the property(e.g 2,3): ");
-                        double initialDeposit = UserInput.inputDouble(" Enter the initial deposit(e.g 100,07): ");
+                        double initialDeposit = UserInput.inputDouble("Enter the initial deposit(e.g 100,07): ");
 
                         String message = applyForMortgage.execute(SSN, accountNumber, totalMortgageValue, years, initialDeposit);
                         System.out.println(message);
@@ -304,6 +304,7 @@ public class ShareholderMenu {
             }
 
         }while(option != 0);
+        return option;
     }
 
 }

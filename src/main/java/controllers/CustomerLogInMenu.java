@@ -49,8 +49,8 @@ public class CustomerLogInMenu {
 
                 case 1:
                     try {
-                        String email =UserInput.inputString(" Enter Email: ");
-                        String password = UserInput.inputString(" Enter Password: ");
+                        String email =UserInput.inputString("Enter Email: ");
+                        String password = UserInput.inputString("Enter Password: ");
                         String accessToken = logInCustomer.execute(email, password);
                         Customer customer = customerRepository.getByAccessToken(accessToken);
 

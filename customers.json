@@ -1,13 +1,14 @@
 [
   {
-    "type": "customer",
+    "type": "shareholder",
     "firstName": "Elizabeth",
     "lastName": "Banks",
     "SSN": 970213742,
     "password": "harbor",
     "email": "elizabeth.banks@gmail.com",
     "phoneNumber": "07410036992",
-    "birthDate": "Feb 13, 1997, 6:53:25 PM"
+    "birthDate": "Feb 13, 1997, 6:53:25 PM",
+    "accessToken": "2395599e-ccf5-49e3-8e68-fa084ef7b845"
   },
   {
     "type": "customer",

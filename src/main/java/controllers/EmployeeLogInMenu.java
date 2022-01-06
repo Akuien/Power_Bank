@@ -33,8 +33,8 @@ public class EmployeeLogInMenu implements IControllers{
                 case 1: // Log in employees, you log-in by giving your email and password, then we call the access token
                     // which determines if you will be sent to employee menu or manager menu.
                     try {
-                        String email = UserInput.inputString(" Enter Email: ");
-                        String password = UserInput.inputString(" Enter Password: ");
+                        String email = UserInput.inputString("Enter Email: ");
+                        String password = UserInput.inputString("Enter Password: ");
                         String accessToken = logInEmployee.execute(email, password);
                         Employee employee = employeeRepository.getByAccessToken(accessToken);
                         System.out.println("Employee logged in! These are your available functionalities: ");

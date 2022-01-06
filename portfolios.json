@@ -134,5 +134,38 @@
       }
     ],
     "customerSSN": 880709813
+  },
+  {
+    "stocks": [
+      {
+        "date": "Jan 7, 2022, 12:06:22 AM",
+        "company": "Apple",
+        "quantity": 1,
+        "customerSSN": 970213742,
+        "customerAccountNumber": 481046478
+      },
+      {
+        "date": "Jan 7, 2022, 12:09:28 AM",
+        "company": "Apple",
+        "quantity": 1,
+        "customerSSN": 970213742,
+        "customerAccountNumber": 481046478
+      },
+      {
+        "date": "Jan 7, 2022, 12:13:12 AM",
+        "company": "Apple",
+        "quantity": 1,
+        "customerSSN": 970213742,
+        "customerAccountNumber": 481046478
+      },
+      {
+        "date": "Jan 7, 2022, 12:19:39 AM",
+        "company": "Apple",
+        "quantity": 1,
+        "customerSSN": 970213742,
+        "customerAccountNumber": 481046478
+      }
+    ],
+    "customerSSN": 970213742
   }
 ]

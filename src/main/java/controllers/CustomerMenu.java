@@ -70,10 +70,10 @@ public class CustomerMenu { // Each member below is protected with Encapsulation
                 case 1:
                     try {
                         long originSSN = customer.getSSN();
-                        long originAccountNumber = UserInput.inputLong(" Enter sender's Account Number: ");
-                        long finalSSN = UserInput.inputLong(" Enter receiver's SSN: ");
-                        long finalAccountNumber = UserInput.inputLong(" Enter receiver's Account Number: ");
-                        double amount = UserInput.inputDouble(" Enter Amount(e.g 100,07): ");
+                        long originAccountNumber = UserInput.inputLong("Enter sender's Account Number: ");
+                        long finalSSN = UserInput.inputLong("Enter receiver's SSN: ");
+                        long finalAccountNumber = UserInput.inputLong("Enter receiver's Account Number: ");
+                        double amount = UserInput.inputDouble("Enter Amount(e.g 100,07): ");
 
                         double balance = transferMoneyToAnotherAccount.execute(originSSN, originAccountNumber, finalSSN, finalAccountNumber, amount);
                         System.out.println("Your balance after the operation is: " + balance);
@@ -88,8 +88,8 @@ public class CustomerMenu { // Each member below is protected with Encapsulation
                 case 2:
                     try {
                         long SSN = customer.getSSN();
-                        long accountNumber = UserInput.inputLong(" Enter Account Number: ");
-                        double amount = UserInput.inputDouble(" Enter Amount(e.g 100,07): ");
+                        long accountNumber = UserInput.inputLong("Enter Account Number: ");
+                        double amount = UserInput.inputDouble("Enter Amount(e.g 100,07): ");
 
                         double balance = depositMoney.execute(SSN, accountNumber, amount);
                         System.out.println("Your balance after the operation is: " + balance);
@@ -104,8 +104,8 @@ public class CustomerMenu { // Each member below is protected with Encapsulation
                 case 3:
                     try {
                         long SSN = customer.getSSN();
-                        long accountNumber = UserInput.inputLong(" Enter Account Number: ");
-                        double amount = UserInput.inputDouble(" Enter Amount(e.g 100,07): ");
+                        long accountNumber = UserInput.inputLong("Enter Account Number: ");
+                        double amount = UserInput.inputDouble("Enter Amount(e.g 100,07): ");
 
                         double balance = withdrawMoney.execute(SSN, accountNumber, amount);
                         System.out.println("Your balance after the operation is: " + balance);
@@ -120,7 +120,7 @@ public class CustomerMenu { // Each member below is protected with Encapsulation
                 case 4:
                     try {
                         long SSN = customer.getSSN();
-                        long accountNumber = UserInput.inputLong(" Enter Account Number: ");
+                        long accountNumber = UserInput.inputLong("Enter Account Number: ");
 
                         double balance = checkBalance.execute(SSN, accountNumber);
                         System.out.println("Your balance is: " + balance + " SEK.");
@@ -135,10 +135,10 @@ public class CustomerMenu { // Each member below is protected with Encapsulation
                 case 5:
                     try {
                         long SSN = customer.getSSN();
-                        long accountNumber = UserInput.inputLong(" Enter account number: ");
+                        long accountNumber = UserInput.inputLong("Enter account number: ");
                         double totalMortgageValue = UserInput.inputDouble("Enter the total amount of the mortgage(e.g 100,07): ");
                         double years = UserInput.inputDouble("Enter amount of years to pay off mortgage(e.g 2,3): ");
-                        double initialDeposit = UserInput.inputDouble(" Enter the initial deposit(e.g 100,07): ");
+                        double initialDeposit = UserInput.inputDouble("Enter the initial deposit(e.g 100,07): ");
 
                         String message = applyForMortgage.execute(SSN, accountNumber, totalMortgageValue, years, initialDeposit);
                         System.out.println(message);
@@ -226,13 +226,11 @@ public class CustomerMenu { // Each member below is protected with Encapsulation
                                 customer.getPhoneNumber(),
                                 customer.getBirthDate()
                         );
-                        shareholderMenu.menu(option, shareholder);
+                        option = shareholderMenu.menu(option, shareholder);
                     }
                     catch (Exception exception){
                         System.out.println(exception.getMessage());
                     }
-                    printMenu();
-                    option = UserInput.inputInt("Enter option: ");
                     break;
 
                 case 10:
