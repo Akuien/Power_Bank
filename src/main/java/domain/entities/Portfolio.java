@@ -37,4 +37,8 @@ public class Portfolio {
     public void setCustomerSSN(long customerSSN) {
         this.customerSSN = customerSSN;
     }
+
+    public String toString(){
+        return stocks.toString();
+    }
 }

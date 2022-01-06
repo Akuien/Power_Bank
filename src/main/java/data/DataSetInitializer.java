@@ -3,7 +3,6 @@ package data;
 import domain.constants.BankAccountStatus;
 import domain.entities.*;
 
-import javax.sound.sampled.Port;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -53,8 +52,6 @@ public class DataSetInitializer {
         employees = data.getEmployees();
 
         Employee test = employees.get(1);
-
-        System.out.println(test.getPassword());
 
         //Create 2 customer and add them to the arraylist
         //which will later be stored in the customer.json file
@@ -142,5 +139,7 @@ public class DataSetInitializer {
         //Populate the companies.json file with an initial data set
 
         data.setCompanies(companies);
+
+        System.out.println("Data loaded successfully");
     }
 }

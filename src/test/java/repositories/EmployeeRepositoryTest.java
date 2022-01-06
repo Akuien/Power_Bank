@@ -1,6 +1,7 @@
 package repositories;
 
 import data.PersistenceData;
+import domain.entities.Customer;
 import domain.entities.Employee;
 import org.junit.jupiter.api.Test;
 
@@ -42,30 +43,39 @@ class EmployeeRepositoryTest {
         // due to the date constructor which is deprecated
         calendar.set(Calendar.YEAR, 1986);
         calendar.set(Calendar.MONTH, Calendar.APRIL);
-        calendar.set(Calendar.DAY_OF_MONTH, 9);
+        calendar.set(Calendar.DAY_OF_MONTH, 3);
 
         //Then we get the date object values from the calendar object
         Date birthDateEmployee1 = calendar.getTime();
 
         calendar.set(Calendar.YEAR, 1973);
         calendar.set(Calendar.MONTH, Calendar.MARCH);
-        calendar.set(Calendar.DAY_OF_MONTH, 9);
+        calendar.set(Calendar.DAY_OF_MONTH, 2);
 
         Date birthDateEmployee2 = calendar.getTime();
 
-        Employee employee1 = new Employee("Jeff", "Bloom", 860409123, "boom", "jeff.bloom@gmail.com", "07459734015", birthDateEmployee1);
-        Employee employee2 = new Employee("Jack", "Black", 730309321, "black", "jack.black@gmail.com", "07470923784", birthDateEmployee2);
+        Employee employee1 = new Employee("Aleksey", "Zorin", 860403123, "boom", "aleksey.zorin@gmail.com", "07459734015", birthDateEmployee1);
+        Employee employee2 = new Employee("Hulk", "Hogan", 730302321, "black", "hulk.hogan@gmail.com", "07470923784", birthDateEmployee2);
 
         ArrayList<Employee> temp = new ArrayList<>();
 
         temp.add(employee1);
         temp.add(employee2);
 
-        assertEquals(temp.size(), employees.size());
+        employeeRepository.createProfile(employee1);
+        employeeRepository.createProfile(employee2);
 
-        assertEquals(temp.get(0).toString(), employees.get(0).toString());
+        ArrayList<Employee> temp2 = employeeRepository.getAll();
 
-        assertEquals(temp.toString(), employees.toString());
+        assertEquals(temp.get(temp.size()-1).toString(), temp2.get(temp2.size()-1).toString());
+
+        assertEquals(temp.get(temp.size()-2).toString(), temp2.get(temp2.size()-2).toString());
+
+        //Remove the last 2 added employees
+        //used for the test
+        temp2.remove(temp2.size()-1);
+        temp2.remove(temp2.size()-1);
+        EmployeeRepository.persistenceData.setEmployees(temp2);
     }
 
     @Test
@@ -85,6 +95,13 @@ class EmployeeRepositoryTest {
         employeeRepository.createProfile(test);
 
         assertEquals(test.toString(), employeeRepository.getBySSN(990909999).toString());
+
+        ArrayList<Employee> temp = employeeRepository.getAll();
+
+        //Remove the last added employee
+        //used for the test
+        temp.remove(temp.size()-1);
+        EmployeeRepository.persistenceData.setEmployees(temp);
     }
 
     @Test
@@ -105,6 +122,13 @@ class EmployeeRepositoryTest {
         employeeRepository.createProfile(test);
 
         assertEquals(test.toString(), employeeRepository.getByAccessToken("123456789").toString());
+
+        ArrayList<Employee> temp = employeeRepository.getAll();
+
+        //Remove the last added employee
+        //used for the test
+        temp.remove(temp.size()-1);
+        EmployeeRepository.persistenceData.setEmployees(temp);
     }
 
     @Test
@@ -124,6 +148,13 @@ class EmployeeRepositoryTest {
         employeeRepository.createProfile(test);
 
         assertEquals(test.toString(), employeeRepository.getByEmail("john.doe@gmail.com").toString());
+
+        ArrayList<Employee> temp = employeeRepository.getAll();
+
+        //Remove the last added employee
+        //used for the test
+        temp.remove(temp.size()-1);
+        EmployeeRepository.persistenceData.setEmployees(temp);
     }
 
     @Test
@@ -143,6 +174,13 @@ class EmployeeRepositoryTest {
         employeeRepository.createProfile(test);
 
         assertEquals(test.toString(), employeeRepository.getBySSN(990909999).toString());
+
+        ArrayList<Employee> temp = employeeRepository.getAll();
+
+        //Remove the last added employee
+        //used for the test
+        temp.remove(temp.size()-1);
+        EmployeeRepository.persistenceData.setEmployees(temp);
     }
 
     @Test
@@ -166,5 +204,12 @@ class EmployeeRepositoryTest {
         employeeRepository.updateProfile(test2);
 
         assertEquals(test2.toString(), employeeRepository.getBySSN(990909999).toString());
+
+        ArrayList<Employee> temp = employeeRepository.getAll();
+
+        //Remove the last added employee
+        //used for the test
+        temp.remove(temp.size()-1);
+        EmployeeRepository.persistenceData.setEmployees(temp);
     }
 }

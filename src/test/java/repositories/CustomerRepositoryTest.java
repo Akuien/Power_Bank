@@ -12,7 +12,6 @@ class CustomerRepositoryTest {
 
     private CustomerRepository customerRepository;
     private Calendar calendar;
-    private ArrayList<Customer> customers;
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
@@ -20,8 +19,6 @@ class CustomerRepositoryTest {
         customerRepository = new CustomerRepository();
 
         calendar = Calendar.getInstance();
-
-        customers = customerRepository.getAll();
 
     }
 
@@ -36,21 +33,21 @@ class CustomerRepositoryTest {
 
         calendar.set(Calendar.YEAR, 1997);
         calendar.set(Calendar.MONTH, Calendar.FEBRUARY);
-        calendar.set(Calendar.DAY_OF_MONTH, 13);
+        calendar.set(Calendar.DAY_OF_MONTH, 15);
 
         //Then we get the date object values from the calendar object
         Date birthDateCustomer1 = calendar.getTime();
 
         calendar.set(Calendar.YEAR, 1988);
         calendar.set(Calendar.MONTH, Calendar.JULY);
-        calendar.set(Calendar.DAY_OF_MONTH, 2);
+        calendar.set(Calendar.DAY_OF_MONTH, 9);
 
         Date birthDateCustomer2 = calendar.getTime();
 
         //We create 2 employees,
         // and then add them to the employee arraylist
-        Customer customer1 = new Customer("Elizabeth", "Banks", 970213742, "harbor", "elizabeth.banks@gmail.com", "07410036992", birthDateCustomer1);
-        Customer customer2 = new Customer("Michaela", "Snow", 880702813, "castle", "michaela.snow@gmail.com", "07429909567", birthDateCustomer2);
+        Customer customer1 = new Customer("Hannah", "Franklin", 970215742, "harbor", "hannah.franlin@gmail.com", "07410036992", birthDateCustomer1);
+        Customer customer2 = new Customer("Kate", "Barnes", 880709813, "castle", "kate.barnes@gmail.com", "07429909567", birthDateCustomer2);
 
         ArrayList<Customer> temp = new ArrayList<>();
 
@@ -60,11 +57,17 @@ class CustomerRepositoryTest {
         customerRepository.createProfile(customer1);
         customerRepository.createProfile(customer2);
 
-        assertEquals(temp.size(), customerRepository.getAll().size());
+        ArrayList<Customer> temp2 = customerRepository.getAll();
 
-        assertEquals(temp.get(0).toString(), customerRepository.getAll().get(0).toString());
+        assertEquals(temp.get(temp.size()-1).toString(), temp2.get(temp2.size()-1).toString());
 
-        assertEquals(temp.toString(), customerRepository.getAll().toString());
+        assertEquals(temp.get(temp.size()-2).toString(), temp2.get(temp2.size()-2).toString());
+
+        //Remove the last 2 added customers
+        //used for the test
+        temp2.remove(temp2.size()-1);
+        temp2.remove(temp2.size()-1);
+        CustomerRepository.persistenceData.setCustomers(temp2);
     }
 
     @org.junit.jupiter.api.Test
@@ -84,6 +87,13 @@ class CustomerRepositoryTest {
         customerRepository.createProfile(test);
 
         assertEquals(test.toString(), customerRepository.getBySSN(770707777).toString());
+
+        ArrayList<Customer> temp = customerRepository.getAll();
+
+        //Remove the last added customer
+        //used for the test
+        temp.remove(temp.size()-1);
+        CustomerRepository.persistenceData.setCustomers(temp);
 
     }
 
@@ -106,6 +116,12 @@ class CustomerRepositoryTest {
 
         assertEquals(test.toString(), customerRepository.getByAccessToken("987654321").toString());
 
+        ArrayList<Customer> temp = customerRepository.getAll();
+
+        //Remove the last added customer
+        //used for the test
+        temp.remove(temp.size()-1);
+        CustomerRepository.persistenceData.setCustomers(temp);
 
     }
 
@@ -128,6 +144,14 @@ class CustomerRepositoryTest {
         customerRepository.createProfile(test);
 
         assertEquals(test.toString(), customerRepository.getByEmail("jane.doe@gmail.com").toString());
+
+        ArrayList<Customer> temp = customerRepository.getAll();
+
+        //Remove the last added customer
+        //used for the test
+        temp.remove(temp.size()-1);
+        CustomerRepository.persistenceData.setCustomers(temp);
+
     }
 
     @org.junit.jupiter.api.Test
@@ -148,6 +172,13 @@ class CustomerRepositoryTest {
         customerRepository.createProfile(test);
 
         assertEquals(test.toString(), customerRepository.getBySSN(770707777).toString());
+
+        ArrayList<Customer> temp = customerRepository.getAll();
+
+        //Remove the last added customer
+        //used for the test
+        temp.remove(temp.size()-1);
+        CustomerRepository.persistenceData.setCustomers(temp);
     }
 
     @org.junit.jupiter.api.Test
@@ -173,5 +204,11 @@ class CustomerRepositoryTest {
 
         assertEquals(test2.toString(), customerRepository.getBySSN(770707777).toString());
 
+        ArrayList<Customer> temp = customerRepository.getAll();
+
+        //Remove the last added customer
+        //used for the test
+        temp.remove(temp.size()-1);
+        CustomerRepository.persistenceData.setCustomers(temp);
     }
 }

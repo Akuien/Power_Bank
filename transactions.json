@@ -1,0 +1,9 @@
+[
+  {
+    "originBankAccountNumber": 481046478,
+    "finalBankAccountNumber": 481046478,
+    "amount": 10000.0,
+    "type": "debit",
+    "createdAt": "Jan 6, 2022, 6:53:26 PM"
+  }
+]

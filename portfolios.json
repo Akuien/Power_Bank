@@ -1,0 +1,138 @@
+[
+  {
+    "stocks": [
+      {
+        "date": "Dec 27, 2021, 7:05:34 PM",
+        "company": "Systematic",
+        "quantity": 15,
+        "customerSSN": 970215742,
+        "customerAccountNumber": 991046478
+      }
+    ],
+    "customerSSN": 970215742
+  },
+  {
+    "stocks": [
+      {
+        "date": "Dec 27, 2021, 7:05:34 PM",
+        "company": "Systematic",
+        "quantity": 15,
+        "customerSSN": 970215742,
+        "customerAccountNumber": 991046478
+      }
+    ],
+    "customerSSN": 970215742
+  },
+  {
+    "stocks": [
+      {
+        "date": "Dec 27, 2021, 7:05:34 PM",
+        "company": "Systematic",
+        "quantity": 15,
+        "customerSSN": 970215742,
+        "customerAccountNumber": 991046478
+      }
+    ],
+    "customerSSN": 970215742
+  },
+  {
+    "stocks": [],
+    "customerSSN": 880709813
+  },
+  {
+    "stocks": [
+      {
+        "date": "Dec 27, 2021, 7:05:34 PM",
+        "company": "Systematic",
+        "quantity": 15,
+        "customerSSN": 970215742,
+        "customerAccountNumber": 991046478
+      }
+    ],
+    "customerSSN": 970215742
+  },
+  {
+    "stocks": [
+      {
+        "date": "Dec 27, 2021, 7:05:34 PM",
+        "company": "Systematic",
+        "quantity": 15,
+        "customerSSN": 970215742,
+        "customerAccountNumber": 991046478
+      }
+    ],
+    "customerSSN": 970215742
+  },
+  {
+    "stocks": [
+      {
+        "date": "Dec 27, 2021, 7:05:34 PM",
+        "company": "Systematic",
+        "quantity": 15,
+        "customerSSN": 970215742,
+        "customerAccountNumber": 991046478
+      }
+    ],
+    "customerSSN": 970215742
+  },
+  {
+    "stocks": [
+      {
+        "date": "Dec 27, 2021, 5:57:05 PM",
+        "company": "Linak",
+        "quantity": 3,
+        "customerSSN": 880709813,
+        "customerAccountNumber": 880375897
+      }
+    ],
+    "customerSSN": 880709813
+  },
+  {
+    "stocks": [
+      {
+        "date": "Dec 27, 2021, 7:05:34 PM",
+        "company": "Systematic",
+        "quantity": 15,
+        "customerSSN": 970215742,
+        "customerAccountNumber": 991046478
+      }
+    ],
+    "customerSSN": 970215742
+  },
+  {
+    "stocks": [
+      {
+        "date": "Dec 27, 2021, 7:05:34 PM",
+        "company": "Systematic",
+        "quantity": 15,
+        "customerSSN": 970215742,
+        "customerAccountNumber": 991046478
+      }
+    ],
+    "customerSSN": 970215742
+  },
+  {
+    "stocks": [
+      {
+        "date": "Dec 27, 2021, 7:05:34 PM",
+        "company": "Systematic",
+        "quantity": 15,
+        "customerSSN": 970215742,
+        "customerAccountNumber": 991046478
+      }
+    ],
+    "customerSSN": 970215742
+  },
+  {
+    "stocks": [
+      {
+        "date": "Dec 27, 2021, 5:59:45 PM",
+        "company": "Linak",
+        "quantity": 3,
+        "customerSSN": 880709813,
+        "customerAccountNumber": 880375897
+      }
+    ],
+    "customerSSN": 880709813
+  }
+]

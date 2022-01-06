@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Microsoft",
+    "stockPrice": 100.0
+  },
+  {
+    "name": "Apple",
+    "stockPrice": 194.0
+  },
+  {
+    "name": "Amazon",
+    "stockPrice": 3000.0
+  },
+  {
+    "name": "Google",
+    "stockPrice": 3000.0
+  }
+]

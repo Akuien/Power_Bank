@@ -1,0 +1,22 @@
+[
+  {
+    "type": "customer",
+    "firstName": "Elizabeth",
+    "lastName": "Banks",
+    "SSN": 970213742,
+    "password": "harbor",
+    "email": "elizabeth.banks@gmail.com",
+    "phoneNumber": "07410036992",
+    "birthDate": "Feb 13, 1997, 6:53:25 PM"
+  },
+  {
+    "type": "customer",
+    "firstName": "Michaela",
+    "lastName": "Snow",
+    "SSN": 880702813,
+    "password": "castle",
+    "email": "michaela.snow@gmail.com",
+    "phoneNumber": "07429909567",
+    "birthDate": "Jul 2, 1988, 6:53:25 PM"
+  }
+]
