@@ -90,8 +90,8 @@ public class CustomerLogInMenu {
                         long SSN = UserInput.inputLong("Enter SSN: ");
                         String password = UserInput.inputString("Enter Password: ");
                         String email = UserInput.inputString("Enter Email: ");
-                        String phoneNumber = UserInput.inputString("Enter Phone Number");
-                        String birthDateString = UserInput.inputString("Enter Birth Date");
+                        String phoneNumber = UserInput.inputString("Enter Phone Number: ");
+                        String birthDateString = UserInput.inputString("Enter Birth Date: ");
                         Date birthDate = new SimpleDateFormat("dd/MM/yyyy").parse(birthDateString);
 
                         String message = registerCustomer.execute(firstName, lastName, SSN, password, email, phoneNumber, birthDate);

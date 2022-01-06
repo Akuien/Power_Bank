@@ -21,7 +21,7 @@ public class EmployeeLogInMenu implements IControllers{
 
         System.out.println("Log In Menu for Employee:" + System.lineSeparator() +
                 "0. Return to Main Menu" + System.lineSeparator() +
-                "1. Log in " + System.lineSeparator());
+                "1. Log in ");
     }
     public void menu (int option) {
         do {
@@ -69,7 +69,7 @@ public class EmployeeLogInMenu implements IControllers{
                     break;
 
                 default:
-                    System.out.println("Please enter valid option");
+                    System.out.println("Please enter valid option: ");
                     break;
             }
         } while (option != 0) ;

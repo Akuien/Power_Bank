@@ -166,7 +166,7 @@ public class ManagerMenu { // This menu can only be accessed by a manager that w
                         long accountNumber = UserInput.inputLong("Enter the customer's bank account number: ");
                         long mortgageLoanID = UserInput.inputLong("Enter the mortgage ID: ");
                         long managerSSN = manager.getSSN();
-                        String choice = UserInput.inputString("Enter the next status of the mortgage (approved/rejected)");
+                        String choice = UserInput.inputString("Enter the next status of the mortgage (approved/rejected): ");
 
                         String message = changeStatusMortgage.execute(customerSSN, accountNumber, mortgageLoanID, managerSSN, choice);
                         System.out.println(message);
@@ -183,7 +183,7 @@ public class ManagerMenu { // This menu can only be accessed by a manager that w
                         long customerSSN = UserInput.inputLong("Enter the customer's SSN: ");
                         long accountNumber = UserInput.inputLong("Enter the account number of the desired bank account: ");
                         long managerSSN = manager.getSSN();
-                        String choice = UserInput.inputString("Enter the next status of the bank account (approved/rejected)");
+                        String choice = UserInput.inputString("Enter the next status of the bank account (approved/rejected): ");
 
                         String message = changeStatusBankAccount.execute(accountNumber, customerSSN, managerSSN, choice);
                         System.out.println(message);
@@ -217,8 +217,8 @@ public class ManagerMenu { // This menu can only be accessed by a manager that w
                         long SSN = UserInput.inputLong("Enter SSN: ");
                         String password = UserInput.inputString("Enter Password: ");
                         String email = UserInput.inputString("Enter Email: ");
-                        String phoneNumber = UserInput.inputString("Enter Phone Number");
-                        String birthDateString = UserInput.inputString("Enter Birth Date");
+                        String phoneNumber = UserInput.inputString("Enter Phone Number: ");
+                        String birthDateString = UserInput.inputString("Enter Birth Date: ");
                         Date birthDate = new SimpleDateFormat("dd/MM/yyyy").parse(birthDateString);
 
                         String message = registerEmployee.execute(firstName, lastName, SSN, password,email, phoneNumber, birthDate, managerSSN);
@@ -242,8 +242,8 @@ public class ManagerMenu { // This menu can only be accessed by a manager that w
                         long newManagerSSN = UserInput.inputLong("Enter SSN: ");
                         String password = UserInput.inputString("Enter Password: ");
                         String email = UserInput.inputString("Enter Email: ");
-                        String phoneNumber = UserInput.inputString("Enter Phone Number");
-                        String birthDateString = UserInput.inputString("Enter Birth Date");
+                        String phoneNumber = UserInput.inputString("Enter Phone Number: ");
+                        String birthDateString = UserInput.inputString("Enter Birth Date: ");
                         Date birthDate = new SimpleDateFormat("dd/MM/yyyy").parse(birthDateString);
 
                         String message = registerManager.execute(firstName, lastName, newManagerSSN, managerSSN, password, email, phoneNumber, birthDate);

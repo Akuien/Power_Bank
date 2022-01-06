@@ -113,7 +113,7 @@ public class DataSetInitializer {
 
         //We create 2 transactions,
         // and then add them to the transactions arraylist
-        Transaction transaction1 = new Transaction(481046478, 481046478, 10000, "debit", transactionDate);
+        Transaction transaction1 = new Transaction(481046478, 481046478, 10000, "credit", transactionDate);
         ArrayList<Transaction> transactions = new ArrayList<>();
         transactions.add(transaction1);
 
