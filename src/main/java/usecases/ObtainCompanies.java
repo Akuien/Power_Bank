@@ -18,7 +18,6 @@ public class ObtainCompanies {
 
         public ArrayList<Company> execute() throws Exception {
             return companyRepository.getAll();
-            // Helps the customer to see the list of companies to choose from.
         }
 
     }

@@ -57,13 +57,13 @@ public class WithdrawMoney {
     }
 
 
-    //This method creates the transaction and adds it to the list
+    // This method creates the transaction and adds it to the list.
     private void addDebitTransaction(long accountNumber, double price, Date currentDate){
         Transaction transaction = new Transaction(accountNumber, accountNumber, price, TransactionType.debit, currentDate);
         transactionRepository.createTransaction(transaction);
     }
 
-    //This method does the business logic of getting rid of the money
+    // This method does the business logic of getting rid of the money.
     private double debitBalance(long accountNumber, double price){
         BankAccount customerBankAccount = bankAccountRepository.getAccountByAccountNumber(accountNumber);
         customerBankAccount.setBalance(customerBankAccount.getBalance() - price);

@@ -10,8 +10,8 @@ import usecases.RegisterCustomer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-//Class used as user interface for logging in and registering
-// for customer and shareholder type of users
+// Class used as user interface for logging in and registering
+// for Customer and Shareholder type of users.
 
 public class CustomerLogInMenu {
 
@@ -21,7 +21,7 @@ public class CustomerLogInMenu {
     private CustomerMenu customerMenu;
     private ShareholderMenu shareholderMenu;
 
-    //constructor to initialize the
+    // Constructor to initialize the log in menu.
     public CustomerLogInMenu() {
         this.registerCustomer = new RegisterCustomer();
         this.logInCustomer = new LogInCustomer();
@@ -39,7 +39,7 @@ public class CustomerLogInMenu {
                 "2. Create new account ");
     }
 
-    public void menu(int option){
+    public void menu(int option){ // Menu uses Switch-statement, "default" option is assigned to non-existing user input options.
 
         do {
             switch (option) {
@@ -135,8 +135,8 @@ public class CustomerLogInMenu {
             }
 
         }while (option !=0);
-        //0 = exit or return to MainMenu
-        //when selected, prompts the user to the main menu
+        // 0 = exit or return to MainMenu.
+        // When selected, prompts the user to the Main Menu.
     }
 
 }

@@ -22,8 +22,8 @@ public class MainMenu implements IControllers{
             switch (option) {
 
                 case 0:
-                    //This line closes the whole system, and we take a 0 as a parameter because it has executed in a successful way
-                    //If the parameter had been 1 or -1 it meant it was exited in an unsuccessful way.
+                    // This line closes the whole system, and we take a 0 as a parameter because it has executed in a successful way.
+                    // If the parameter had been 1 or -1 it meant it was exited in an unsuccessful way.
                     System.exit(0);
                     break;
 
@@ -56,7 +56,7 @@ public class MainMenu implements IControllers{
         } while (option != 0);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { // Code that starts the whole program.
 
         MainMenu mainMenu = new MainMenu();
         mainMenu.printMenu();
