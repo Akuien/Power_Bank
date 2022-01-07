@@ -215,10 +215,10 @@ public class ManagerMenu { // This menu can only be accessed by a manager that w
                         String firstName = UserInput.inputString("Enter First Name: ");
                         String lastName = UserInput.inputString("Enter Last Name: ");
                         long SSN = UserInput.inputLong("Enter SSN: ");
-                        String password = UserInput.inputString("Enter Password: ");
+                        String password = UserInput.inputString("Enter Password(Password needs to contain uppercase, lowercase, a number and be longer then 8 symbols): ");
                         String email = UserInput.inputString("Enter Email: ");
-                        String phoneNumber = UserInput.inputString("Enter Phone Number: ");
-                        String birthDateString = UserInput.inputString("Enter Birth Date: ");
+                        String phoneNumber = UserInput.inputString("Enter Phone Number(First digit needs to be 0, second digit a 7 and the total length needs to be 11): ");
+                        String birthDateString = UserInput.inputString("Enter Birth Date(e.g 04/03/2003): ");
                         Date birthDate = new SimpleDateFormat("dd/MM/yyyy").parse(birthDateString);
 
                         String message = registerEmployee.execute(firstName, lastName, SSN, password,email, phoneNumber, birthDate, managerSSN);
@@ -240,10 +240,10 @@ public class ManagerMenu { // This menu can only be accessed by a manager that w
                         String firstName = UserInput.inputString("Enter First Name: ");
                         String lastName = UserInput.inputString("Enter Last Name: ");
                         long newManagerSSN = UserInput.inputLong("Enter SSN: ");
-                        String password = UserInput.inputString("Enter Password: ");
+                        String password = UserInput.inputString("Enter Password(Password needs to contain uppercase, lowercase, a number and be longer then 8 symbols): ");
                         String email = UserInput.inputString("Enter Email: ");
-                        String phoneNumber = UserInput.inputString("Enter Phone Number: ");
-                        String birthDateString = UserInput.inputString("Enter Birth Date: ");
+                        String phoneNumber = UserInput.inputString("Enter Phone Number(First digit needs to be 0, second digit a 7 and the total length needs to be 11): ");
+                        String birthDateString = UserInput.inputString("Enter Birth Date(e.g 04/03/2003): ");
                         Date birthDate = new SimpleDateFormat("dd/MM/yyyy").parse(birthDateString);
 
                         String message = registerManager.execute(firstName, lastName, newManagerSSN, managerSSN, password, email, phoneNumber, birthDate);
